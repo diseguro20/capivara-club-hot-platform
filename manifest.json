@@ -1,0 +1,17 @@
+{
+  "name": "CAPIVARA CLUB HOT",
+  "short_name": "CAPIVARA CLUB HOT",
+  "description": "Área de membros, ferramentas e prompts para criação de conteúdo com IA.",
+  "start_url": "/membros",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#050304",
+  "theme_color": "#050304",
+  "lang": "pt-BR",
+  "icons": [
+    {"src": "/icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any"},
+    {"src": "/icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any"},
+    {"src": "/icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "maskable"},
+    {"src": "/icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable"}
+  ]
+}

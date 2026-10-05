@@ -1,0 +1,35 @@
+{
+  "name": "Consistência de Rosto IP-Adapter + ControlNet",
+  "description": "Mantém 100% da identidade facial da modelo em qualquer pose ou roupa.",
+  "model": "SDXL 1.0 / Realistic Vision",
+  "nodes": {
+    "1": {
+      "class_type": "CheckpointLoaderSimple",
+      "inputs": {
+        "ckpt_name": "realisticStockPhoto_v20.safetensors"
+      }
+    },
+    "2": {
+      "class_type": "IPAdapterModelLoader",
+      "inputs": {
+        "ipadapter_file": "ip-adapter-plus_sdxl_vit-h.safetensors"
+      }
+    },
+    "3": {
+      "class_type": "IPAdapterApply",
+      "inputs": {
+        "weight": 0.85,
+        "noise": 0.35
+      }
+    },
+    "4": {
+      "class_type": "KSampler",
+      "inputs": {
+        "steps": 30,
+        "cfg": 6.5,
+        "sampler_name": "dpmpp_2m_sde",
+        "scheduler": "karras"
+      }
+    }
+  }
+}

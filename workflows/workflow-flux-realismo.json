@@ -1,0 +1,33 @@
+{
+  "name": "Flux Realismo Extremo & Textura de Pele",
+  "description": "Workflow otimizado para modelo Flux Dev gerando poros reais e iluminação de estúdio.",
+  "model": "Flux.1 Dev",
+  "nodes": {
+    "1": {
+      "class_type": "UNETLoader",
+      "inputs": {
+        "unet_name": "flux1-dev.sft"
+      }
+    },
+    "2": {
+      "class_type": "DualCLIPLoader",
+      "inputs": {
+        "clip_name1": "t5xxl_fp8_e4m3fn.safetensors",
+        "clip_name2": "clip_l.safetensors"
+      }
+    },
+    "3": {
+      "class_type": "VAELoader",
+      "inputs": {
+        "vae_name": "ae.sft"
+      }
+    },
+    "4": {
+      "class_type": "KSamplerFlux",
+      "inputs": {
+        "steps": 25,
+        "guidance": 3.5
+      }
+    }
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "version": 2,
+  "cleanUrls": true,
+  "routes": [
+    {
+      "src": "/api/session",
+      "dest": "/api/session.js"
+    },
+    {
+      "src": "/api/login",
+      "dest": "/api/login.js"
+    },
+    {
+      "src": "/api/register",
+      "dest": "/api/register.js"
+    },
+    {
+      "src": "/api/member/prompts-18",
+      "dest": "/api/member/prompts-18.js"
+    },
+    {
+      "src": "/api/member/prompts",
+      "dest": "/api/member/prompts.js"
+    },
+    {
+      "src": "/api/sync/status",
+      "dest": "/api/sync/status.js"
+    },
+    {
+      "src": "/login",
+      "dest": "/login.html"
+    },
+    {
+      "src": "/cadastro",
+      "dest": "/login.html?tab=register"
+    },
+    {
+      "src": "/painel",
+      "dest": "/paginas/painel.html"
+    },
+    {
+      "src": "/membros",
+      "dest": "/paginas/painel.html"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/$1"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        { "key": "Access-Control-Allow-Origin", "value": "*" },
+        { "key": "Access-Control-Allow-Methods", "value": "GET,POST,OPTIONS" },
+        { "key": "Access-Control-Allow-Headers", "value": "*" }
+      ]
+    }
+  ]
+}

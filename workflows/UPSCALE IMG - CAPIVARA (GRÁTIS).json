@@ -1,0 +1,384 @@
+{
+  "id": "763769e5-14c1-4008-bf90-854c302b0f96",
+  "revision": 0,
+  "last_node_id": 131,
+  "last_link_id": 249,
+  "nodes": [
+    {
+      "id": 116,
+      "type": "easy cleanGpuUsed",
+      "pos": [
+        2477.81298828125,
+        -270.3585205078125
+      ],
+      "size": [
+        157.38925170898438,
+        26.505447387695312
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "anything",
+          "name": "anything",
+          "type": "*",
+          "link": 248
+        }
+      ],
+      "outputs": [
+        {
+          "label": "output",
+          "name": "output",
+          "type": "*",
+          "links": [
+            246
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "easy cleanGpuUsed",
+        "cnr_id": "comfyui-easy-use",
+        "ver": "1.3.2",
+        "aux_id": "yolain/ComfyUI-Easy-Use",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 130,
+      "type": "LoadImage",
+      "pos": [
+        2086.6884765625,
+        -272.22320556640625
+      ],
+      "size": [
+        274,
+        314
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "label": "IMAGE",
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            248
+          ]
+        },
+        {
+          "label": "MASK",
+          "name": "MASK",
+          "type": "MASK"
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoadImage",
+        "cnr_id": "comfy-core",
+        "ver": "0.3.50",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "dd434a7f7bf74feaa95f7ca0971e11f60e860c2f665deb515cb6a7beebb5e5ba.jfif",
+        "image"
+      ]
+    },
+    {
+      "id": 104,
+      "type": "SeedVR2BlockSwap",
+      "pos": [
+        2092.7744140625,
+        203.212158203125
+      ],
+      "size": [
+        287.873046875,
+        154
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "label": "block_swap_config",
+          "name": "block_swap_config",
+          "type": "block_swap_config",
+          "links": [
+            193
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "SeedVR2BlockSwap",
+        "ver": "c88c9e61c17f1fed912b3f0d74cf9816f351b3a7",
+        "aux_id": "AInVFX/ComfyUI-SeedVR2_VideoUpscaler",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        36,
+        true,
+        true
+      ]
+    },
+    {
+      "id": 108,
+      "type": "SeedVR2",
+      "pos": [
+        2480.997314453125,
+        -40.61881637573242
+      ],
+      "size": [
+        278.652587890625,
+        198
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "images",
+          "name": "images",
+          "type": "IMAGE",
+          "link": 246
+        },
+        {
+          "label": "block_swap_config",
+          "name": "block_swap_config",
+          "shape": 7,
+          "type": "block_swap_config",
+          "link": 193
+        },
+        {
+          "label": "extra_args",
+          "name": "extra_args",
+          "shape": 7,
+          "type": "extra_args",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "label": "image",
+          "name": "image",
+          "type": "IMAGE",
+          "links": [
+            211,
+            249
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "SeedVR2",
+        "ver": "c88c9e61c17f1fed912b3f0d74cf9816f351b3a7",
+        "aux_id": "AInVFX/ComfyUI-SeedVR2_VideoUpscaler",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "seedvr2_ema_7b_fp16.safetensors",
+        1111116,
+        "increment",
+        1920,
+        45
+      ]
+    },
+    {
+      "id": 117,
+      "type": "easy cleanGpuUsed",
+      "pos": [
+        2749.612060546875,
+        -223.17088317871094
+      ],
+      "size": [
+        157.38925170898438,
+        26
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "anything",
+          "name": "anything",
+          "type": "*",
+          "link": 211
+        }
+      ],
+      "outputs": [
+        {
+          "label": "output",
+          "name": "output",
+          "type": "*",
+          "links": []
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "easy cleanGpuUsed",
+        "cnr_id": "comfyui-easy-use",
+        "ver": "1.3.2",
+        "aux_id": "yolain/ComfyUI-Easy-Use",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 131,
+      "type": "SaveImage",
+      "pos": [
+        2821.88330078125,
+        -124.9114761352539
+      ],
+      "size": [
+        502.5132141113281,
+        660.6854248046875
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "images",
+          "name": "images",
+          "type": "IMAGE",
+          "link": 249
+        }
+      ],
+      "outputs": [
+        {
+          "label": "image_urls",
+          "name": "image_urls",
+          "type": "STRING",
+          "links": null
+        },
+        {
+          "label": "images",
+          "name": "images",
+          "type": "IMAGE",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "SaveImage",
+        "cnr_id": "comfy-core",
+        "ver": "0.3.50",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "Instara_upscaled"
+      ]
+    }
+  ],
+  "links": [
+    [
+      193,
+      104,
+      0,
+      108,
+      1,
+      "block_swap_config"
+    ],
+    [
+      211,
+      108,
+      0,
+      117,
+      0,
+      "*"
+    ],
+    [
+      246,
+      116,
+      0,
+      108,
+      0,
+      "IMAGE"
+    ],
+    [
+      248,
+      130,
+      0,
+      116,
+      0,
+      "*"
+    ],
+    [
+      249,
+      108,
+      0,
+      131,
+      0,
+      "IMAGE"
+    ]
+  ],
+  "groups": [
+    {
+      "id": 1,
+      "title": "UPSCALE FOTO NORMAL E +18",
+      "bounding": [
+        2052.179443359375,
+        -382.443359375,
+        1302.3321533203125,
+        955.3543090820312
+      ],
+      "color": "#3f789e",
+      "font_size": 24,
+      "flags": {}
+    },
+    {
+      "id": 2,
+      "title": "Group",
+      "bounding": [
+        2218.76708984375,
+        -267.85516357421875,
+        140,
+        80
+      ],
+      "color": "#3f789e",
+      "font_size": 24,
+      "flags": {}
+    },
+    {
+      "id": 4,
+      "title": "CAPIVARA DU HOT",
+      "bounding": [
+        2169.7353515625,
+        -540.4124145507812,
+        1053.6475830078125,
+        137.8106231689453
+      ],
+      "color": "#d8f500",
+      "font_size": 100,
+      "flags": {
+        "pinned": true
+      }
+    }
+  ],
+  "config": {},
+  "extra": {
+    "VHS_KeepIntermediate": true,
+    "links_added_by_ue": [],
+    "VHS_MetadataImage": true,
+    "ue_links": [],
+    "VHS_latentpreviewrate": 0,
+    "frontendVersion": "1.23.0",
+    "VHS_latentpreview": false,
+    "ds": {
+      "scale": 0.6934334949441329,
+      "offset": [
+        -1601.547766921856,
+        547.6224932011808
+      ]
+    },
+    "pixaromaGroups": [],
+    "0246.VERSION": [
+      0,
+      0,
+      4
+    ],
+    "KKvideo_latentpreview": false,
+    "KKvideo_latentpreviewrate": 0
+  },
+  "version": 0.4
+}

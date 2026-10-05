@@ -1,0 +1,19 @@
+{
+  "name": "Troca de Roupas & Cenários (Inpainting)",
+  "description": "Substitui lingerie, biquínis e cenários preservando corpo e feições.",
+  "model": "SDXL Inpainting",
+  "nodes": {
+    "1": {
+      "class_type": "InpaintModelLoader",
+      "inputs": {
+        "model_name": "sdxl_inpaint.safetensors"
+      }
+    },
+    "2": {
+      "class_type": "VAEEncodeForInpaint",
+      "inputs": {
+        "grow_mask_by": 8
+      }
+    }
+  }
+}

@@ -1,0 +1,2010 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<link rel="stylesheet" href="/assets/ui.css?v=20260928-2"><script src="/assets/ui.js?v=20260928-2"></script>
+
+<meta name="csrf-token" content="PQLv8ZiWkVPNwnlF9NxvLi6fGwjZx66e8iIR3zQL">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GZLB9LE37X"></script>
+<script src="/assets/analytics.js?v=20260928-2"></script>
+
+<script src="/assets/http.js?v=20260928-2"></script>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Área de Membros — CAPIVARA CLUB HOT</title>
+<link rel="manifest" href="/manifest.json">
+<meta name="theme-color" content="#050304">
+<link rel="icon" href="/icons/favicon-32.png">
+<link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="CAPIVARA CLUB HOT">
+<meta name="mobile-web-app-capable" content="yes">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/area_membros_esteira_interna_ferramentas-1.css?v=20260928-5">
+
+<link rel="stylesheet" href="/assets/area_membros_esteira_interna_ferramentas-2.css?v=20260928-2">
+
+<link rel="stylesheet" href="/assets/area_membros_esteira_interna_ferramentas-3.css?v=20260928-2">
+<link rel="stylesheet" href="/assets/area_membros_esteira_interna_ferramentas-4.css?v=20260928-2">
+<link rel="stylesheet" href="/assets/area_membros_esteira_interna_ferramentas-5.css?v=20260928-2">
+<link rel="stylesheet" href="/assets/area_membros-video-fix.css?v=20260928-1">
+
+</head>
+<body>
+
+<section class="login-screen" id="loginScreen">
+  <div class="login-box">
+    <img class="logo" src="/assets/embedded-4319352716121903.png" alt="Logo">
+    <div class="brand">CAPIVARA CLUB HOT</div>
+    <h1 class="login-title">Área de membros</h1>
+    <p class="login-sub">Entre para acessar seus prompts, materiais e conteúdos exclusivos.</p>
+
+    <form id="loginForm">
+      <div class="field">
+        <label>E-mail</label>
+        <input id="email" type="email" placeholder="seu@email.com" required>
+      </div>
+      <div class="field">
+        <label>Senha</label>
+        <input id="password" type="password" placeholder="Sua senha" required>
+      </div>
+      <button class="primary" type="submit">ENTRAR NA ÁREA DE MEMBROS</button>
+    </form>
+
+    <div class="login-note">Use o e-mail cadastrado e a senha temporária enviada após a confirmação do pagamento. Cada conta pode ficar conectada em um único dispositivo por vez.</div>
+    <button id="resendPassword" type="button" class="resend-btn">TROCAR MINHA SENHA</button>
+  </div>
+</section>
+
+<section class="login-screen hidden" id="forcePasswordScreen">
+  <div class="login-box">
+    <div class="brand">CAPIVARA CLUB HOT</div>
+    <h1 class="login-title">Crie sua senha</h1>
+    <p class="login-sub">Por segurança, defina uma senha definitiva para substituir a senha temporária antes de continuar.</p>
+
+    <form id="forcePasswordForm">
+      <div class="field">
+        <label>Nova senha</label>
+        <input id="newPassword" type="password" placeholder="Mínimo 8 caracteres" minlength="8" required autocomplete="new-password">
+      </div>
+      <div class="field">
+        <label>Confirme a nova senha</label>
+        <input id="newPasswordConfirm" type="password" placeholder="Repita a nova senha" minlength="8" required autocomplete="new-password">
+      </div>
+      <button class="primary" type="submit">SALVAR NOVA SENHA</button>
+    </form>
+  </div>
+</section>
+
+<div class="prompt-viewer hidden" id="resendModal" aria-hidden="true">
+  <div class="prompt-box resend-box" role="dialog" aria-modal="true" aria-labelledby="resendModalTitle">
+    <div class="prompt-box-head"><h3 id="resendModalTitle">TROQUE SUA SENHA</h3><button class="prompt-close" id="resendModalClose" type="button" aria-label="Fechar">×</button></div>
+    <div class="resend-modal-body">
+      <p class="login-note">Informe o e-mail cadastrado. Vamos te enviar um link para você criar uma senha definitiva — seja para trocar a senha temporária pela primeira vez, ou porque esqueceu sua senha atual.</p>
+      <div class="field">
+        <label>E-mail</label>
+        <input id="resendEmail" type="email" placeholder="seu@email.com" required>
+      </div>
+      <button class="primary" id="resendSubmit" type="button">ENVIAR LINK DE SENHA</button>
+    </div>
+  </div>
+</div>
+
+<section class="app hidden" id="app">
+  <header class="topbar">
+    <div class="top-left">
+      <img class="top-logo" src="/assets/embedded-4319352716121903.png" alt="Logo">
+      <div class="top-brand">CAPIVARA CLUB HOT • Membros</div>
+    </div>
+    <div class="user-area">
+      <a class="admin-access-btn hidden" id="adminAccessBtn" href="/admin" target="_blank" rel="noopener noreferrer">⚙ Painel Admin</a>
+    </div>
+  </header>
+
+  <div class="layout">
+    <aside class="sidebar">
+      <div class="mobile-drawer-head">
+        <img class="mobile-drawer-logo" alt="Logo">
+        <div class="mobile-drawer-brand"><strong>CAPIVARA CLUB HOT</strong><small>MENU</small></div>
+        <button class="mobile-drawer-close" id="mobileDrawerClose" type="button" aria-label="Fechar menu">×</button>
+      </div>
+      <div class="nav-title">Menu</div>
+      <button class="nav-btn active" data-page="inicio"><span class="nav-icon">⌂</span><span class="nav-label">Início</span></button>
+      <button class="nav-btn" data-page="tutoriais"><span class="nav-icon">✦</span><span class="nav-label">Tutoriais</span></button>
+      <button class="nav-btn" data-page="galeria"><span class="nav-icon">▧</span><span class="nav-label">Galeria</span></button>
+      <button class="nav-btn" data-page="galeria-18"><span class="nav-icon">18+</span><span class="nav-label">Prompts +18</span></button>
+      <button class="nav-btn" data-page="workflows"><span class="nav-icon">▶</span><span class="nav-label">Workflows</span></button>
+      <button class="nav-btn" data-page="prompts"><span class="nav-icon">◈</span><span class="nav-label">Prompts</span></button>
+      <button class="nav-btn" data-page="extras"><span class="nav-icon">▣</span><span class="nav-label">Extras</span></button>
+      <button class="nav-btn" data-page="extensoes"><span class="nav-icon">⬡</span><span class="nav-label">Extensões</span></button>
+      <button class="nav-btn" data-page="metadados"><span class="nav-icon">⚙</span><span class="nav-label">Ferramentas</span></button>
+      <div class="sidebar-divider"></div>
+      <div class="sidebar-label">Conexões</div>
+      <button class="sidebar-link" type="button" data-page="comunidade"><span class="sidebar-link-icon">◎</span><span class="sidebar-link-label">Comunidade</span></button>
+      <div class="sidebar-divider"></div>
+      <div class="sidebar-label">Apoiadores</div>
+      <button class="sidebar-link" type="button" data-page="apoiador-1"><span class="sidebar-link-icon">✦</span><span class="sidebar-link-label">NX GATE</span></button>
+      <button class="sidebar-link" type="button" data-page="apoiador-2"><span class="sidebar-link-icon">✦</span><span class="sidebar-link-label">SHARK BOT</span></button>
+      <button class="sidebar-link" type="button" data-page="apoiador-3"><span class="sidebar-link-icon">✦</span><span class="sidebar-link-label">RAVENBOT</span></button>
+      <div class="sidebar-divider"></div>
+      <div class="sidebar-label">Programa de indicação</div>
+      <button class="sidebar-link" type="button" data-page="indique-e-ganhe"><span class="sidebar-link-icon">◆</span><span class="sidebar-link-label">Indique e ganhe</span></button>
+      <div class="sidebar-spacer"></div>
+      <button class="sidebar-link sidebar-logout" type="button" id="logout"><span class="sidebar-link-icon">↪</span><span class="sidebar-link-label">Sair</span></button>
+    </aside>
+
+    <main class="content">
+
+      <section class="member-page" data-content="inicio">
+        <div class="eyebrow">Conteúdo exclusivo</div>
+        <h1>BEM-VINDO, <span id="memberName">MEMBRO</span></h1>
+        <p class="hero-text">Aqui você encontra seus tutoriais, workflows, prompts e extras organizados para criar conteúdos com inteligência artificial.</p>
+
+        <div class="hero">
+          <div class="hero-content">
+            <div class="hero-label">Novo projeto</div>
+            <h2>CRIE SUA <span>MODELO IA.</span><br>COM IDENTIDADE.</h2>
+            <p class="hero-description">Crie personagens virtuais com aparência, personalidade e estilo definidos. Mantenha sua modelo consistente em todos os conteúdos que você gerar.</p>
+            <div class="hero-actions">
+              <a class="primary-btn" href="https://flow.google.com/" target="_blank" rel="noopener noreferrer">+ CRIAR NOVA MODELO</a>
+            </div>
+          </div>
+          <div class="hero-model">
+            <input type="file" id="heroAvatarInput" accept="image/*" hidden>
+            <div class="model-image model-image-placeholder" id="heroAvatarPlaceholder">
+              <span class="hero-avatar-icon">📷</span>
+              <small>Adicionar foto</small>
+            </div>
+            <img class="model-image" id="heroAvatarImg" alt="Sua foto" hidden>
+          </div>
+        </div>
+
+        <div class="section-head">
+          <div class="eyebrow">Encontre tudo por aqui</div>
+        </div>
+
+        <div class="quicklinks">
+          <article class="quicklink">
+            <div class="tile-icon">✦</div>
+            <h3>Tutoriais</h3>
+            <p>Aprenda o passo a passo para usar as ferramentas e criar conteúdos com IA.</p>
+            <button class="nav-card" data-page="tutoriais">Acessar tutoriais →</button>
+          </article>
+          <article class="quicklink">
+            <div class="tile-icon">▧</div>
+            <h3>Galeria</h3>
+            <p>Imagens e prompts prontos para copiar e usar direto na sua criação.</p>
+            <button class="nav-card" data-page="galeria">Ver galeria →</button>
+          </article>
+          <article class="quicklink">
+            <div class="tile-icon">▶</div>
+            <h3>Workflows</h3>
+            <p>Processos organizados para transformar sua ideia em conteúdo de forma mais rápida.</p>
+            <button class="nav-card" data-page="workflows">Ver workflows →</button>
+          </article>
+          <article class="quicklink">
+            <div class="tile-icon">◈</div>
+            <h3>Prompts</h3>
+            <p>Biblioteca de prompts prontos para imagens, vídeos, personagens e criação de conteúdo.</p>
+            <button class="nav-card" data-page="prompts">Ver prompts →</button>
+          </article>
+          <article class="quicklink">
+            <div class="tile-icon">18+</div>
+            <h3>PROMPTS +18</h3>
+            <p>Referências e prompts exclusivos para criações destinadas ao público maior de 18 anos.</p>
+            <button class="nav-card" data-page="galeria-18">Acessar galeria →</button>
+          </article>
+          <article class="quicklink">
+            <div class="tile-icon">▣</div>
+            <h3>Extras</h3>
+            <p>Materiais complementares, como esteira de aquecimento de conta e garimpo de modelos reais.</p>
+            <button class="nav-card" data-page="extras">Ver extras →</button>
+          </article>
+          <article class="quicklink">
+            <div class="tile-icon">⬡</div>
+            <h3>Extensões</h3>
+            <p>Extensões prontas para baixar vídeos, fotos e stories direto do navegador.</p>
+            <button class="nav-card" data-page="extensoes">Ver extensões →</button>
+          </article>
+          <article class="quicklink">
+            <div class="tile-icon">⚙</div>
+            <h3>Ferramentas</h3>
+            <p>Limpe metadados, converta formatos e proteja seus criativos, tudo liberado pra você.</p>
+            <button class="nav-card" data-page="metadados">Ver ferramentas →</button>
+          </article>
+        </div>
+      </section>
+
+      <section class="member-page hidden" data-content="tutoriais">
+        <div class="eyebrow">Biblioteca de aulas</div>
+        <h1>TUTORIAIS</h1>
+        <p class="hero-text">Assista às aulas diretamente nesta área. Os vídeos são adicionados pelo administrador.</p>
+
+        <div class="tutorial-grid">
+          <article class="tutorial-card">
+            <span class="tutorial-num">01</span>
+            <h2>Conhecendo o SaaS</h2>
+            <p>Mostrar o que é a plataforma e o resultado que o usuário pode alcançar.</p>
+            <div class="video-box">
+              <video class="tutorial-video" controls preload="metadata"></video>
+              <div class="video-empty">
+                <span class="upload-icon">▶</span>
+                <strong>Vídeo da aula</strong>
+                
+              </div>
+            </div>
+          </article>
+
+          <article class="tutorial-card">
+            <span class="tutorial-num">02</span>
+            <h2>Criando sua Modelo no Google Flow</h2>
+            <p>Criar a personagem/persona visual que será utilizada no projeto.</p>
+            <div class="video-box">
+              <video class="tutorial-video" controls preload="metadata"></video>
+              <div class="video-empty">
+                <span class="upload-icon">▶</span>
+                <strong>Vídeo da aula</strong>
+                
+              </div>
+            </div>
+          </article>
+
+          <article class="tutorial-card">
+            <span class="tutorial-num">03</span>
+            <h2>Como Encontrar Referências e Conteúdo</h2>
+            <p>Ensinar pesquisa, referências e organização de material.</p>
+            <div class="video-box">
+              <video class="tutorial-video" controls preload="metadata"></video>
+              <div class="video-empty">
+                <span class="upload-icon">▶</span>
+                <strong>Vídeo da aula</strong>
+                
+              </div>
+            </div>
+          </article>
+
+          <article class="tutorial-card">
+            <span class="tutorial-num">04</span>
+            <h2>Aprendendo sobre Ruuninghub</h2>
+            <p>Conheça a ferramenta Ruuninghub e aprenda como utilizá-la na criação de conteúdos.</p>
+            <div class="video-box">
+              <video class="tutorial-video" controls preload="metadata"></video>
+              <div class="video-empty">
+                <span class="upload-icon">▶</span>
+                <strong>Vídeo da aula</strong>
+                
+              </div>
+            </div>
+          </article>
+
+          <article class="tutorial-card">
+            <span class="tutorial-num">05</span>
+            <h2>Workflow Criando Imagem +18 pro Prompt</h2>
+            <p>Aprenda a criar imagens +18 e preparar o prompt para gerar o resultado desejado.</p>
+            <div class="video-box">
+              <video class="tutorial-video" controls preload="metadata"></video>
+              <div class="video-empty">
+                <span class="upload-icon">▶</span>
+                <strong>Vídeo da aula</strong>
+                
+              </div>
+            </div>
+          </article>
+
+          <article class="tutorial-card">
+            <span class="tutorial-num">06</span>
+            <h2>Workflow de Face Swap</h2>
+            <p>Mostrar o fluxo de troca de rosto dentro do processo.</p>
+            <div class="video-box">
+              <video class="tutorial-video" controls preload="metadata"></video>
+              <div class="video-empty">
+                <span class="upload-icon">▶</span>
+                <strong>Vídeo da aula</strong>
+                
+              </div>
+            </div>
+          </article>
+
+          <article class="tutorial-card">
+            <span class="tutorial-num">07</span>
+            <h2>Workflow de Vídeo</h2>
+            <p>Transformar imagens em um fluxo de produção de vídeos.</p>
+            <div class="video-box">
+              <video class="tutorial-video" controls preload="metadata"></video>
+              <div class="video-empty">
+                <span class="upload-icon">▶</span>
+                <strong>EM BREVE</strong>
+                
+              </div>
+            </div>
+          </article>
+
+          <article class="tutorial-card">
+            <span class="tutorial-num">08</span>
+            <h2>Gerar Vídeo com uma Imagem e um Prompt</h2>
+            <p>Aprenda a gerar vídeos usando uma imagem de referência e um prompt bem estruturado.</p>
+            <div class="video-box">
+              <video class="tutorial-video" controls preload="metadata"></video>
+              <div class="video-empty">
+                <span class="upload-icon">▶</span>
+                <strong>EM BREVE</strong>
+                
+              </div>
+            </div>
+          </article>
+          <article class="tutorial-card">
+            <span class="tutorial-num">09</span>
+            <h2>More Login</h2>
+            <p>Aprenda a utilizar o More Login.</p>
+            <div class="video-box">
+              <video class="tutorial-video" controls preload="metadata"></video>
+              <div class="video-empty">
+                <span class="upload-icon">▶</span>
+                <strong>EM BREVE</strong>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <div class="notice">
+          <strong>Área exclusiva de aulas:</strong> os vídeos são adicionados e gerenciados pelo administrador. Os membros não possuem opção de upload.
+        </div>
+
+      </section>
+
+      <section class="member-page hidden" data-content="galeria">
+
+        <div class="prompt-gallery-head">
+          <div class="eyebrow">Biblioteca de prompts + imagens</div>
+          <h1>GALERIA</h1>
+          <p>Imagens originais importadas da galeria do Notion. Clique na imagem para abrir o prompt.</p>
+        </div>
+
+        <div class="prompt-gallery">
+          <article class="gallery-card">
+            <a href="https://influencerai.notion.site/Prompt-1-239fd834667183a2a563816a0780b6af?pvs=25" target="_blank" rel="noopener noreferrer"><img class="gallery-image" data-gallery-prompt-name="ROSTO COM FUNDO BRANCO" src="/member-assets/gallery/reference-612ea13bd304759a.jpg" alt="Imagem original do Prompt 1" loading="lazy"></a>
+            <div class="gallery-card-body"><h3>Prompt 1</h3><p>Retrato frontal, fundo branco, proporção 1:1 e aparência natural de foto de RG.</p><button class="gallery-copy" type="button" data-gallery-prompt="Quero este mesmo rosto em um fundo branco puro, no formato 1:1, como uma foto de RG. Preserve exatamente a identidade e os tracos faciais.">▣ COPIAR PROMPT</button></div>
+          </article>
+          <article class="gallery-card">
+            <a href="https://influencerai.notion.site/Prompt-2-31cfd834667180da980bfa3172a5f8bb?pvs=25" target="_blank" rel="noopener noreferrer"><img class="gallery-image" data-gallery-prompt-name="FACESWAP" src="/member-assets/gallery/reference-d7a4d9bea14e8070.png" alt="Imagem original do Prompt 2" loading="lazy"></a>
+            <div class="gallery-card-body"><h3>Prompt 2</h3><p>Troca de identidade com integração natural de rosto, cabelo, luz e textura.</p><button class="gallery-copy" type="button" data-gallery-prompt="Perform a highly realistic professional face swap. Preserve the scene, outfit, pose, camera angle, lighting, shadows, background, and composition. Replace only the facial identity with the model from the reference image.">▣ COPIAR PROMPT</button></div>
+          </article>
+          <article class="gallery-card">
+            <a href="https://influencerai.notion.site/Prompt-3-31cfd834667180d5ae62fd492e6f22aa?pvs=25" target="_blank" rel="noopener noreferrer"><img class="gallery-image" data-gallery-prompt-name="CARROSSEL PRO FEED" src="/member-assets/gallery/reference-154eb973ba21e634.png" alt="Imagem original do Prompt 3" loading="lazy"></a>
+            <div class="gallery-card-body"><h3>Prompt 3</h3><p>Variações de uma mesma sessão para criar um carrossel consistente.</p><button class="gallery-copy" type="button" data-gallery-prompt="Generate four unique photos from the reference image, preserving identity, clothing, hairstyle, environment, lighting, color grading, and body proportions. Vary only natural poses, expressions, camera angles, framing, and hand placement.">▣ COPIAR PROMPT</button></div>
+          </article>
+          <article class="gallery-card">
+            <a href="https://influencerai.notion.site/Prompt-4-31cfd834667180a09813d710298eda72?pvs=25" target="_blank" rel="noopener noreferrer"><img class="gallery-image" data-gallery-prompt-name="ÂNGULOS DIFERENTES DO ROSTO" src="/member-assets/gallery/reference-05df4d3f1d1a2e93.jpg" alt="Imagem original do Prompt 4" loading="lazy"></a>
+            <div class="gallery-card-body"><h3>Prompt 4</h3><p>Folha de referências com frente, perfis e ângulos de três quartos.</p><button class="gallery-copy" type="button" data-gallery-prompt="Create a highly detailed character sheet showing the same person in front view, side views, back views, profiles, and three-quarter angles. Maintain identical facial identity, hair, clothing, lighting, and natural skin texture in every view.">▣ COPIAR PROMPT</button></div>
+          </article>
+          <article class="gallery-card">
+            <a href="https://influencerai.notion.site/Prompt-5-31cfd834667180009fbfe3543cb78b4e?pvs=25" target="_blank" rel="noopener noreferrer"><img class="gallery-image" data-gallery-prompt-name="UPSCALER GROK" src="/member-assets/gallery/reference-338312b31cd43a06.jpg" alt="Imagem original do Prompt 5" loading="lazy"></a>
+            <div class="gallery-card-body"><h3>Prompt 5</h3><p>Restauração fotográfica com nitidez natural, textura real e sem aparência artificial.</p><button class="gallery-copy" type="button" data-gallery-prompt="Faça uma restauração fotográfica profissional e um upscale de alta qualidade, preservando exatamente a identidade, a pose, a roupa, o cenário, a iluminação e o enquadramento. Corrija apenas defeitos técnicos e artefatos artificiais.">▣ COPIAR PROMPT</button></div>
+          </article>
+          <article class="gallery-card">
+            <a href="https://influencerai.notion.site/Prompt-6-31cfd83466718099a76bfbea939921d9?pvs=25" target="_blank" rel="noopener noreferrer"><img class="gallery-image" data-gallery-prompt-name="RG 1x9" src="/member-assets/gallery/reference-4e6aa26fa824f4c9.png" alt="Imagem original do Prompt 6" loading="lazy"></a>
+            <div class="gallery-card-body"><h3>Prompt 6</h3><p>Grade de nove vistas para manter a mesma identidade em diferentes ângulos.</p><button class="gallery-copy" type="button" data-gallery-prompt="Generate a 3x3 character angle grid with nine consistent views of the same person. Preserve the exact identity, facial proportions, hair, outfit, lighting, and natural skin texture across all panels.">▣ COPIAR PROMPT</button></div>
+          </article>
+        </div>
+        <div class="gallery-pagination" aria-label="Paginação da galeria">
+          <button class="gallery-page-button" id="galleryPrevious" type="button">← Anterior</button>
+          <span class="gallery-page-status" id="galleryPageStatus">Página 1</span>
+          <button class="gallery-page-button" id="galleryNext" type="button">Próximo →</button>
+        </div>
+      </section>
+
+      <section class="member-page hidden" data-content="galeria-18">
+        <div class="prompt-gallery-head">
+          <div class="eyebrow">Conteúdo exclusivo para maiores de 18 anos</div>
+          <h1>PROMPTS +18</h1>
+          <p>Referências visuais e prompts exclusivos para criações adultas. Clique na imagem para abrir o prompt.</p>
+        </div>
+
+        <div class="prompt-gallery" id="gallery18Grid"></div>
+        <div class="gallery-pagination" aria-label="Paginação dos prompts +18">
+          <button class="gallery-page-button" id="gallery18Previous" type="button">← Anterior</button>
+          <span class="gallery-page-status" id="gallery18PageStatus">Carregando...</span>
+          <button class="gallery-page-button" id="gallery18Next" type="button">Próximo →</button>
+        </div>
+      </section>
+
+      <section class="member-page hidden community-page" data-content="comunidade">
+        <div class="community-brand-icon"><img src="" alt="Logo CAPIVARA CLUB HOT"></div>
+        <div class="eyebrow">Comunidade e redes sociais</div>
+        <h1>COMUNIDADE</h1>
+        <p class="community-subtitle">Conecte-se com a comunidade CAPIVARA CLUB HOT</p>
+
+        <div class="community-list">
+          <div class="community-card locked"><div class="community-card-icon">♙</div><div class="community-card-copy"><strong>GRUPO WHATSAPP 1</strong><small>Comunidade oficial · 1024/1024</small></div><span class="community-card-action">LOTADO</span></div>
+          <a class="community-card" href="https://chat.whatsapp.com/JZxk3Lenzp70EmV49EtPcG" target="_blank" rel="noopener noreferrer" data-manual-link="grupo-whatsapp-2"><div class="community-card-icon">◉</div><div class="community-card-copy"><strong>GRUPO WHATSAPP 2</strong><small>Comunidade oficial</small></div><span class="community-card-action">↗</span></a>
+          <a class="community-card" href="https://chat.whatsapp.com/BBf0TW0Aq4SCQps7cL7rdS" target="_blank" rel="noopener noreferrer"><div class="community-card-icon">♙</div><div class="community-card-copy"><strong>GRUPO SOMENTE PARA MEMBROS</strong><small>Acesso exclusivo para membros</small></div><span class="community-card-action">↗</span></a>
+          <a class="community-card instagram" href="https://www.instagram.com/iamgooon/" target="_blank" rel="noopener noreferrer"><div class="community-card-icon">◎</div><div class="community-card-copy"><strong>INSTAGRAM</strong><small>@iamgooon</small></div><span class="community-card-action">↗</span></a>
+        </div>
+      </section>
+
+      <section class="member-page hidden community-page" data-content="apoiador-1"><div class="community-brand-icon nxgate-brand"><img src="/assets/reference-2514a67406bf4e79.ico" alt="Logo NX GATE"> </div><div class="eyebrow">Apoiador 1</div><h1>NX GATE</h1><p class="community-subtitle">Gateway de pagamento para receber e gerenciar seus pagamentos online.</p><div class="gateway-card"><h2>NX GATE</h2><p>Tenha acesso a uma gateway de pagamento para facilitar suas vendas e organizar seus recebimentos.</p><ul class="gateway-features"><li>Estrutura para pagamentos online</li><li>Cadastro rápido pela plataforma</li><li>Link exclusivo para a comunidade CAPIVARA CLUB HOT</li></ul><a class="gateway-button" href="https://nxgate.com.br/register?ref=camponely" target="_blank" rel="noopener noreferrer">USAR NX GATE</a></div></section>
+      <section class="member-page hidden community-page" data-content="apoiador-2"><div class="community-brand-icon"><img src="/assets/reference-7583dc0e1686563e.svg" alt="Logo Shark Bot"></div><div class="eyebrow">Apoiador 2</div><h1>SHARK BOT</h1><p class="community-subtitle">Automação inteligente para agilizar sua rotina de criação e vendas.</p><div class="gateway-card"><h2>SHARK BOT</h2><p>Um bot pensado para automatizar tarefas do seu dia a dia, economizando tempo e organizando seu fluxo de trabalho.</p><ul class="gateway-features"><li>Automação de tarefas repetitivas</li><li>Configuração rápida e simples</li><li>Cupom exclusivo para a comunidade CAPIVARA CLUB HOT</li></ul><a class="gateway-button" href="https://sharkbot.com.br/register?cupom=CAMPONELY" target="_blank" rel="noopener noreferrer">USAR SHARK BOT</a></div></section>
+      <section class="member-page hidden community-page" data-content="apoiador-3"><div class="community-brand-icon"><img src="/assets/reference-fb46ffc0bfdb8cc2.ico" alt="Favicon Ravenbot"></div><div class="eyebrow">Apoiador 3</div><h1>RAVENBOT</h1><p class="community-subtitle">Automação inteligente para agilizar sua rotina de criação e vendas.</p><div class="gateway-card"><h2>RAVENBOT</h2><p>Conheça o Ravenbot e descubra como a plataforma pode facilitar sua operação.</p><ul class="gateway-features"><li>Automação de tarefas repetitivas</li><li>Configuração rápida e simples</li><li>Acesso direto à plataforma Ravenbot</li></ul><a class="gateway-button" href="https://ravenbot.com.br/" target="_blank" rel="noopener noreferrer">USAR RAVENBOT</a></div></section>
+      <section class="member-page hidden" data-content="indique-e-ganhe">
+        <div class="eyebrow">Programa de indicação</div>
+        <h1>INDIQUE E GANHE</h1>
+        <p class="hero-text">Indique a CAPIVARA CLUB HOT para outras pessoas e ganhe recompensas por cada indicação.</p>
+
+        <div class="ref-link-box">
+          <span class="ref-link-label">Seu link exclusivo de indicação</span>
+          <div class="ref-link-row">
+            <input type="text" class="ref-link-input" id="refLinkInput" readonly value="Faça login para gerar seu link">
+            <button type="button" class="copy" id="refLinkCopy">Copiar</button>
+          </div>
+        </div>
+
+        <div class="metrics">
+          <div class="metric">
+            <div class="metric-top"><span class="metric-label">Amigos indicados</span><div class="metric-icon">◈</div></div>
+            <div class="metric-value" id="refInvitedCount">0</div>
+            <div class="metric-sub">Contas criadas com o seu link</div>
+          </div>
+          <div class="metric">
+            <div class="metric-top"><span class="metric-label">Comissões geradas</span><div class="metric-icon">◇</div></div>
+            <div class="metric-value" id="refTotalRevenue">R$ 0,00</div>
+            <div class="metric-sub" id="refCommissionSub">R$ 15 reais por venda</div>
+          </div>
+          <div class="metric">
+            <div class="metric-top"><span class="metric-label">Comissão por venda</span><div class="metric-icon">✦</div></div>
+            <div class="metric-value" id="refCommissionValue">R$ 15,00</div>
+            <div class="metric-sub">Valor fixo por venda aprovada</div>
+          </div>
+        </div>
+
+        <div class="ref-withdraw-card">
+          <div><span class="ref-link-label">Saldo disponível para saque</span><strong id="refAvailableBalance">R$ 0,00</strong><p id="refWithdrawHint">O saque fica disponível a partir de R$ 50,00.</p></div>
+          <button class="ref-withdraw-button" id="refWithdrawOpen" type="button" disabled>Solicitar saque</button>
+        </div>
+        <div class="ref-withdraw-history" id="refWithdrawHistory"></div>
+
+        <div class="section-head">
+          <div class="eyebrow">Seus indicados</div>
+        </div>
+        <p class="hero-text" style="margin-top:-6px;">Usuários que se cadastraram pelo seu link.</p>
+
+        <div class="ref-list" id="refList">
+          <div class="ref-list-empty" id="refListEmpty">Você ainda não tem indicados. Compartilhe seu link para começar a ganhar!</div>
+        </div>
+      </section>
+
+      <div class="ref-withdraw-modal hidden" id="refWithdrawModal" aria-hidden="true">
+        <section class="ref-withdraw-dialog" role="dialog" aria-modal="true" aria-labelledby="refWithdrawTitle">
+          <div class="ref-withdraw-head"><div><div class="eyebrow">Indique e ganhe</div><h2 id="refWithdrawTitle">Solicitar saque</h2></div><button id="refWithdrawClose" type="button" aria-label="Fechar">×</button></div>
+          <p>Informe seus dados para receber a comissão. O pedido ficará reservado enquanto a equipe organiza o pagamento manual.</p>
+          <form id="refWithdrawForm">
+            <label>Nome do titular<input id="refWithdrawName" required maxlength="120" autocomplete="name" placeholder="Nome completo"></label>
+            <label>Valor do saque<input id="refWithdrawAmount" type="number" required min="50" step="0.01" inputmode="decimal"></label>
+            <fieldset class="ref-pix-fieldset"><legend>Como você quer receber?</legend><p class="ref-pix-caption">Escolha o tipo correspondente à sua chave cadastrada no banco.</p><div class="ref-pix-options" role="radiogroup" aria-label="Tipo da chave PIX">
+              <label class="ref-pix-option"><input type="radio" name="refWithdrawPixChoice" value="EMAIL" checked><span class="ref-pix-option-icon" aria-hidden="true">@</span><span class="ref-pix-option-copy"><strong>E-mail</strong><small>Seu endereço de e-mail</small></span><span class="ref-pix-option-check" aria-hidden="true">✓</span></label>
+              <label class="ref-pix-option"><input type="radio" name="refWithdrawPixChoice" value="CPF"><span class="ref-pix-option-icon" aria-hidden="true">▤</span><span class="ref-pix-option-copy"><strong>CPF</strong><small>11 dígitos</small></span><span class="ref-pix-option-check" aria-hidden="true">✓</span></label>
+              <label class="ref-pix-option"><input type="radio" name="refWithdrawPixChoice" value="CNPJ"><span class="ref-pix-option-icon" aria-hidden="true">▣</span><span class="ref-pix-option-copy"><strong>CNPJ</strong><small>14 dígitos</small></span><span class="ref-pix-option-check" aria-hidden="true">✓</span></label>
+              <label class="ref-pix-option"><input type="radio" name="refWithdrawPixChoice" value="PHONE"><span class="ref-pix-option-icon" aria-hidden="true">☎</span><span class="ref-pix-option-copy"><strong>Telefone</strong><small>Com DDD</small></span><span class="ref-pix-option-check" aria-hidden="true">✓</span></label>
+              <label class="ref-pix-option"><input type="radio" name="refWithdrawPixChoice" value="RANDOM"><span class="ref-pix-option-icon" aria-hidden="true">✳</span><span class="ref-pix-option-copy"><strong>Aleatória</strong><small>Chave gerada pelo banco</small></span><span class="ref-pix-option-check" aria-hidden="true">✓</span></label>
+            </div><input id="refWithdrawPixType" type="hidden" value="EMAIL"></fieldset>
+            <label class="ref-pix-key-label" for="refWithdrawPixKey">Sua chave PIX<input id="refWithdrawPixKey" required maxlength="254" autocomplete="off" autocapitalize="off" spellcheck="false" inputmode="email" placeholder="seuemail@exemplo.com"><small id="refWithdrawPixHint">Digite o e-mail cadastrado como chave PIX.</small></label>
+            <div class="ref-withdraw-actions"><button type="button" id="refWithdrawCancel">Cancelar</button><button type="submit" id="refWithdrawSubmit">Enviar solicitação</button></div>
+          </form>
+        </section>
+      </div>
+
+      <section class="member-page hidden" data-content="workflows">
+        <div class="eyebrow">Processos prontos</div>
+        <h1>WORKFLOWS</h1>
+        <div class="notice workflow-unlock-notice hidden" id="workflowUnlockNotice" role="status"></div>
+        <p class="hero-text">Fluxos de trabalho para você seguir do planejamento até a publicação do conteúdo.</p>
+
+        <div class="cards workflow-downloads">
+          <article class="card workflow-card">
+            <span class="tag">01</span>
+            <h3>FACESWAP CAPIVARA DUHOT</h3>
+            <p>Workflow completo para transformar uma ideia em uma imagem pronta.</p>
+            <a class="copy workflow-download" href="workflows/faceswap-capivara-duhot.json" download="faceswap-capivara-duhot.json" data-workflow="FACESWAP CAPIVARA DUHOT">Baixar workflow →</a>
+          </article>
+          <article class="card workflow-card">
+            <span class="tag">02</span>
+            <h3>CONTROLMOTION CAPIVARA DUHOT</h3>
+            <p>Processo para transformar imagens em vídeos com movimento.</p>
+            <a class="copy workflow-download" href="workflows/controlmotion-capivara-duhot.json" download="controlmotion-capivara-duhot.json" data-workflow="CONTROLMOTION CAPIVARA DUHOT">Baixar workflow →</a>
+          </article>
+          <article class="card workflow-card">
+            <span class="tag">03</span>
+            <h3>CAPIVARA DU HOT — GERAR VÍDEOS PROMPT</h3>
+            <p>Workflow para criar prompts de vídeo a partir da imagem carregada.</p>
+            <a class="copy workflow-download" href="workflows/CAPIVARA%20DU%20HOT%20-%20GERAR%20V%C3%8DDEOS%20PROMPT.json" download="CAPIVARA DU HOT - GERAR VÍDEOS PROMPT.json" data-workflow="CAPIVARA DU HOT - GERAR VÍDEOS PROMPT">Baixar workflow →</a>
+          </article>
+          <article class="card workflow-card">
+            <span class="tag">04</span>
+            <h3>CONTROLMOTION 2 — VÍDEO +18</h3>
+            <p>Versão avançada para criar vídeos com movimento e controle de composição.</p>
+            <a class="copy workflow-download" href="workflows/CONTROLMOTION%202%20-%20CAPIVARA%20DUHOT%20-%20VIDEO%20%2B18.json" download="CONTROLMOTION 2 - CAPIVARA DUHOT - VIDEO +18.json" data-workflow="CONTROLMOTION 2 - CAPIVARA DUHOT - VIDEO +18">Baixar workflow →</a>
+          </article>
+          <article class="card workflow-card workflow-lockable workflow-locked" data-workflow-locked="true">
+            <span class="tag">05</span>
+            <h3>TROCA DE ROUPA</h3>
+            <p>Workflow para testar diferentes looks e trocar a roupa da imagem.</p>
+            <a class="copy workflow-download" href="workflows/TROCA%20DE%20ROUPA%20-%20WF%20GRATIS.json" download="TROCA DE ROUPA - WF GRATIS.json" data-workflow="TROCA DE ROUPA - WF GRATIS">Baixar workflow →</a>
+          </article>
+          <article class="card workflow-card workflow-lockable workflow-locked" data-workflow-locked="true">
+            <span class="tag">06</span>
+            <h3>UPSCALE IMG — CAPIVARA</h3>
+            <p>Workflow para aumentar a resolução e melhorar a qualidade das imagens.</p>
+            <a class="copy workflow-download" href="workflows/UPSCALE%20IMG%20-%20CAPIVARA%20%28GR%C3%81TIS%29.json" download="UPSCALE IMG - CAPIVARA (GRÁTIS).json" data-workflow="UPSCALE IMG - CAPIVARA (GRÁTIS)">Baixar workflow →</a>
+          </article>
+          <article class="card workflow-card workflow-lockable workflow-locked" data-workflow-locked="true">
+            <span class="tag">07</span>
+            <h3>KREA 2 — ROSTO + PROMPT</h3>
+            <p>Workflow para criar rostos e gerar prompts a partir da referência escolhida.</p>
+            <a class="copy workflow-download" href="workflows/KREA%202%20-%20ROSTO%20%2B%20PROMPT.json" download="KREA 2 - ROSTO + PROMPT.json" data-workflow="KREA 2 - ROSTO + PROMPT">Baixar workflow →</a>
+          </article>
+          <article class="card workflow-card workflow-lockable workflow-locked" data-workflow-locked="true">
+            <span class="tag">08</span>
+            <h3>VÁRIOS ÂNGULOS</h3>
+            <p>Workflow para gerar diferentes ângulos a partir da mesma imagem de referência.</p>
+            <a class="copy workflow-download" href="workflows/VARIOS%20ANGULOS.json" download="VARIOS ANGULOS.json" data-workflow="VARIOS ANGULOS">Baixar workflow →</a>
+          </article>
+          <article class="card workflow-card workflow-lockable workflow-locked" data-workflow-locked="true">
+            <span class="tag">09</span>
+            <h3>SWAP — FLUX — CAPIVARA</h3>
+            <p>Workflow de troca de rosto usando o modelo Flux.</p>
+            <a class="copy workflow-download" href="workflows/SWAP%20-%20FLUX%20-%20CAPIVARA.json" download="SWAP - FLUX - CAPIVARA.json" data-workflow="SWAP - FLUX - CAPIVARA">Baixar workflow →</a>
+          </article>
+          <article class="card workflow-card workflow-lockable workflow-locked" data-workflow-locked="true">
+            <span class="tag">10</span>
+            <h3>MOTION + CONTROL V7</h3>
+            <p>Workflow para controlar movimento e criar vídeos com mais precisão.</p>
+            <a class="copy workflow-download" href="workflows/MOTION%2BCONTROL%2Bv7.json" download="MOTION+CONTROL+v7.json" data-workflow="MOTION+CONTROL+v7">Baixar workflow →</a>
+          </article>
+        </div>
+        <div class="notice workflow-notice"><strong>Downloads:</strong> ao clicar no botão, o arquivo JSON do workflow é baixado automaticamente.</div>
+      </section>
+
+      <section class="member-page hidden" data-content="prompts">
+        <div class="eyebrow">Biblioteca de prompts</div>
+        <h1>PROMPTS</h1>
+        <p class="hero-text">Escolha uma categoria e clique em VER PROMPT para visualizar o conteúdo.</p>
+
+        <div class="prompt-grid" id="promptCards">
+          <article class="prompt-card" data-name="COXA" data-prompt="{&quot;edit_type&quot;:&quot;body_proportion_adjustment&quot;,&quot;target_area&quot;:&quot;thighs&quot;,&quot;instruction&quot;:&quot;Increase the size and volume of the thighs in a natural and proportional way, making them look thicker, fuller, and more defined while preserving realistic anatomy.&quot;,&quot;intensity&quot;:&quot;medium&quot;,&quot;body_preservation&quot;:{&quot;preserve_identity&quot;:true,&quot;preserve_face&quot;:true,&quot;preserve_skin_texture&quot;:true,&quot;preserve_lighting&quot;:true,&quot;preserve_pose&quot;:true,&quot;preserve_clothing&quot;:true,&quot;preserve_background&quot;:true},&quot;thigh_details&quot;:{&quot;increase_upper_thigh_volume&quot;:true,&quot;increase_outer_thigh_curve&quot;:true,&quot;add_natural_muscle_tone&quot;:true,&quot;keep_knees_natural&quot;:true,&quot;keep_hips_proportional&quot;:true,&quot;avoid_overexaggeration&quot;:true},&quot;realism_rules&quot;:{&quot;no_warped_background&quot;:true,&quot;no_deformed_legs&quot;:true,&quot;no_asymmetry&quot;:true,&quot;no_plastic_skin&quot;:true,&quot;no_unrealistic_body_shape&quot;:true,&quot;natural_shadow_adjustment&quot;:true},&quot;negative_prompt&quot;:&quot;deformed legs, warped thighs, unrealistic anatomy, distorted knees, uneven legs, plastic skin, overedited body, exaggerated proportions, broken pose, warped background, artificial retouching&quot;}">
+            <div class="prompt-top"><div class="prompt-icon">C</div><h3>COXA</h3></div>
+            <button class="prompt-copy" type="button">▣ &nbsp; VER PROMPT</button>
+          </article>
+
+          <article class="prompt-card" data-name="SEIOS" data-prompt="{&quot;task&quot;:&quot;adjust_body_proportions&quot;,&quot;scope&quot;:{&quot;affected_area&quot;:&quot;upper_torso_chest&quot;,&quot;exclusive&quot;:true},&quot;objective&quot;:{&quot;description&quot;:&quot;Increase the chest volume of the model to approximately twice the previous adjustment, maintaining realistic anatomy, natural gravity, and non-sexual character proportions.&quot;,&quot;intent&quot;:&quot;character_body_scaling&quot;},&quot;body_adjustment_rules&quot;:{&quot;increase_chest_volume&quot;:true,&quot;increase_amount_visual&quot;:&quot;high&quot;,&quot;relative_scale_multiplier&quot;:2.0,&quot;distribution&quot;:{&quot;upper_chest&quot;:&quot;dominant&quot;,&quot;mid_chest&quot;:&quot;supportive&quot;,&quot;lower_chest&quot;:&quot;subtle&quot;,&quot;ribcage_width&quot;:&quot;unchanged&quot;,&quot;shoulder_balance&quot;:&quot;preserved&quot;},&quot;maintain_natural_gravity&quot;:true,&quot;maintain_realistic_anatomy&quot;:true,&quot;avoid_implant_like_shapes&quot;:true},&quot;constraints&quot;:{&quot;do_not_change_face&quot;:true,&quot;do_not_change_facial_identity&quot;:true,&quot;do_not_change_expression&quot;:true,&quot;do_not_change_pose&quot;:true,&quot;do_not_change_camera&quot;:true,&quot;do_not_change_clothing_design&quot;:true,&quot;do_not_exaggerate_beyond_realism&quot;:true,&quot;no_sexualization&quot;:true},&quot;rendering_notes&quot;:{&quot;clothing_interaction&quot;:&quot;fabric stretches and contours naturally over increased chest volume without distortion&quot;,&quot;lighting_consistency&quot;:&quot;preserve original lighting, shadow direction, and highlights&quot;,&quot;skin_texture&quot;:&quot;unchanged&quot;,&quot;overall_result&quot;:&quot;same model, same outfit, same image, with significantly fuller chest proportion and stable visual quality&quot;}} | 2.0 | {&quot;task&quot;:&quot;adjust_body_proportions&quot;,&quot;scope&quot;:{&quot;affected_area&quot;:&quot;upper_torso_chest&quot;,&quot;exclusive&quot;:true},&quot;objective&quot;:{&quot;description&quot;:&quot;Define a fuller upper torso and bust structure as the primary visual identity. Facial accuracy is secondary at this stage.&quot;,&quot;intent&quot;:&quot;body_identity_definition&quot;},&quot;body_adjustment_rules&quot;:{&quot;increase_chest_volume&quot;:true,&quot;increase_amount_visual&quot;:&quot;high&quot;,&quot;maintain_natural_gravity&quot;:true,&quot;avoid_generic_slim_body&quot;:true,&quot;avoid_flat_chest&quot;:true},&quot;constraints&quot;:{&quot;face_is_not_priority&quot;:true,&quot;pose_preserved&quot;:true,&quot;camera_preserved&quot;:true}}">
+            <div class="prompt-top"><div class="prompt-icon">S</div><h3>SEIOS</h3></div>
+            <button class="prompt-copy" type="button">▣ &nbsp; VER PROMPT</button>
+          </article>
+
+          <article class="prompt-card" data-name="BUNDA" data-prompt="&#10;{&#10;  &quot;task&quot;: &quot;adjust_body_proportions&quot;,&#10;&#10;  &quot;scope&quot;: {&#10;    &quot;affected_area&quot;: &quot;lower_body_glutes_hips&quot;,&#10;    &quot;exclusive&quot;: true&#10;  },&#10;&#10;  &quot;objective&quot;: {&#10;    &quot;description&quot;: &quot;Define a fuller, rounder glute and hip structure as the primary body identity. Emphasis on natural curves and proportional lower body mass.&quot;,&#10;    &quot;intent&quot;: &quot;body_identity_definition&quot;&#10;  },&#10;&#10;  &quot;body_adjustment_rules&quot;: {&#10;    &quot;increase_glute_volume&quot;: true,&#10;    &quot;increase_amount_visual&quot;: &quot;high&quot;,&#10;    &quot;maintain_natural_gravity&quot;: true,&#10;    &quot;avoid_flat_glutes&quot;: true,&#10;    &quot;avoid_generic_slim_lower_body&quot;: true,&#10;    &quot;enhance_hip_curve&quot;: true&#10;  },&#10;&#10;  &quot;constraints&quot;: {&#10;    &quot;face_is_not_priority&quot;: true,&#10;    &quot;pose_preserved&quot;: true,&#10;    &quot;camera_preserved&quot;: true&#10;  }&#10;}&#10;">
+            <div class="prompt-top"><div class="prompt-icon">B</div><h3>BUNDA</h3></div>
+            <button class="prompt-copy" type="button">▣ &nbsp; VER PROMPT</button>
+          </article>
+
+          <article class="prompt-card" data-name="FACESWAP" data-prompt='{
+"task": "professional_realistic_face_swap",
+"image_inputs": {
+"image_1": "Model identity reference: use this image as the source for the woman&#39;s face, facial structure, hair, skin tone, facial proportions, identity consistency, and natural beauty details.",
+"image_2": "Target reference image: use this image as the base for the pose, body position, outfit, environment, background, camera angle, framing, lighting, shadows, objects, and overall composition."
+},
+"main_prompt": "Perform a highly realistic professional face swap using Image 1 as the identity source and Image 2 as the target reference. Preserve the full scene from Image 2 exactly: same outfit, same pose, same body position, same camera angle, same framing, same environment, same background, same objects, same perspective, same depth of field, same lighting direction, same shadows, same highlights, and same overall atmosphere. Replace only the facial identity and visible hair characteristics with the model from Image 1, while keeping the final result natural, seamless, and photorealistic. Preserve the model&#39;s facial features, face shape, eyes, nose, lips, jawline, cheek structure, eyebrows, hair color, hair texture, hairstyle, skin tone, and realistic skin details from Image 1. Match the face naturally to the head angle, expression, gaze direction, camera distance, and pose from Image 2. Blend the face, neck, jawline, hairline, ears, and skin transitions perfectly with no visible cut, no mask edge, no mismatch, and no artificial distortion. If Image 2 contains tattoos anywhere on the body, remove all tattoos completely and replace them with clean natural skin that matches the model&#39;s skin tone and the original lighting. The model must always appear with no tattoos. Adjust all visible skin areas so the skin tone is consistent with the model from Image 1, while preserving the natural shadows, highlights, and color temperature of Image 2. If the reference image has low quality, enhance the final image quality by improving clarity, sharpness, facial detail, skin texture, lighting balance, and overall resolution, but keep the image realistic and natural. The result must look like a real smartphone or camera photo, not AI-generated, not over-edited, not plastic, and not overly smooth. Maintain authentic skin texture, pores, subtle imperfections, natural hair detail, realistic fabric texture, and believable environmental lighting.",
+"tattoo_removal_rule": "Always remove tattoos from the target reference image. Do not keep, recreate, or add tattoos anywhere. Replace tattooed areas with realistic clean skin matching the model&#39;s natural skin tone, body texture, lighting, shadows, and surrounding anatomy.",
+"quality_enhancement": {
+"enabled": true,
+"instructions": "If the target reference image is blurry, noisy, pixelated, compressed, low-resolution, or poorly exposed, enhance the final image quality while preserving realism. Improve facial clarity, natural skin texture, hair detail, fabric texture, background details, lighting balance, and resolution. Do not over-sharpen, do not over-smooth, do not create waxy skin, and do not make the image look artificial."
+},
+"identity_consistency": {
+"source": "Image 1",
+"instructions": "The final person must clearly look like the model from Image 1. Preserve her unique facial identity, natural proportions, hairstyle, hair color, skin tone, and realistic human imperfections. Do not make her look like the person from Image 2."
+},
+"reference_preservation": {
+"source": "Image 2",
+"instructions": "Preserve the target reference image composition exactly. Keep the same outfit, accessories, pose, body posture, scenery, furniture, objects, camera lens feel, framing, lighting, shadows, highlights, and background atmosphere. Only change the identity, hair/face consistency, skin tone consistency, and tattoo removal."
+},
+"realism_style": "Photorealistic, hyper-realistic, natural smartphone photography, authentic lifestyle photo, real human skin texture, natural pores, subtle imperfections, realistic lighting, realistic shadows, realistic hair strands, realistic fabric texture, no AI look, no beauty filter, no plastic skin, no fake glow, no excessive retouching.",
+"negative_prompt": "bad face swap, visible mask, face cutout, mismatched skin tone, different head size, distorted face, warped eyes, asymmetrical eyes, deformed mouth, unnatural smile, fake skin, plastic skin, waxy skin, overly smooth face, excessive beauty filter, AI-generated look, cartoon, anime, painting, illustration, unrealistic lighting, wrong shadows, duplicated face, changed outfit, changed background, changed pose, missing objects, extra objects, tattoos, visible tattoos, tattoo remnants, scars from removed tattoos, blurry face, low-quality face, oversharpened image, unnatural hairline, broken neck blend, mismatched jawline, wrong camera angle, inconsistent perspective."
+}' >
+            <div class="prompt-top"><div class="prompt-icon">F</div><h3>FACESWAP</h3></div>
+            <button class="prompt-copy" type="button">▣ &nbsp; VER PROMPT</button>
+          </article>
+
+          <article class="prompt-card" data-name="FACESWAP2" data-prompt='✅ FIXED PROMPT — BASE IMAGE + MODEL ONLY (STRUCTURE PRESERVED)
+INPUT IMAGES (MANDATORY)
+• Image 1 = BASE IMAGE (MASTER LOCK + KEEP ITEMS SOURCE):
+This image controls EVERYTHING about the final output AND contains the items to be kept.
+It defines:
+format
+pixel dimensions
+composition
+pose
+lighting
+shadows
+grading
+lens look
+realism
+environment
+clothing
+accessories
+RULE: Copy the scene and items exactly (color, fabric, logos, fit, shape).
+• Image 2 = MODEL IDENTITY SOURCE:
+Use this person as the model identity (exact face, hair, skin tone, body type).
+⸻
+🔒 ABSOLUTE MASTER RULE
+Generate ONE final photo that is a near-perfect match to Image 1 in every way, except the identity replacement listed below.
+If any lock is broken, regenerate until correct.
+1) 🧱 FORMAT + PIXEL DIMENSION LOCK (ABSOLUTE)
+• Output must have the same orientation as Image 1.
+• Same aspect ratio as Image 1.
+• Same pixel dimensions as Image 1.
+• Same crop (headroom, footroom, spacing).
+• Subject occupies the same % of frame.
+2) 🎥 SHOT / COMPOSITION LOCK = IMAGE 1 (ABSOLUTE)
+Perfect match to Image 1:
+same camera height + distance + perspective
+same pose + body angles + hand positions
+same head tilt + gaze direction + expression mood
+same depth of field / bokeh
+same sharpness + DSLR realism
+3) 💡 LIGHTING / COLOR LOCK = IMAGE 1 (ABSOLUTE)
+Match exactly:
+same lighting direction
+same shadow softness/hardness
+same exposure + contrast
+same grading + tone + saturation
+same highlight roll-off
+No artificial lighting changes.
+4) 👤 IDENTITY REPLACEMENT = IMAGE 2 (ABSOLUTE)
+Replace ONLY the person with the model from Image 2:
+same face structure
+same hair
+same skin tone
+natural pores + imperfections
+no beautify
+no morphing
+Expression matches Image 1.
+5) 👕 CLOTHING + ITEMS LOCK = IMAGE 1 (ABSOLUTE)
+All clothing, accessories, and styling must match Image 1 exactly:
+same garments
+same logos
+same fit
+same wrinkles
+same drape
+STRICT: Do not redesign or alter.
+6) 🌍 ENVIRONMENT LOCK = IMAGE 1 (ABSOLUTE)
+Keep environment exactly:
+same background
+same props
+same layout
+same atmosphere
+No location changes.
+7) 🧵 REALISM ENFORCEMENT
+real fabric texture
+correct stitching
+natural imperfections
+correct anatomy
+seamless integration
+looks like original photo
+🚫 NEGATIVE PROMPT (PASTE AS IS)
+mockup, CGI, 3D render, plastic fabric, glossy ink, vinyl print, fake embroidery, flat print, wrong logo, wrong spelling, wrong font, warped clothing, melted text, watermark, blur, low-res, AI texture, oversharpening, fake shadows, mannequin, extra fingers, deformed hands, face change, generic face, wrong crop, wrong aspect ratio, different pixel dimensions
+✅ Output
+Generate 1 final image only, ultra-realistic, indistinguishable from original camera photo, perfect identity replacement from Image 2, hyper-real fashion photograph.'>
+            <div class="prompt-top"><div class="prompt-icon">F</div><h3>FACESWAP2</h3></div>
+            <button class="prompt-copy" type="button">▣ &nbsp; VER PROMPT</button>
+          </article>
+
+          <article class="prompt-card" data-name="REMOÇÃO DE TATUAGEM" data-prompt='{
+  "task": "tattoo_removal",
+  "mode": "image_edit",
+  "prompt": "Remove all visible tattoos from the subject&#39;s skin while preserving the exact original pose, face, body shape, clothing, lighting, shadows, background, camera angle, skin texture, pores, and natural realism. Reconstruct clean natural skin where the tattoos were, matching the surrounding skin tone perfectly. Do not blur the skin, do not make it plastic, and do not change any other part of the image.",
+  "negative_prompt": "tattoos, tattoo marks, ink residue, scars, blurry skin, plastic skin, over-smoothed skin, distorted skin, changed face, changed body, changed pose, changed clothing, changed background, altered lighting, beauty filter, HDR, unrealistic skin",
+  "preserve": [
+    "face identity",
+    "hair",
+    "pose",
+    "body shape",
+    "clothing",
+    "background",
+    "lighting",
+    "camera angle",
+    "natural skin texture"
+  ],
+  "edit_instructions": {
+    "remove_tattoos": true,
+    "skin_reconstruction": "natural surrounding skin tone",
+    "keep_realism": true,
+    "avoid_blur": true,
+    "avoid_over_smoothing": true
+  },
+  "quality": "natural smartphone photography, realistic skin texture, clean edit, seamless tattoo removal"
+}'>
+            <div class="prompt-top"><div class="prompt-icon">R</div><h3>REMOÇÃO DE TATUAGEM</h3></div>
+            <button class="prompt-copy" type="button">▣ &nbsp; VER PROMPT</button>
+          </article>
+
+          <article class="prompt-card" data-name="CARROSSEL PRO FEED" data-prompt='You will receive one reference image.
+
+Your task is to generate 4 new images that look like they were captured during the same photo session.
+
+Requirements:
+
+- Preserve the subject's facial identity with maximum consistency.
+- Keep the exact same clothing, hairstyle, accessories, makeup, body proportions, lighting, color grading, and environment.
+- Maintain the same location and overall aesthetic, as if all photos were taken within a few seconds of each other.
+- Do not change the background, weather, time of day, or outfit.
+- The only variations should be:
+  - Natural body poses.
+  - Different facial expressions (soft smile, neutral, confident, playful, etc.).
+  - Different camera angles.
+  - Slight changes in framing and composition.
+  - Small changes in hand placement, head tilt, body orientation, and eye direction.
+
+Create four unique photos:
+
+Image 1:
+- Relaxed standing pose looking directly at the camera.
+- Natural expression.
+- Medium shot.
+
+Image 2:
+- Slight body rotation (about 30–45°).
+- Looking away from the camera.
+- Soft smile.
+- Camera slightly lower for a more dynamic perspective.
+
+Image 3:
+- Leaning lightly against a nearby object or shifting weight onto one leg.
+- Looking back toward the camera.
+- Confident expression.
+- Slightly closer framing.
+
+Image 4:
+- Casual candid pose with natural movement (walking, adjusting hair, looking down, or interacting subtly with the environment).
+- Genuine relaxed expression.
+- Camera at a different angle to complete the carousel.
+
+The final result should feel like a professional Instagram carousel captured during one continuous photoshoot, with strong visual consistency while avoiding duplicated compositions.
+
+Ultra realistic.
+Natural smartphone photography.
+Realistic skin texture.
+Natural body proportions.
+No beauty filter.
+No HDR.
+No artificial sharpening.
+High detail.
+Instagram-quality photography.'>
+            <div class="prompt-top"><div class="prompt-icon">C</div><h3>CARROSSEL PRO FEED</h3></div>
+            <button class="prompt-copy" type="button">▣ &nbsp; VER PROMPT</button>
+          </article>
+
+          <article class="prompt-card" data-name="RG 1x9" data-prompt='{
+  "task": "generate_character_angle_grid",
+  "reference_image": "{{REFERENCE_IMAGE}}",
+  "identity_preservation": {
+    "enabled": true,
+    "strength": 0.98,
+    "instructions": "Preserve exatamente a mesma identidade da modelo da imagem de referência. Manter o mesmo rosto, formato facial, olhos, nariz, boca, sobrancelhas, mandíbula, testa, tom de pele, textura de pele, cabelo, linha capilar e características físicas gerais. Não alterar idade aparente, etnia, proporções faciais ou identidade."
+  },
+  "global_instructions": {
+    "subject": "a mesma modelo da imagem de referência",
+    "style": "fotografia extremamente realista, aparência natural, estética não-AI, textura de pele real, poros visíveis, detalhes faciais realistas, sem filtros exagerados, sem aparência plástica",
+    "lighting": "iluminação suave, natural e consistente em todos os quadros",
+    "background": "fundo neutro e simples, consistente em todos os quadros",
+    "outfit": "manter a mesma roupa da imagem de referência",
+    "hair": "manter exatamente o mesmo cabelo da referência, incluindo cor, comprimento, textura e penteado",
+    "makeup": "manter a mesma maquiagem da referência",
+    "camera": "qualidade fotográfica realista, alta definição, retrato natural",
+    "consistency": "todos os quadros devem parecer fotos da mesma pessoa feitas na mesma sessão"
+  },
+  "grid_layout": {
+    "enabled": true,
+    "type": "contact_sheet",
+    "rows": 3,
+    "columns": 3,
+    "total_panels": 9,
+    "panel_spacing": "clean and balanced",
+    "border": "subtle",
+    "background_canvas": "clean light neutral background"
+  },
+  "panels": [
+    {
+      "position": 1,
+      "shot": "front_neutral",
+      "description": "retrato frontal olhando diretamente para a câmera",
+      "camera_angle": "frontal",
+      "expression": "neutra e relaxada",
+      "framing": "rosto e ombros"
+    },
+    {
+      "position": 2,
+      "shot": "three_quarter_left",
+      "description": "rosto levemente virado para a esquerda",
+      "camera_angle": "três quartos esquerdo",
+      "expression": "natural e calma",
+      "framing": "rosto e ombros"
+    },
+    {
+      "position": 3,
+      "shot": "left_profile",
+      "description": "perfil esquerdo completo",
+      "camera_angle": "perfil esquerdo 90 graus",
+      "expression": "neutra",
+      "framing": "cabeça e ombros"
+    },
+    {
+      "position": 4,
+      "shot": "three_quarter_right",
+      "description": "rosto levemente virado para a direita",
+      "camera_angle": "três quartos direito",
+      "expression": "natural e suave",
+      "framing": "rosto e ombros"
+    },
+    {
+      "position": 5,
+      "shot": "right_profile",
+      "description": "perfil direito completo",
+      "camera_angle": "perfil direito 90 graus",
+      "expression": "neutra",
+      "framing": "cabeça e ombros"
+    },
+    {
+      "position": 6,
+      "shot": "slight_smile",
+      "description": "olhando para a câmera com um pequeno sorriso",
+      "camera_angle": "frontal",
+      "expression": "sorriso suave de boca fechada",
+      "framing": "rosto e ombros"
+    },
+    {
+      "position": 7,
+      "shot": "serious_expression",
+      "description": "olhar firme e mais sério",
+      "camera_angle": "frontal levemente inclinado",
+      "expression": "séria e confiante",
+      "framing": "rosto e ombros"
+    },
+    {
+      "position": 8,
+      "shot": "looking_down",
+      "description": "cabeça levemente inclinada para baixo",
+      "camera_angle": "frontal suave",
+      "expression": "pensativa",
+      "framing": "rosto e ombros"
+    },
+    {
+      "position": 9,
+      "shot": "looking_side_smile",
+      "description": "olhando discretamente para o lado com expressão leve",
+      "camera_angle": "três quartos",
+      "expression": "sorriso natural e delicado",
+      "framing": "rosto e ombros"
+    }
+  ],
+  "negative_prompt": [
+    "pessoa diferente",
+    "mudança de identidade",
+    "rosto inconsistente entre os quadros",
+    "mudança de cabelo",
+    "mudança de roupa",
+    "mudança de tom de pele",
+    "mudança de idade",
+    "mudança de etnia",
+    "pele plástica",
+    "aparência artificial",
+    "cartoon",
+    "3D",
+    "ilustração",
+    "olhos desalinhados",
+    "mãos deformadas",
+    "assimetria facial incorreta",
+    "distorção de lente",
+    "baixa resolução",
+    "desfoque",
+    "efeito uncanny valley",
+    "aparência de IA"
+  ],
+  "output": {
+    "number_of_images": 1,
+    "aspect_ratio": "1:1",
+    "resolution": "2048x2048",
+    "format": "PNG",
+    "single_grid_image": true,
+    "separate_images": false
+  }
+}'>
+            <div class="prompt-top"><div class="prompt-icon">R</div><h3>RG 1×9</h3></div>
+            <button class="prompt-copy" type="button">▣ &nbsp; VER PROMPT</button>
+          </article>
+
+          <article class="prompt-card" data-name="MISTURA 2 FACES" data-prompt='Use the two reference face images as inspiration to create a completely new fictional persona, blending the facial characteristics 50/50 from both references while making sure the final result does not look identical to either person.
+
+Create a young adult Brazilian woman, 18–19 years old, with a natural Brazilian beauty standard. She has soft feminine facial features, balanced proportions, warm light-to-medium tan skin, expressive brown/hazel eyes, full natural lips, a delicate nose, and a youthful but clearly adult appearance.
+
+Her hair should be inspired by the two reference images. Analyze the hair characteristics from both references and choose the hair color that best matches and harmonizes with the new persona being created. Keep the hairstyle natural, attractive, and realistic, with healthy volume and a soft, feminine appearance.
+
+The face must look unique and original, combining the best facial traits from both references without copying either one exactly. Keep high facial harmony, natural skin texture, visible pores, realistic lighting, and authentic smartphone photography style.
+
+White background, centered face, front-facing portrait, ID photo style, 1:1 square format. Neutral expression with a subtle natural smile. No tattoos, no piercings, no glasses, no heavy makeup, no exaggerated beauty filter, no plastic skin, no doll-like face, no anime style, no CGI look.
+
+Ultra-realistic natural portrait, realistic skin texture, soft studio lighting, sharp focus, high quality, natural Brazilian appearance.'>
+            <div class="prompt-top"><div class="prompt-icon">M</div><h3>MISTURA 2 FACES</h3></div>
+            <button class="prompt-copy" type="button">▣ &nbsp; VER PROMPT</button>
+          </article>
+
+          <article class="prompt-card" data-name="ROSTO COM FUNDO BRANCO" data-prompt="Quero este mesmo rosto em um fundo branco puro, no formato 1:1, como uma foto de RG. Preserve exatamente a identidade, o formato do rosto, os cabelos, a textura natural da pele e a expressao. Mantenha o rosto centralizado, olhando diretamente para a camera, com enquadramento de cabeca e ombros, iluminacao uniforme e realista, sem alterar os tracos faciais nem adicionar filtros.">
+            <div class="prompt-top"><div class="prompt-icon">R</div><h3>ROSTO COM FUNDO BRANCO</h3></div>
+            <button class="prompt-copy" type="button">▣ &nbsp; VER PROMPT</button>
+          </article>
+
+          <article class="prompt-card" data-name="UPSCALER GROK" data-prompt='Faça uma restauração fotográfica profissional completa e um upscale de alta qualidade nesta imagem, eliminando totalmente qualquer aparência de imagem gerada ou editada por inteligência artificial.
+
+A imagem final deve parecer uma fotografia real, autêntica e capturada por uma câmera profissional, sem aspecto de renderização, ilustração, CGI, filtro de beleza ou produção artificial.
+
+Não altere o conteúdo da imagem. Preserve exatamente:
+
+• A identidade e todas as características da modelo
+• O rosto, a expressão e o formato facial
+• O cabelo, o penteado e a cor
+• O tom de pele
+• O formato e as proporções do corpo
+• A posição do corpo, a postura e os gestos
+• A posição dos braços, mãos, dedos, pernas e pés
+• A roupa e todos os detalhes da farda
+• As cores, símbolos, estampas, costuras e acessórios
+• O enquadramento e o ângulo da câmera
+• A distância, a perspectiva e a composição
+• O cenário e todos os objetos presentes
+• A iluminação original e a direção das sombras
+
+Não recrie, redesenhe, embeleze ou modifique a modelo. Não afine o rosto ou o corpo, não aumente curvas, não altere a idade, não mude a expressão, não aplique maquiagem, não troque o penteado e não reposicione nenhuma parte do corpo.
+
+Remova cuidadosamente todos os indícios visuais de inteligência artificial, incluindo:
+
+• Pele plástica, encerada, borrada ou excessivamente lisa
+• Textura artificial ou ausência de poros naturais
+• Olhos excessivamente brilhantes, simétricos ou artificiais
+• Cílios, sobrancelhas, dentes e lábios com aparência sintética
+• Cabelos em blocos, fios derretidos ou mechas sem definição natural
+• Mãos, dedos, unhas, orelhas ou articulações deformadas
+• Contornos duplicados, halos, bordas recortadas ou fusões incorretas
+• Roupas com costuras, dobras, estampas ou texturas inconsistentes
+• Objetos deformados ou fundidos no cenário
+• Fundo borrado de maneira artificial
+• Elementos repetidos, padrões estranhos ou texturas derretidas
+• Iluminação incompatível entre a modelo e o ambiente
+• Sombras falsas, reflexos incoerentes e profundidade artificial
+• Nitidez exagerada, excesso de suavização ou efeito HDR artificial
+• Ruído digital irregular, manchas, serrilhados e artefatos de compressão
+
+Recupere a aparência real da pele com textura natural, poros discretos, pequenas variações de tonalidade e detalhes fotográficos verdadeiros, sem criar imperfeições exageradas. A pele deve continuar bonita, porém humana e realista.
+
+Melhore a definição dos olhos, cabelo, pele, tecido, costuras e objetos sem inventar detalhes que não existam na imagem. Corrija somente defeitos técnicos e artefatos artificiais.
+
+No cenário, restaure materiais com aparência física real, como paredes, chão, móveis, tecidos, metais, madeira, vidro e outros objetos. Cada superfície deve apresentar textura, reflexo, sombra e profundidade coerentes com a iluminação original.
+
+Faça um upscale de alta qualidade, aumentando significativamente a resolução e a nitidez. Reconstrua detalhes de forma realista, sem criar letras, símbolos, estampas, objetos ou características inexistentes.
+
+Mantenha uma nitidez fotográfica natural, com microdetalhes realistas, contraste equilibrado, cores fiéis, alcance dinâmico natural e leve textura de câmera profissional. Evite aparência excessivamente perfeita, limpa ou digital.
+
+O resultado deve apresentar:
+
+• Fotorealismo extremo
+• Texturas naturais e fisicamente coerentes
+• Pele humana realista
+• Cabelo com fios naturais
+• Tecido com trama e dobras verdadeiras
+• Iluminação e sombras consistentes
+• Profundidade de campo realista
+• Cores naturais e equilibradas
+• Alta resolução sem superprocessamento
+• Aparência de fotografia profissional original
+
+Não transforme a imagem em uma nova cena. Não faça uma nova geração completa. Trabalhe sobre a fotografia existente, preservando rigorosamente sua estrutura e corrigindo apenas a aparência artificial e os defeitos de qualidade.
+
+A imagem final deve continuar sendo exatamente a mesma fotografia, com a mesma modelo, mesma farda, mesma pose, mesmo cenário e mesmo enquadramento, porém em altíssima resolução, extremamente realista e sem nenhum indício visual de inteligência artificial.'>
+            <div class="prompt-top"><div class="prompt-icon">U</div><h3>UPSCALER GROK</h3></div>
+            <button class="prompt-copy" type="button">▣ &nbsp; VER PROMPT</button>
+          </article>
+
+          <article class="prompt-card" data-name="ÂNGULOS DIFERENTES DO ROSTO" data-prompt='English Version (ideal for most AIs)
+
+Instructions:
+
+Create a highly detailed character sheet, presented in the selected image.
+
+Show the same person with a neutral expression and uniform studio lighting, against a plain white or light gray background.
+
+Includes:
+
+Front view (0°)
+Left side view (45°)
+Left side view (90°)
+Left back view (45°)
+Back view (180°)
+Right back view (45°)
+Right side view (90°)
+Right front view (45°)
+Left profile close-up
+Right profile close-up
+
+Ultra-realistic photograph, 8K quality, natural skin texture, visible freckles, soft studio lighting, no jewelry, no accessories, no text, no watermark, maintains identical facial identity in all views.'>
+            <div class="prompt-top"><div class="prompt-icon">Â</div><h3>ÂNGULOS DIFERENTES DO ROSTO</h3></div>
+            <button class="prompt-copy" type="button">▣ &nbsp; VER PROMPT</button>
+          </article>
+
+          <article class="prompt-card" data-name="PROMPT PARA GERAR EM JSON" data-prompt="Vou te enviar uma imagem para servir como referência-mãe. Use o SEU fluxo normal de análise visual e engenharia reversa, mas com estas prioridades explícitas: 1. Fidelidade visual absoluta - Sempre que tiver escolha entre ser genérico ou específico, escolha o específico. - Descreva o que você vê, não o que você supõe. - Não tente “embelezar” ou otimizar a cena; o objetivo é capturar com máxima precisão como a imagem realmente é. 2. Detalhamento máximo onde houver informação - Se a imagem te permite ver textura, nuance de cor, microdetalhes de pele, tecido, reflexo, expressão ou cenário, você deve levar isso em conta nas descrições internas. - Evite termos vagos como “nice”, “cool”, “beautiful” e prefira descrições concretas de forma, cor, material, luz e expressão. 3. Zero extrapolação de contexto - Não invente história, localização, marca, época, profissão, relação entre pessoas ou narrativa. - Trabalhe apenas com o que está visualmente presente no quadro. 4. Idioma da saída - Mesmo que este comando esteja em português, todas as descrições de texto que você gerar dentro do seu formato de saída padrão devem estar em inglês natural, como se fossem prompts prontos para modelos de geração de imagem. 5. Formato de resposta - Não me envie explicações em prosa nem comentários. - Depois de aplicar essas prioridades no seu processamento interno, devolva apenas o seu objeto de saída padrão, já ajustado a essas instruções, com todo o conteúdo descritivo em inglês.">
+            <div class="prompt-top"><div class="prompt-icon">P</div><h3>PROMPT PARA GERAR EM JSON</h3></div>
+            <button class="prompt-copy" type="button">▣ &nbsp; VER PROMPT</button>
+          </article>
+
+          <article class="prompt-card" data-name="UPSCALE" data-prompt="Vou te enviar uma imagem para você usar como referência de uma versão em “upscale” de alta fidelidade. Use o seu fluxo normal de análise visual e engenharia reversa, mas configure internamente estas prioridades: 1. Mesma cena, mais informação - Trate a imagem como se você estivesse vendo a mesma foto em uma resolução muito mais alta, com mais nitidez e mais microdetalhes, sem qualquer mudança de composição ou conteúdo. - Seu objetivo é gerar uma descrição que preserves 100% da cena original, apenas adicionando precisão e riqueza de detalhe. 2. Elementos que NÃO podem mudar - Não altere identidade do rosto, corpo, expressão, pose, roupas, cores principais, iluminação, posição da câmera, enquadramento, cenário ou objetos. - Pense em tudo isso como “travado”: você só pode aumentar a clareza, não reinterpretar. 3. O que deve melhorar - Ao descrever internamente, aumente a granularidade de detalhes em: textura de pele, textura de cabelo, dobras de tecido, superfícies do ambiente, pequenos objetos, bordas, transições de luz e sombra. - A ideia é que, ao usar o seu resultado, um modelo de imagem consiga gerar uma versão da cena que pareça mais nítida, limpa e precisa. 4. Realismo técnico - Considere que um bom upscale também corrige pequenas borras, ruídos estranhos e artefatos de baixa resolução, sem descaracterizar nada. - Nas suas descrições, direcione para um realismo técnico melhor, mas sempre mantendo a mesma leitura visual da referência. 5. Limites de alteração - Não adicione novos elementos, não remova elementos existentes, não mude a proporção do rosto, do corpo ou de partes da cena. - A diferença entre original e resultado deve ser como ver a mesma foto em um monitor melhor. 6. Idioma da saída - Todas as descrições textuais dentro do seu formato de saída padrão devem estar em inglês, prontas para serem usadas diretamente em um fluxo de geração ou refine de imagem. 7. Formato de resposta - Não traga explicações paralelas. - Aplique esse “modo upscale fiel” dentro do seu pipeline e me devolva apenas o seu objeto de saída padrão, descrevendo a versão mais nítida e detalhada da mesma cena, em inglês.">
+            <div class="prompt-top"><div class="prompt-icon">U</div><h3>UPSCALE</h3></div>
+            <button class="prompt-copy" type="button">▣ &nbsp; VER PROMPT</button>
+          </article>
+
+          <article class="prompt-card" data-name="PROMPT TROCA DE POSE" data-prompt="You are a high-precision visual continuity engine.
+
+Your task is to analyze **any image I provide** and generate a **new image prompt** that recreates the SAME SCENE with **ABSOLUTE FIDELITY**, changing **ONLY the pose of the model**.
+
+---
+
+## Core rules (strict, non-negotiable)
+
+### 1. Full scene lock (100% fidelity)
+
+- The environment must remain IDENTICAL to the reference image:
+    - Same room
+    - Same layout
+    - Same objects and their positions
+    - Same materials, colors, wear, and imperfections
+    - Same lighting setup, direction, intensity, and color temperature
+- Do NOT add, remove, move, replace, or reinterpret any object.
+- Do NOT change time of day, mood, or atmosphere.
+
+### 2. Locked model identity
+
+- The person in the image is a **fixed, unchangeable identity**.
+- Preserve exactly:
+    - Face structure and proportions
+    - Skin tone and texture
+    - Hair color, texture, length, and style
+    - Body proportions
+    - Overall visual identity
+- Do NOT:
+    - Rejuvenate or age
+    - Alter facial features
+    - Beautify, stylize, or reinterpret the face
+
+### 3. Clothing and styling lock
+
+- Clothing must remain EXACTLY the same:
+    - Same garments
+    - Same colors
+    - Same textures and fit
+    - Same accessories
+- No wardrobe changes of any kind.
+
+### 4. Pose variation ONLY
+
+- The ONLY allowed modification is the model's **pose**.
+- Pose changes must be:
+    - Realistic
+    - Anatomically correct
+    - Consistent with the camera position and scene
+- You may vary:
+    - Head angle
+    - Body orientation
+    - Arm and hand positions
+    - Posture (standing, seated, leaning — if plausible in the same spot)
+- Do NOT change:
+    - Camera position
+    - Framing
+    - Lens characteristics
+
+### 5. Camera lock
+
+- Camera must remain identical:
+    - Same framing
+    - Same distance
+    - Same angle
+    - Same lens feel
+- The result should feel like **multiple shots taken seconds apart** in the same session.
+
+### 6. Output language
+
+- Write the entire output in **English**.
+- The output must be ready to be used directly as a **prompt for an image generation model**.
+
+### 7. Output format
+
+- Do NOT explain what changed.
+- Do NOT compare with the original image.
+- Do NOT include analysis.
+- Apply all constraints internally.
+- Return ONLY your standard output prompt describing the same scene with a different pose.
+
+---
+
+### Final instruction
+
+Generate a new image description that looks like:
+**“The same photo, same scene, same person — only the pose is different.”**
+
+Return ONLY the final prompt content in English.">
+            <div class="prompt-top"><div class="prompt-icon">P</div><h3>PROMPT TROCA DE POSE</h3></div>
+            <button class="prompt-copy" type="button">▣ &nbsp; VER PROMPT</button>
+          </article>
+
+          <article class="prompt-card" data-name="PROMPT PARA FAZER COLAGE" data-prompt="Create multiple ultra-realistic facial images intended for a **high-fidelity facial collage**, capturing the **EXACT SAME PERSON** with extreme precision.
+
+### NON-NEGOTIABLE FACIAL IDENTITY LOCK
+
+The face must remain **100% identical** across all images. Preserve **every micro-detail**, including but not limited to:
+
+### Eyesa
+
+- Identical eye shape, size, spacing, and symmetry
+- Identical eyelid structure (upper/lower lids, folds, creases)
+- Identical iris size, iris color, limbal ring visibility, sclera tone
+- Identical gaze presence and eye depth (no change in eye projection)
+
+### Nose
+
+- Identical bridge width and height
+- Identical nose length and projection
+- Identical nostril size, shape, flare, and spacing
+- Identical tip definition and angle
+
+### Mouth & Lips
+
+- Identical lip volume (upper and lower separately)
+- Identical lip shape, curvature, cupid's bow, and corners
+- Identical mouth width and proportion relative to the face
+- Identical natural lip texture and color (no beautification)
+
+### Cheeks & Cheekbones
+
+- Identical cheekbone placement and prominence
+- Identical cheek volume and natural facial fat distribution
+- Identical nasolabial folds and transitions
+
+### Jaw, Chin & Face Shape
+
+- Identical jawline width, angle, and sharpness
+- Identical chin shape, height, projection, and cleft (if any)
+- Identical overall facial proportions and symmetry
+
+### Skin & Micro-Details
+
+- Identical skin tone and undertone
+- Identical texture with visible pores and micro-imperfections
+- Preserve freckles, moles, subtle marks, and natural unevenness
+- No smoothing, no plastic skin, no AI beauty filters
+
+### Hair (Face-Adjacent Only)
+
+- Identical hairline shape and position
+- Identical eyebrow shape, thickness, spacing, and density
+- Identical facial hair presence (if any)
+
+---
+
+### COLLAGE OBJECTIVE
+
+Generate multiple facial images that can be placed side-by-side as a **facial collage**.
+
+Each image should feel like a different shot from the **same photoshoot**, but the **face itself must be indistinguishable across all images**.
+
+Allowed variations ONLY:
+
+- Very small camera angle changes (frontal, subtle 3/4)
+- Slight camera distance changes (close-up, tight close-up)
+- Lighting changes that do NOT alter skin tone or facial perception
+- Minimal, non-distracting background changes
+
+---
+
+### CAMERA & FRAMING RULES
+
+- Face must dominate the frame
+- No body-focused shots
+- Neutral or very subtle expressions only
+- Natural head positioning, no exaggerated poses
+
+---
+
+### REALISM REQUIREMENTS
+
+- Ultra-realistic photography only
+- Natural human skin texture
+- Sharp focus, high resolution
+- No illustration, no stylization, no artistic rendering
+
+---
+
+### STRICTLY AVOID
+
+- Any facial drift or reinterpretation
+- Changing proportions, volume, or symmetry
+- Beauty filters or makeup that alters facial structure
+- Cartoon, fantasy, painterly, or AI-art styles
+
+---
+
+### OUTPUT RULES
+
+- Output only the final image descriptions/prompts
+- Do NOT explain or compare
+- Language: English only
+
+The final output must function as a **precision facial identity collage**, where every image clearly represents the **same face down to the smallest detail**.">
+            <div class="prompt-top"><div class="prompt-icon">P</div><h3>PROMPT PARA FAZER COLAGE</h3></div>
+            <button class="prompt-copy" type="button">▣ &nbsp; VER PROMPT</button>
+          </article>
+
+          <article class="prompt-card" data-name="PROMPT PARA GERAR NOVAS CENAS" data-prompt="Vou te enviar uma imagem e quero que você use essa referência para criar uma nova cena com a MESMA modelo, mantendo o rosto e a identidade visual, mas mudando o contexto e o enquadramento.
+
+Use seu fluxo normal de análise, mas ajuste internamente o foco assim:
+
+1. Identidade da modelo travada
+- Considere rosto, traços, proporções, textura de pele, cor e textura de cabelo e estilo geral da pessoa como elementos fixos.
+- A nova descrição deve deixar claro que é a mesma modelo, reconhecível, sem rejuvenescê-la demais, envelhecê-la, mudar traços ou alterar o “jeito” do rosto.
+1. Enquadramento mais próximo
+- Reinterprete a cena como se a câmera tivesse se aproximado: um enquadramento mais fechado no rosto ou busto (ex.: close-up ou close médio), mantendo a mesma identidade e coerência de proporções.
+- Ajuste a posição do corpo e da cabeça de forma natural para esse novo enquadramento, sem poses artificiais.
+1. Novo cenário coerente
+- Construa um novo ambiente visual para essa mesma modelo, com base na imagem de referência
+- O cenário deve conversar com o estilo da modelo e com a atmosfera original, a menos que você especifique o contrário.
+1. Iluminação ajustada ao novo contexto
+- Adapte a luz da cena para combinar com o novo cenário, mantendo a mesma “versão” daquele rosto (sem mudar tom de pele drasticamente).
+- Preserve a sensação de que é a mesma pessoa em outro momento, não um render completamente novo e aleatório.
+1. Continuidade de estilo
+- Você pode manter a mesma roupa ou adaptar para algo compatível com o novo contexto, mas sem mudar a essência do estilo da modelo (ex.: se ela é mais minimalista, não transforme em algo extravagante sem necessidade).
+- Se nada for especificado, considere manter a roupa o mais próximo possível, apenas reencaixando no novo enquadramento.
+1. Idioma da saída
+- Toda a descrição que você gerar dentro do seu formato de saída padrão deve estar em inglês, pronta para ser usada como prompt em um modelo de imagem.
+1. Formato de resposta
+- Não explique o que mudou, não compare com a cena anterior.
+- Aplique esse foco (mesma modelo, rosto mais próximo, novo contexto) no seu processamento interno e devolva apenas o seu objeto de saída padrão, em inglês, descrevendo essa nova cena com a mesma pessoa.
+
+Vou te enviar uma imagem e quero que você use essa referência para criar uma nova cena com a MESMA modelo, mantendo o rosto e a identidade visual, mas mudando o contexto e o enquadramento.
+
+Use seu fluxo normal de análise, mas ajuste internamente o foco assim:
+
+1. Identidade da modelo travada
+- Considere rosto, traços, proporções, textura de pele, cor e textura de cabelo e estilo geral da pessoa como elementos fixos.
+- A nova descrição deve deixar claro que é a mesma modelo, reconhecível, sem rejuvenescê-la demais, envelhecê-la, mudar traços ou alterar o “jeito” do rosto.
+1. Enquadramento mais próximo
+- Reinterprete a cena como se a câmera tivesse se aproximado: um enquadramento mais fechado no rosto ou busto (ex.: close-up ou close médio), mantendo a mesma identidade e coerência de proporções.
+- Ajuste a posição do corpo e da cabeça de forma natural para esse novo enquadramento, sem poses artificiais.
+1. Novo cenário coerente
+- Construa um novo ambiente visual para essa mesma modelo, com base nesta intenção: [quarto minimalista com luz de janela].
+- O cenário deve conversar com o estilo da modelo e com a atmosfera original, a menos que você especifique o contrário.
+1. Iluminação ajustada ao novo contexto
+- Adapte a luz da cena para combinar com o novo cenário, mantendo a mesma “versão” daquele rosto (sem mudar tom de pele drasticamente).
+- Preserve a sensação de que é a mesma pessoa em outro momento, não um render completamente novo e aleatório.
+1. Continuidade de estilo
+- Você pode manter a mesma roupa ou adaptar para algo compatível com o novo contexto, mas sem mudar a essência do estilo da modelo (ex.: se ela é mais minimalista, não transforme em algo extravagante sem necessidade).
+- Se nada for especificado, considere manter a roupa o mais próximo possível, apenas reencaixando no novo enquadramento.
+1. Idioma da saída
+- Toda a descrição que você gerar dentro do seu formato de saída padrão deve estar em inglês, pronta para ser usada como prompt em um modelo de imagem.
+1. Formato de resposta
+- Não explique o que mudou, não compare com a cena anterior.
+- Aplique esse foco (mesma modelo, rosto mais próximo, novo contexto) no seu processamento interno e devolva apenas o seu objeto de saída padrão, em inglês, descrevendo essa nova cena com a mesma pessoa.">
+            <div class="prompt-top"><div class="prompt-icon">P</div><h3>PROMPT PARA GERAR NOVAS CENAS</h3></div>
+            <button class="prompt-copy" type="button">▣ &nbsp; VER PROMPT</button>
+          </article>
+
+          <article class="prompt-card" data-name="EXTRAÇÃO DE ROUPA™" data-prompt='You are a meticulous clothing design extraction engine.
+
+Your task is to analyze **any image I provide** and generate a **structured JSON description of the CLOTHING ONLY**, completely ignoring the person wearing it.
+
+---
+
+## Core rules (non-negotiable)
+
+### 1. Clothing-only focus
+
+- Describe ONLY the garments and accessories worn.
+- Ignore entirely:
+    - Face
+    - Body
+    - Gender
+    - Age
+    - Ethnicity
+    - Body proportions
+    - Pose
+    - Expression
+- Treat the person as a **neutral mannequin or hanger**, with no anatomical relevance.
+
+### 2. Design-first, model-agnostic approach
+
+- Do NOT infer or describe:
+    - Fit based on body shape
+    - Tightness relative to curves
+    - Length based on body height
+- Focus strictly on:
+    - Garment type
+    - Cut and structure
+    - Fabric and texture
+    - Color and patterns
+    - Seams, stitching, layering
+    - Decorative or functional details
+
+### 3. Visual fidelity
+
+- Be faithful to what is visible in the image.
+- Do NOT invent elements that cannot be seen.
+- If a detail is unclear or partially occluded, describe it conservatively and reflect uncertainty.
+
+### 4. Accessories
+
+- Include accessories ONLY if they are clearly part of the outfit:
+    - Jewelry
+    - Belts
+    - Scarves
+    - Hats
+- Ignore items not worn (background objects, props).
+
+### 5. No branding inference
+
+- Do NOT invent brand names or readable text.
+- If text or logos appear:
+    - Describe them generically (e.g., “small printed text”, “simple logo mark”)
+    - Do not attempt to identify the brand.
+
+### 6. Output format
+
+- Return ONLY valid JSON.
+- Do NOT include explanations, markdown, or commentary.
+- Follow EXACTLY the schema below.
+- Do NOT add, remove, rename, or reorder keys.
+
+---
+
+## JSON Schema (must follow exactly)
+
+{
+"outfit_id": "string",
+"overall_style": ["string"],
+"garments": [
+{
+"garment_type": "string",
+"layer": "base|mid|outer",
+"design_description": "string",
+"fabric": {
+"material": "string",
+"texture": "string",
+"opacity": "opaque|semi-sheer|sheer"
+},
+"color": {
+"primary": { "hex": "string", "name": "string" },
+"secondary": [{ "hex": "string", "name": "string" }]
+},
+"pattern": "solid|striped|printed|textured|other",
+"cut_and_structure": [
+"string"
+],
+"closures": ["string"],
+"decorative_elements": ["string"],
+"condition": "new|light wear|moderate wear"
+}
+],
+"accessories": [
+{
+"type": "string",
+"material": "string",
+"color": { "hex": "string", "name": "string" },
+"notes": "string"
+}
+],
+"confidence": {
+"overall": number,
+"fabric": number,
+"color": number,
+"details": number
+}
+}
+
+---
+
+### Final instruction
+
+Generate a precise, designer-oriented clothing JSON that could be used to **recreate the outfit independently of the model**.
+
+Return ONLY the JSON.'>
+            <div class="prompt-top"><div class="prompt-icon">E</div><h3>EXTRAÇÃO DE ROUPA™</h3></div>
+            <button class="prompt-copy" type="button">▣ &nbsp; VER PROMPT</button>
+          </article>
+
+          <article class="prompt-card" data-name="POSES COM O PRODUTO" data-prompt='{
+"task": "universal_product_preservation_and_repose",
+"input": {
+"reference_image": true,
+"note": "The reference image already contains the target product. Your job is to keep that product identical and only change the pose/composition."
+},
+"core_rules": {
+"priority": "product_fidelity_over_everything",
+"do_not": [
+"redesign",
+"stylize",
+"beautify",
+"optimize fit",
+"change proportions",
+"change materials",
+"change color tone",
+"invent missing details"
+],
+"object_rule": "Treat the product as an immutable object. The subject adapts to the product, never the opposite."
+},
+"step_1_auto_classification": {
+"task": "Identify what the product is in the image.",
+"output_fields": [
+"product_category",
+"product_subtype",
+"worn_or_held",
+"key_visibility_zones"
+],
+"examples": [
+"dress, glasses, jacket, bag, shoes, watch, jewelry, headphones"
+]
+},
+"step_2_product_lock": {
+"task": "Extract a strict product lock description from the image to preserve identity.",
+"lock_fields": [
+"silhouette_or_shape",
+"dimensions_and_proportions",
+"materials_and_texture",
+"color_and_finish",
+"construction_details",
+"logos_patterns_unique_marks",
+"how_it_sits_on_body_or_hand"
+],
+"constraint": "If any detail is uncertain, mark it as uncertain. Do not guess."
+},
+"step_3_generate_repose_prompt": {
+"task": "Create a final image-generation prompt that keeps the product locked and changes only pose.",
+"pose_policy": {
+"goal": "professional model pose, fashion lookbook style",
+"safe_pose_defaults": [
+"standing",
+"weight shift to one leg",
+"subtle hip elevation",
+"relaxed shoulders",
+"arms relaxed or lightly bent"
+],
+"limits": {
+"max_torso_rotation_degrees": 10,
+"allowed_deformation": "only natural gravity-driven behavior",
+"avoid": [
+"sitting",
+"walking",
+"jumping",
+"arms above shoulders",
+"extreme twists"
+]
+}
+},
+"camera_policy": {
+"framing": "full body or three-quarter depending on product",
+"lens": "no distortion, realistic perspective",
+"focus": "product clarity and structure"
+},
+"output_requirements": {
+"deliverable": "Return ONLY the final prompt text to generate the new image.",
+"format": "FULL JSON prompt block, no commentary."
+}
+}
+}'>
+            <div class="prompt-top"><div class="prompt-icon">P</div><h3>POSES COM O PRODUTO</h3></div>
+            <button class="prompt-copy" type="button">▣ &nbsp; VER PROMPT</button>
+          </article>
+
+          <article class="prompt-card" data-name="AUMENTAR PEITOS" data-prompt='{
+"task": "adjust_body_proportions",
+
+"scope": {
+"affected_area": "upper_torso_chest",
+"exclusive": true
+},
+
+"objective": {
+"description": "Increase the chest volume of the model to approximately twice the previous adjustment, maintaining realistic anatomy, natural gravity, and non-sexual character proportions.",
+"intent": "character_body_scaling"
+},
+
+"body_adjustment_rules": {
+"increase_chest_volume": true,
+"increase_amount_visual": "high",
+"relative_scale_multiplier": 2.0,
+"distribution": {
+"upper_chest": "dominant",
+"mid_chest": "supportive",
+"lower_chest": "subtle",
+"ribcage_width": "unchanged",
+"shoulder_balance": "preserved"
+},
+"maintain_natural_gravity": true,
+"maintain_realistic_anatomy": true,
+"avoid_implant_like_shapes": true
+},
+
+"constraints": {
+"do_not_change_face": true,
+"do_not_change_facial_identity": true,
+"do_not_change_expression": true,
+"do_not_change_pose": true,
+"do_not_change_camera": true,
+"do_not_change_clothing_design": true,
+"do_not_exaggerate_beyond_realism": true,
+"no_sexualization": true
+},
+
+"rendering_notes": {
+"clothing_interaction": "fabric stretches and contours naturally over increased chest volume without distortion",
+"lighting_consistency": "preserve original lighting, shadow direction, and highlights",
+"skin_texture": "unchanged",
+"overall_result": "same model, same outfit, same image, with significantly fuller chest proportion and stable visual quality"
+}
+}
+
+---
+
+2.0
+
+{
+"task": "adjust_body_proportions",
+
+"scope": {
+"affected_area": "upper_torso_chest",
+"exclusive": true
+},
+
+"objective": {
+"description": "Define a fuller upper torso and bust structure as the primary visual identity. Facial accuracy is secondary at this stage.",
+"intent": "body_identity_definition"
+},
+
+"body_adjustment_rules": {
+"increase_chest_volume": true,
+"increase_amount_visual": "high",
+"maintain_natural_gravity": true,
+"avoid_generic_slim_body": true,
+"avoid_flat_chest": true
+},
+
+"constraints": {
+"face_is_not_priority": true,
+"pose_preserved": true,
+"camera_preserved": true
+}
+}'>
+            <div class="prompt-top"><div class="prompt-icon">A</div><h3>AUMENTAR PEITOS</h3></div>
+            <button class="prompt-copy" type="button">▣ &nbsp; VER PROMPT</button>
+          </article>
+
+          <article class="prompt-card" data-name="ZOOM (RESTAURA IMG 4K)" data-prompt='{ "task": "camera_angle_and_distance_adjustment_only", "analysis": { "original_camera_angle": "eye-level, straight-on toward the seated subject on the bench", "original_camera_distance": "medium distance, framing from approximately upper thighs to head", "original_framing_description": "medium seated portrait with torso, arms, and part of the legs visible, subject centered against a natural background" }, "requested_adjustment": { "new_camera_angle": "maintain the same eye-level, straight-on angle with no tilt or lateral shift", "new_camera_distance": "significantly closer to the subject", "zoom_change_description": "camera moved forward to create a tight upper-body framing, capturing only from the upper chest to the top of the head, with the face becoming the dominant element in the frame while preserving natural proportions" }, "locks": { "identity_locked": true, "pose_locked": true, "expression_locked": true, "clothing_locked": true, "environment_locked": true, "lighting_locked": true, "style_locked": true }, "constraints": { "must_keep": [ "all visual elements identical except camera angle and distance", "no proportional distortion", "natural photographic perspective" ], "must_avoid": [ "cropping instead of true camera movement", "changing subject size unnaturally", "introducing new visual elements" ] } }'>
+            <div class="prompt-top"><div class="prompt-icon">Z</div><h3>ZOOM (RESTAURA IMG 4K)</h3></div>
+            <button class="prompt-copy" type="button">▣ &nbsp; VER PROMPT</button>
+          </article>
+
+          <article class="prompt-card" data-name="LEITURA DE CENÁRIO" data-prompt="You are a meticulous scene analyst. Your task is to analyze **any image I provide** and generate a **structured JSON description of the SCENARIO ONLY**, using the image strictly as **visual inspiration**, not as a source to be copied literally. ### Core rules (non-negotiable) 1. **Environment only** * Describe ONLY the environment: room, location, walls, floor, ceiling, objects, furniture, lighting, palette, layout, wear. * Completely ignore people. If a person appears, treat them only as a “foreground subject” and exclude all human details unless they block light or cast shadows. 2. **Brazilian low-income aesthetic (mandatory)** * Always reinterpret the scene as belonging to a **Brazilian low-income / poor / periferia / classe baixa household**. * Even if the reference image shows luxury, premium, or high-end elements, you MUST downgrade them to: * Affordable, used, generic, or improvised versions * Older or entry-level electronics * Simple furniture (MDF, plastic, metal, reused items) * Visible wear, imperfections, stains, mismatched items * Walls should commonly show: * Uneven paint * Marks, cracks, discoloration, humidity stains * Simple or outdated colors * Floors should favor: * Ceramic tiles, worn laminate, bare concrete * Lighting should feel: * Domestic, improvised, low-budget * Single bulb, basic lamps, monitor glow, cheap RGB if present 3. **Automatic downgrade logic** * If the image shows a “gamer setup”: * Replace premium PCs with modest computers or older monitors * RGB is allowed but must feel cheap or basic * Chairs should be simple or worn (not professional gaming chairs) * If the image shows luxury decor: * Convert to basic decor, improvised organization, minimal decoration * If the image shows expensive materials: * Replace with low-cost Brazilian equivalents 4. **Creative reinterpretation** * Do NOT be 100% faithful to the image. * Keep spatial logic and object placement coherent, but adapt everything to realism within a Brazilian poor household. * The goal is plausibility, not replication. 5. **Output format** * Return ONLY valid JSON. * Follow EXACTLY the predefined JSON schema provided by the user. * Do not add, remove, rename, or reorder schema keys. * Use realistic measurements. * Use valid hex colors. * If text appears in the image, describe it generically (e.g., “unreadable text”). 6. **Objects** * Include at least 10 objects if the environment reasonably contains them. * Objects must match the low-income context (no luxury brands, no premium gear). 7. **Uncertainty handling** * When information is unclear, make a reasonable assumption. * Reflect uncertainty using lower confidence values in the confidence fields. ### Final instruction Generate a complete JSON scene specification that represents: **“This place could realistically exist in the home of a low-income Brazilian household.”** Return ONLY the JSON. No explanations. No markdown. No extra text.">
+            <div class="prompt-top"><div class="prompt-icon">L</div><h3>LEITURA DE CENÁRIO</h3></div>
+            <button class="prompt-copy" type="button">▣ &nbsp; VER PROMPT</button>
+          </article>
+
+          <article class="prompt-card" data-name="PROMPT CREAT SCENE" data-prompt="You are an advanced visual scene re-composition engine. Your task is to generate a **new image prompt** describing a scene with the **SAME MODEL as the reference image**, while **changing the context and framing**, following the constraints below. You must internally analyze the provided reference image, but your output must follow the rules strictly. --- ## Core objectives (non-negotiable) ### 1. Locked model identity * The person in the reference image is a **fixed identity**. * Face structure, proportions, skin texture, skin tone, hair color and texture, facial expression style, and overall visual identity must remain consistent. * The description must clearly imply that it is the **same recognizable person**, without: * Rejuvenating or aging * Altering facial features * Changing the “feel” or personality of the face ### 2. Closer framing * Reinterpret the scene as if the camera moved closer. * Use a **close-up or medium close-up** framing (face or bust). * Head and body position must feel natural for a closer shot. * No exaggerated or artificial poses. ### 3. Scenario driven by external JSON (mandatory) * The new environment MUST be inspired **exclusively** by the JSON provided below. * Do NOT infer or invent a room type (e.g., bedroom, kitchen, studio) on your own. * Translate the JSON into a coherent visual environment that fits naturally around the model. * Respect the spatial logic, materials, lighting, and mood defined in the JSON. #### SCENARIO REFERENCE JSON (PASTE HERE): [ INSERT SCENE JSON HERE ] ### 4. Lighting continuity * Adapt the lighting to match the referenced scenario JSON. * Preserve the same “version” of the face: * No drastic skin tone shifts * No incompatible lighting styles * The result must feel like the same person in a different moment or place, not a new render. ### 5. Style continuity * Clothing may be kept or slightly adapted if necessary to fit the new context. * Do NOT change the core style of the model. * If nothing is specified, keep clothing as close as possible to the original. ### 6. Output language * The entire output must be written in **English**. * The output must be ready to be used directly as a **prompt for an image generation model**. ### 7. Output format * Do NOT explain changes. * Do NOT compare with the previous image. * Do NOT include analysis. * Apply all constraints internally and return **only your standard output object**, fully describing the new scene with the same model. --- ### Final instruction Generate a coherent, realistic image description where: * The model identity is preserved * The framing is closer * The environment is fully derived from the provided scenario JSON Return ONLY the final prompt content in English.">
+            <div class="prompt-top"><div class="prompt-icon">P</div><h3>PROMPT CREAT SCENE</h3></div>
+            <button class="prompt-copy" type="button">▣ &nbsp; VER PROMPT</button>
+          </article>
+        </div>
+      </section>
+
+      <section class="member-page hidden" data-content="extras">
+        <div class="eyebrow">Materiais adicionais</div>
+        <h1>EXTRAS</h1>
+        <p class="hero-text">Materiais complementares para facilitar sua produção e organização.</p>
+
+        <div class="cards">
+          <article class="card">
+            <span class="tag">EXTRA</span>
+            <h3>ESTEIRA DE AQUECIMENTO DE CONTA</h3>
+            <p>Material exclusivo para preparação e aquecimento da conta.</p>
+            <button class="copy nav-card" data-page="esteira">Acessar →</button>
+          </article>
+          <article class="card">
+            <span class="tag">EXTRA</span>
+            <h3>GUIA PRÁTICO IA</h3>
+            <p>Guia prático para entender e melhorar o desempenho no orgânico.</p>
+            <button class="copy nav-card" data-page="gpd">Ler guia →</button>
+          </article>
+          <article class="card">
+            <span class="tag">EXTRA</span>
+            <h3>SITE PARA CONTEÚDO E GARIMPO DE MODELOS REAIS</h3>
+            <p>Plataforma para conteúdo e garimpo de modelos reais.</p>
+            <a class="copy" href="https://leakshaven.com/" target="_blank" rel="noopener noreferrer">Acessar →</a>
+          </article>
+          <article class="card">
+            <span class="tag">EXTRA</span>
+            <h3>EXTRAÇÃO DE PROMPT — GEMINI</h3>
+            <p>Use o Gemini para analisar imagens e extrair prompts detalhados.</p>
+            <a class="copy" href="https://gemini.google.com/gem/1a15FXgynk-IGZZQkuaSoLrj26idfHb5y?usp=sharing" target="_blank" rel="noopener noreferrer">Acessar →</a>
+          </article>
+          <article class="card">
+            <span class="tag">EXTRA</span>
+            <h3>MODELOS REAIS</h3>
+            <p>Acesse o Divine Nudes para encontrar referências de modelos reais.</p>
+            <a class="copy" href="https://divinenudes.com/" target="_blank" rel="noopener noreferrer">Acessar →</a>
+          </article>
+          <article class="card">
+            <span class="tag">EXTRA</span>
+            <h3>BYPASS DIVINE NUDES</h3>
+            <p>Ferramenta indicada para acessar o conteúdo do Divine Nudes.</p>
+            <a class="copy" href="https://bypass.city/" target="_blank" rel="noopener noreferrer">Acessar →</a>
+          </article>
+          <article class="card">
+            <span class="tag">+18</span>
+            <h3>FOTOS +18 PARA FACESWAP</h3>
+            <p>Referências de fotos +18 para utilizar em seus projetos de faceswap.</p>
+            <a class="copy" href="https://www.pornpics.com/" target="_blank" rel="noopener noreferrer">Acessar →</a>
+          </article>
+        </div>
+      </section>
+
+      <section class="member-page hidden" data-content="extensoes">
+        <div class="eyebrow">Complementos</div>
+        <h1>EXTENSÕES</h1>
+        <p class="hero-text">Extensões e complementos para potencializar seu fluxo de trabalho.</p>
+
+        <div class="cards">
+          <article class="card">
+            <span class="tag">EXTENSÃO</span>
+            <h3>TELEGRAM VIDEO DOWNLOADER</h3>
+            <p>Baixe vídeos do Telegram gratuitamente.</p>
+            <a class="copy" href="https://chromewebstore.google.com/detail/telegram-video-downloader/fpapnfccelgjjlebjpcoleffhmgjendl" target="_blank" rel="noopener noreferrer">Abrir →</a>
+          </article>
+          <article class="card">
+            <span class="tag">EXTENSÃO</span>
+            <h3>OVSZON</h3>
+            <p>Baixe frames e vídeos do TikTok, além de informações sobre o vídeo.</p>
+            <a class="copy" href="https://www.ovszon.com/" target="_blank" rel="noopener noreferrer">Abrir →</a>
+          </article>
+          <article class="card">
+            <span class="tag">EXTENSÃO</span>
+            <h3>STORY SAVER</h3>
+            <p>Baixe vídeos e stories do Instagram.</p>
+            <a class="copy" href="https://chromewebstore.google.com/detail/story-saver/mafcolokinicfdmlidhaebadidhdehpk" target="_blank" rel="noopener noreferrer">Abrir →</a>
+          </article>
+        </div>
+      </section>
+
+      <section class="member-page hidden" data-content="metadados">
+        <div class="eyebrow">Central de ferramentas</div>
+        <h1>FERRAMENTAS</h1>
+        <p class="hero-text">Todas as ferramentas da CAPIVARA CLUB HOT estão liberadas para você. Sem bloqueios, sem plano premium e sem necessidade de faturamento.</p>
+
+        <div class="tools-grid">
+
+          <article class="tool-card">
+            <div class="tool-top">
+              <div class="tool-icon green"><svg viewBox="0 0 24 24"><path d="M12 3l7 3v5c0 4.5-3 8.3-7 10-4-1.7-7-5.5-7-10V6l7-3z"/><path d="M9 12l2 2 4-4"/></svg></div>
+              <div class="tool-copy"><h3>Limpar Metadados</h3><p>Remove dados sensíveis de mídias</p></div>
+              <span class="tool-badge">Proteção</span>
+            </div>
+            <div class="tool-footer"><span>Imagens, Vídeos e Áudios</span><span class="sep"></span><span>5 arquivos</span><span class="tool-available">Disponível</span><button class="tool-open" type="button" title="Abrir ferramenta">›</button></div>
+          </article>
+
+          <article class="tool-card">
+            <div class="tool-top">
+              <div class="tool-icon blue"><svg viewBox="0 0 24 24"><path d="M7 7h10v10"/><path d="M17 7l-5 5"/><path d="M17 17H7V7"/><path d="M7 17l5-5"/></svg></div>
+              <div class="tool-copy"><h3>Conversor Stories/Feed</h3><p>Converta entre 9:16 e 3:4</p></div>
+              <span class="tool-badge">Conversão</span>
+            </div>
+            <div class="tool-footer"><span>Apenas Vídeos</span><span class="sep"></span><span>5 arquivos</span><span class="tool-available">Disponível</span><button class="tool-open" type="button" title="Abrir ferramenta">›</button></div>
+          </article>
+
+          <article class="tool-card">
+            <div class="tool-top">
+              <div class="tool-icon purple"><svg viewBox="0 0 24 24"><path d="M14 3l7 7-11 11H3v-7L14 3z"/><path d="M13 6l5 5"/><path d="M6 14l2 2"/><path d="M17 3v4"/><path d="M19 5h-4"/></svg></div>
+              <div class="tool-copy"><h3>Cloaker de Criativo</h3><p>Hash 100% único + técnicas avançadas</p></div>
+              <span class="tool-badge" style="color:#a977ff;background:#160d27">Cloaking</span>
+            </div>
+            <div class="tool-footer"><span>Apenas Vídeos</span><span class="sep"></span><span>5 arquivos</span><span class="tool-available">Disponível</span><button class="tool-open" type="button" title="Abrir ferramenta">›</button></div>
+          </article>
+
+          <article class="tool-card">
+            <div class="tool-top">
+              <div class="tool-icon magenta"><svg viewBox="0 0 24 24"><path d="M12 3l8 4v10l-8 4-8-4V7l8-4z"/><path d="M4 7l8 4 8-4"/><path d="M12 11v10"/><path d="M8 5l8 4"/></svg></div>
+              <div class="tool-copy"><h3>Processamento Completo</h3><p>Limpa, redimensiona e cloaqueia de uma vez</p></div>
+              <span class="tool-badge" style="color:#ff53e8;background:#17091b">All-in-One</span>
+            </div>
+            <div class="tool-footer"><span>Apenas Vídeos</span><span class="sep"></span><span>5 arquivos</span><span class="tool-available">Disponível</span><button class="tool-open" type="button" title="Abrir ferramenta">›</button></div>
+          </article>
+
+          <article class="tool-card">
+            <div class="tool-top">
+              <div class="tool-icon neutral"><svg viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 7h6"/><path d="M9 11l2-2 2 2 2-2"/><path d="M9 17h6"/></svg></div>
+              <div class="tool-copy"><h3>Cloaker de Vídeos</h3><p>Hash único + proteção avançada</p></div>
+              <span class="tool-badge" style="color:#c6c6c6;background:#111">Proteção</span>
+            </div>
+            <div class="tool-footer"><span>Apenas Vídeos</span><span class="sep"></span><span>5 arquivos</span><span class="tool-available">Disponível</span><button class="tool-open" type="button" title="Abrir ferramenta">›</button></div>
+          </article>
+
+          <article class="tool-card">
+            <div class="tool-top">
+              <div class="tool-icon orange"><svg viewBox="0 0 24 24"><path d="M6 6l12 12"/><path d="M18 6L6 18"/><circle cx="7" cy="7" r="2"/><circle cx="17" cy="17" r="2"/></svg></div>
+              <div class="tool-copy"><h3>Cortador de Vídeo</h3><p>Corta vídeos no tempo desejado</p></div>
+              <span class="tool-badge" style="color:#ff9200;background:#241607">Edição</span>
+            </div>
+            <div class="tool-footer"><span>Apenas Vídeos</span><span class="sep"></span><span>5 arquivos</span><span class="tool-available">Disponível</span><button class="tool-open" type="button" title="Abrir ferramenta">›</button></div>
+          </article>
+
+          <article class="tool-card">
+            <div class="tool-top">
+              <div class="tool-icon blue"><svg viewBox="0 0 24 24"><path d="M7 4h10v16H7z"/><path d="M10 8h4"/><path d="M9 13h6"/><path d="M9 17h6"/><path d="M12 4v-1"/></svg></div>
+              <div class="tool-copy"><h3>Marca D'água</h3><p>Adiciona watermark em vídeos e imagens</p></div>
+              <span class="tool-badge">Proteção</span>
+            </div>
+            <div class="tool-footer"><span>Imagens e Vídeos</span><span class="sep"></span><span>5 arquivos</span><span class="tool-available">Disponível</span><button class="tool-open" type="button" title="Abrir ferramenta">›</button></div>
+          </article>
+
+          <article class="tool-card">
+            <div class="tool-top">
+              <div class="tool-icon red"><svg viewBox="0 0 24 24"><path d="M3 12s3.5-6 9-6 9 6 9 6-3.5 6-9 6-9-6-9-6z"/><path d="M4 4l16 16"/></svg></div>
+              <div class="tool-copy"><h3>Gerador de Preview</h3><p>Cria versão censurada para preview</p></div>
+              <span class="tool-badge" style="color:#ff426c;background:#250a13">Proteção</span>
+            </div>
+            <div class="tool-footer"><span>Apenas Vídeos</span><span class="sep"></span><span>5 arquivos</span><span class="tool-available">Disponível</span><button class="tool-open" type="button" title="Abrir ferramenta">›</button></div>
+          </article>
+
+        </div>
+      </section>
+
+      <section class="member-page hidden" data-content="esteira">
+        <div class="eyebrow">Material exclusivo</div>
+        <h1>PROCESSO DE AQUECIMENTO</h1>
+        <p class="hero-text">Capivara DuHot.</p>
+
+        <div class="notice">
+          <strong>Fundamentos (Leia com atenção)</strong>
+          <ol>
+            <li>TODOS os números citados para criação de conteúdo são entregues para cada conta que forma o processo de aquecimento <code>EXEMPLO: 1 reel (se houver 3 contas, logo, 3 reels ao todo deverão ser produzidos no dia)</code>;</li>
+            <li>Antes de colocar QUALQUER conteúdo no DRIVE, limpe os metadados nesse site: <a href="https://online-metadata.com/pt/remove-metadata" target="_blank" rel="noopener noreferrer">Remover Metadados &amp; Informações de Exif Online</a>;</li>
+            <li>Comprometimento e constância são <strong>TUDO</strong>, se souber que algum dia não vai poder produzir conteúdo, adiante e cubra esse mesmo dia, a falta de frequência diária quebra o processo de escala;</li>
+            <li>Sua única responsabilidade é a <strong>CRIAÇÃO DE CONTEÚDO</strong>, faça com qualidade;</li>
+          </ol>
+        </div>
+
+        <div class="notice">
+          <h2>Dia 01 - Criação das contas e organização geral</h2>
+          <h3>Entregas:</h3>
+          <ul><li>1 foto de perfil</li><li>1 carrossel de posts (3 imagens com variação de poses, mesmo ambiente = 1 carrossel)</li></ul>
+        </div>
+
+        <div class="notice">
+          <h2>DIA 02 - Início do pré aquecimento</h2>
+          <h3>Entregas:</h3>
+          <ul><li>1 carrossel de posts (3 imagens com variação de poses, mesmo ambiente = 1 carrossel)</li></ul>
+        </div>
+
+        <div class="notice">
+          <h2>DIA 03</h2>
+          <h3>Entregas:</h3>
+          <ul><li>1 carrossel de posts (3 imagens com variação de poses, mesmo ambiente = 1 carrossel)</li></ul>
+        </div>
+
+        <div class="notice">
+          <h2>DIA 04 - Construção da persona</h2>
+          <h3>Entregas:</h3>
+          <ul>
+            <li>1 carrossel de posts (3 imagens com variação de poses, mesmo ambiente = 1 carrossel)</li>
+            <li>2 stories para destaques</li>
+            <li>1 REEL</li>
+          </ul>
+          <p><em>Destaques geralmente são: 1. Telegram (fotos sensuais) 2. Pessoa (fotos da modelo) 3. Nicho (profissão) 4. Lifestyle (dia a dia ou comidas)</em></p>
+        </div>
+
+        <div class="notice">
+          <blockquote>No dia 4 a conta de links passará de pública para privada, portanto não postaremos mais nela, diminua uma conta de agora para frente.<br><br>Exemplo: 3 contas até dia 4 ---&gt; 2 contas do dia 5 para frente</blockquote>
+        </div>
+
+        <div class="notice">
+          <h2>DIA 05 - Fim do pré aquecimento - início do aquecimento</h2>
+          <h3>Entregas:</h3>
+          <ul>
+            <li>1 REEL</li>
+            <li>2 stories para destaques</li>
+          </ul>
+          <p><em>Destaques geralmente são: 1. Telegram (fotos sensuais) 2. Pessoa (fotos da modelo) 3. Nicho (profissão) 4. Lifestyle (dia a dia ou comidas)</em></p>
+        </div>
+
+        <div class="notice">
+          <h2>DIA 06</h2>
+          <h3>Entregas:</h3>
+          <ul>
+            <li>3 REEL</li>
+            <li>2 stories para destaques</li>
+          </ul>
+          <p><em>Destaques geralmente são: 1. Telegram (fotos sensuais) 2. Pessoa (fotos da modelo) 3. Nicho (profissão) 4. Lifestyle (dia a dia ou comidas)</em></p>
+        </div>
+
+        <div class="notice">
+          <h2>DIA 07</h2>
+          <h3>Entregas:</h3>
+          <ul>
+            <li>3 REEL</li>
+            <li>2 stories para destaques</li>
+          </ul>
+          <p><em>Destaques geralmente são: 1. Telegram (fotos sensuais) 2. Pessoa (fotos da modelo) 3. Nicho (profissão) 4. Lifestyle (dia a dia ou comidas)</em></p>
+        </div>
+
+        <div class="notice">
+          <h2>DIA 08+ - Fim do aquecimento - Início da escala</h2>
+          <h3>Entregas:</h3>
+          <ul>
+            <li>3 REEL</li>
+            <li>2 stories para destaques</li>
+          </ul>
+          <p><em>Destaques geralmente são: 1. Telegram (fotos sensuais) 2. Pessoa (fotos da modelo) 3. Nicho (profissão) 4. Lifestyle (dia a dia ou comidas)</em></p>
+        </div>
+
+        <div class="notice">
+          <strong>Aqui o processo de aquecimento acaba</strong>, utilizaremos o mesmo número de entregas do dia 8 para todos os próximos dias, ou seja, 3 reels e 2 stories por conta, todo dia.
+        </div>
+
+        <button class="copy nav-card" data-page="extras">← Voltar para Extras</button>
+      </section>
+
+      <section class="member-page hidden" data-content="gpd">
+        <div class="eyebrow">Guia orgânico</div>
+        <h1>GUIA / ORGÂNICO</h1>
+        <p class="hero-text">Seu perfil está ruim ou você está lendo a métrica errada? A principal coisa é saber todas as possíveis lacunas e saber a causa de cada um desses problemas. <strong>Isso só vale para orgânico.</strong></p>
+
+        <div class="notice">
+          <h2>01 / VIRALIZAÇÃO</h2>
+          <p><strong>“Meu perfil não viraliza.”</strong></p>
+          <h3>1-A / MÉTRICA DO PROBLEMA</h3>
+          <p>Você sabe metrificar quantas views indicam que um perfil é viral ou não?</p>
+          <ul>
+            <li><strong>500k – 1 mi views mensais:</strong> razoável</li>
+            <li><strong>1 – 3 mi:</strong> bom</li>
+            <li><strong>+5 mi:</strong> ótimo</li>
+            <li><strong>5 – 10 mi:</strong> excelente</li>
+          </ul>
+          <h3>1-B / CAUSAS</h3>
+          <p>Agora que você sabe metrificar, veja as causas de um perfil ter menos de 3 mi views mensais:</p>
+          <ol>
+            <li><strong>Conta ruim:</strong> teste a mesma modelo em 3 perfis diferentes.</li>
+            <li><strong>Vídeos com qualidade ruim:</strong> modelos de IA pouco realistas, vídeos estáticos e falta de cuidado impedem a viralização.</li>
+            <li><strong>Modelo sem diferencial:</strong> existem milhares de concorrentes iguais; é preciso se destacar pela criatividade.</li>
+          </ol>
+          <h3>1-C / SOLUÇÃO</h3>
+          <p>Teste a mesma modelo em 3 perfis. Melhore a qualidade dos vídeos e faça algo diferente. Não adianta fazer igual a milhares de concorrentes e esperar outro resultado.</p>
+          <p><em>As faixas deste guia são referências da experiência no orgânico.</em></p>
+        </div>
+
+        <div class="notice">
+          <h2>02 / VIEWS NOS STORIES</h2>
+          <p><strong>“Viralizo, mas ninguém vê meus stories.”</strong></p>
+          <h3>2-A / MÉTRICA DO PROBLEMA</h3>
+          <p>Você precisa saber o que é viralizar e qual quantidade de views nos stories é boa. Não adianta achar que 1 mi views mensais já resolve tudo.</p>
+          <ul>
+            <li><strong>&lt;1k:</strong> péssimo — coisa de R$ 50 de lucro por dia</li>
+            <li><strong>1 – 3k:</strong> razoável</li>
+            <li><strong>3 – 5k:</strong> bom — aqui começa a fazer R$ 300–500/dia</li>
+            <li><strong>+5k:</strong> ótimo</li>
+            <li><strong>10k+:</strong> excelente</li>
+          </ul>
+          <p><em>Valores observados na experiência; não são garantia de lucro.</em></p>
+          <h3>2-B / CAUSAS</h3>
+          <ol type="a">
+            <li>Vídeo em que a modelo de IA não parece realista.</li>
+            <li>Vídeos pouco chamativos.</li>
+            <li>Reels sem CTA chamando a pessoa para o perfil.</li>
+          </ol>
+          <h3>2-C / SOLUÇÃO</h3>
+          <p>Melhore a qualidade dos vídeos, faça conteúdos mais chamativos e coloque uma CTA chamando a pessoa para o perfil. Ela precisa ter um motivo para sair do reel e abrir seus stories.</p>
+        </div>
+
+        <div class="notice">
+          <h2>03 / CONVERSÃO</h2>
+          <p><strong>“Minha conversão é muito ruim.”</strong></p>
+          <h3>3-A / MÉTRICA DO PROBLEMA</h3>
+          <p>Primeiro de tudo: você precisa ter volume, somando views totais e views nos stories. Não adianta pensar em funil com menos de 1k nos stories. A análise do funil deve começar com, no mínimo, 100 starts.</p>
+          <p><strong>O que deve ser analisado: starts por venda.</strong></p>
+          <ul>
+            <li><strong>Acima de 50:</strong> horrível</li>
+            <li><strong>25 – 50:</strong> ruim</li>
+            <li><strong>15 – 20:</strong> bom</li>
+            <li><strong>Menos de 15:</strong> excelente</li>
+          </ul>
+          <p><strong>Exemplo:</strong> 100 pessoas entraram no seu bot e 5 compraram. Isso dá 1 venda a cada 20 starts. Não olhe só a porcentagem de conversão que aparece.</p>
+          <h3>3-B / CAUSAS</h3>
+          <ol>
+            <li><strong>VSL e copy ruins:</strong> na VSL e nos reels a modelo não pode parecer IA; esse é o principal.</li>
+            <li><strong>Storytelling fraco:</strong> o lead entra no funil mais por curiosidade do que por vontade de comprar. Caixinhas de perguntas e conteúdos que despertem interesse ajudam.</li>
+          </ol>
+          <h3>3-C / SOLUÇÃO</h3>
+          <p><strong>VSL:</strong> no máximo 10 segundos. Deve aparecer o rosto da modelo e uma prévia do grupo VIP. Use uma música envolvente, mais forte e que não seja lenta.</p>
+          <p><strong>Copy escrita:</strong> prometa tudo o que seu VIP realmente entrega. Seja específico sobre conteúdos, acesso e frequência.</p>
+        </div>
+
+        <button class="copy nav-card" data-page="extras">← Voltar para Extras</button>
+      </section>
+
+    </main>
+  </div>
+
+  <div class="mobile-drawer-backdrop" id="mobileDrawerBackdrop"></div>
+
+  <nav class="mobile-tabbar">
+    <button class="mobile-tab nav-btn" data-page="inicio"><span class="nav-icon">⌂</span><span class="nav-label">Início</span></button>
+    <button class="mobile-tab nav-btn" data-page="tutoriais"><span class="nav-icon">✦</span><span class="nav-label">Tutoriais</span></button>
+    <button class="mobile-tab nav-btn" data-page="workflows"><span class="nav-icon">▶</span><span class="nav-label">Workflows</span></button>
+    <button class="mobile-tab nav-btn" data-page="comunidade"><span class="nav-icon">◎</span><span class="nav-label">Comunidade</span></button>
+    <button class="mobile-tab nav-btn" data-page="indique-e-ganhe"><span class="nav-icon">◆</span><span class="nav-label">Indique</span></button>
+    <button class="mobile-tab" id="mobileMoreBtn" type="button"><span class="nav-icon">▦</span><span class="nav-label">Mais</span></button>
+  </nav>
+</section>
+
+
+<div class="crop-modal hidden" id="cropModal" aria-hidden="true">
+  <div class="crop-box">
+    <div class="crop-head"><h3>Ajustar foto</h3><button type="button" class="crop-close" id="cropClose" aria-label="Fechar">×</button></div>
+    <div class="crop-viewport" id="cropViewport">
+      <img id="cropImage" alt="Ajustar foto" draggable="false">
+    </div>
+    <div class="crop-zoom-row">
+      <span class="crop-zoom-icon">−</span>
+      <input type="range" id="cropZoom" min="1" max="3" step="0.01" value="1">
+      <span class="crop-zoom-icon">+</span>
+    </div>
+    <p class="crop-hint">Arraste a foto para posicionar e use o controle para dar zoom.</p>
+    <input type="file" id="cropSwapInput" accept="image/*" hidden>
+    <button type="button" class="crop-swap" id="cropSwap">Não gostou? Escolher outra foto</button>
+    <div class="crop-actions">
+      <button type="button" class="secondary-btn" id="cropCancel">Cancelar</button>
+      <button type="button" class="primary-btn" id="cropConfirm">Usar essa foto</button>
+    </div>
+  </div>
+</div>
+
+<div class="tool-modal hidden" id="toolModal" aria-hidden="true">
+  <div class="tool-panel">
+    <div class="tool-panel-head"><button class="tool-back" id="toolBack" type="button" aria-label="Voltar">←</button><div class="tool-icon blue" id="modalIcon">⚙</div><div><h2 id="toolTitle">Ferramenta</h2></div><button class="tool-close" id="toolClose" type="button">×</button></div>
+    <p class="tool-desc" id="toolDesc"></p>
+    <div id="toolBody"></div>
+  </div>
+</div>
+<script src="/member-scripts/area_membros_esteira_interna_ferramentas-1.js?v=20261003-copy-2"></script>
+
+<script src="/member-scripts/area_membros_esteira_interna_ferramentas-2.js?v=20261003-copy-2"></script>
+
+
+<script src="/member-scripts/area_membros_esteira_interna_ferramentas-3.js?v=20260928-2"></script>
+
+
+<div class="prompt-viewer hidden" id="promptViewer" aria-hidden="true">
+  <div class="prompt-box" role="dialog" aria-modal="true" aria-labelledby="promptViewerTitle">
+    <div class="prompt-box-head"><h3 id="promptViewerTitle">PROMPT</h3><button class="prompt-viewer-copy" id="promptViewerCopy" type="button" aria-label="Copiar prompt">▣ COPIAR</button><button class="prompt-close" id="promptViewerClose" type="button" aria-label="Fechar">×</button></div>
+    <div class="prompt-content-wrap"><div class="prompt-content empty" id="promptViewerContent">SEU PROMPT SERÁ ADICIONADO AQUI.</div><div class="prompt-copy-feedback" id="promptCopyFeedback">PROMPT COPIADO</div></div>
+  </div>
+</div>
+
+
+<script src="/member-scripts/area_membros_esteira_interna_ferramentas-4.js?v=20260928-2"></script>
+
+<script src="/member-scripts/area_membros_esteira_interna_ferramentas-5.js?v=20260928-2"></script>
+
+<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/v31edd6df95cf4e85bb4c19e7a9bdbcba1788362987495" integrity="sha512-iIg7k2xntmwu6/uSb5tpc/hySgZc4eoL31yB29W6tJFo2akwjPWcEqnCEdJvGexCL0KEQwVYv5BlowfhVz26hg==" data-cf-beacon='{"version":"2024.11.0","token":"cd986a87845f4d0a92abb4bd7f194724","r":1,"spa":2}' crossorigin="anonymous"></script>
+</body>
+</html>
+
+

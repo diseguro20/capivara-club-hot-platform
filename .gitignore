@@ -1,0 +1,19 @@
+# Large video files (exceeding GitHub 100MB push limit)
+# Note: Streamed directly via CDN in cloud deployments, preserved locally for offline use
+videos-tutoriais/*.mp4
+videos/*.mp4
+
+# Vercel & Node
+.vercel
+node_modules
+npm-debug.log*
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Temporary browser directories & cookies
+.edge_temp
+.edge_snap
+temp_cookies.sqlite

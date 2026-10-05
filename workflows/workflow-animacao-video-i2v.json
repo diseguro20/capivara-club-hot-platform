@@ -1,0 +1,21 @@
+{
+  "name": "Animação de Imagem para Vídeo (I2V)",
+  "description": "Transforma a imagem estática da modelo em vídeo com piscadas, respiração e sorrisos.",
+  "model": "AnimateDiff / SVD / CogVideo",
+  "nodes": {
+    "1": {
+      "class_type": "AnimateDiffLoaderGen1",
+      "inputs": {
+        "model_name": "animatediffMotion_v15V2.ckpt"
+      }
+    },
+    "2": {
+      "class_type": "KSampler",
+      "inputs": {
+        "steps": 20,
+        "frames": 24,
+        "fps": 12
+      }
+    }
+  }
+}

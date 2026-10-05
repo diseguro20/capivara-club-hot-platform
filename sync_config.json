@@ -1,0 +1,11 @@
+{
+  "live_url": "https://capivaraclubhot.com",
+  "email": "diseguro20@gmail.com",
+  "password": "diego2001",
+  "sync_interval_seconds": 900,
+  "auto_sync_enabled": true,
+  "check_new_videos": true,
+  "check_new_workflows": true,
+  "check_new_prompts": true,
+  "check_new_prompts_18": true
+}

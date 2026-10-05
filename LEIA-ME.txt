@@ -1,0 +1,15 @@
+Site Cloner Pro v3.6 - Extração Completa
+Origem: https://capivaraclubhot.com
+Total de Páginas: 4 (index.html, paginas/membros.html, paginas/painel.html, paginas/admin.html)
+Total de Assets/Imagens: 20 arquivos em ./imagens/ (.webp e originais) + CSS + JS + Workflows JSON
+
+Conteúdo Extraído & Estruturado:
+- index.html: Landing page 100% fiel e navegável offline no seu computador
+- paginas/membros.html: Tela de login e recuperação de senha da Área de Membros
+- paginas/painel.html: Painel interativo do membro (Prompts, Aulas/Vídeos, Workflows ComfyUI, Ferramentas e Saques)
+- paginas/admin.html: Painel administrativo do proprietário (Métricas e Vendas PIX)
+- imagens/: Todas as logos, banners, ícones e fotos de alta resolução originais e convertidas em .webp leve
+- workflows/: 5 arquivos JSON estruturados para importação no ComfyUI (Consistência Facial, Flux, Inpainting, etc.)
+- catalogo_produtos.json: Dados estruturados da oferta (R$ 87,90), catálogo de prompts, workflows e FAQ
+- sitemap.txt: Mapeamento de rotas
+- assets/: Todos os arquivos CSS e scripts JS originais

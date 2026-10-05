@@ -1,0 +1,16 @@
+{
+  "id": "/admin",
+  "name": "CAPIVARA CLUB HOT · Admin",
+  "short_name": "Capivara Admin",
+  "description": "Painel do proprietário com alertas de vendas e saques.",
+  "start_url": "/admin",
+  "scope": "/admin",
+  "display": "standalone",
+  "background_color": "#050304",
+  "theme_color": "#050304",
+  "lang": "pt-BR",
+  "icons": [
+    {"src": "/icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any"},
+    {"src": "/icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable"}
+  ]
+}

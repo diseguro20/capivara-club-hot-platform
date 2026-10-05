@@ -1,0 +1,19 @@
+{
+  "name": "Upscaling 4K Ultra-HD com Restauração de Rosto",
+  "description": "Aumenta a resolução para 4K adicionando micro-detalhes à pele e cabelo.",
+  "model": "4x-UltraSharp + CodeFormer",
+  "nodes": {
+    "1": {
+      "class_type": "UpscaleModelLoader",
+      "inputs": {
+        "model_name": "4x-UltraSharp.pth"
+      }
+    },
+    "2": {
+      "class_type": "FaceRestoreCFWithModel",
+      "inputs": {
+        "fidelity": 0.9
+      }
+    }
+  }
+}

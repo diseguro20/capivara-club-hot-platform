@@ -1,0 +1,13 @@
+{
+  "last_sync": "2026-10-05 05:26:34",
+  "is_syncing": false,
+  "last_result": "success",
+  "message": "Sincronização concluída. Nenhum novo conteúdo adicionado na plataforma original (clone 100% atualizado).",
+  "metrics": {
+    "tutorial_videos": 9,
+    "workflows": 16,
+    "prompts": 194,
+    "prompts_18": 562
+  },
+  "history": []
+}

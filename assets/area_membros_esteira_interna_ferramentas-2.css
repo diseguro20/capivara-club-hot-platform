@@ -1,0 +1,22 @@
+.prompt-modal .prompt-close,
+#promptModal .prompt-close{
+  cursor:pointer !important;
+  pointer-events:auto !important;
+  z-index:99999 !important;
+}
+.prompt-modal .prompt-copy,
+#promptModal .prompt-copy{
+  cursor:pointer !important;
+  pointer-events:auto !important;
+  border:1px solid rgba(152,29,56,.65);
+  background:#3a0b17;
+  color:#fff;
+  border-radius:8px;
+  padding:8px 12px;
+  font-size:11px;
+  font-weight:700;
+}
+.prompt-modal .prompt-copy:hover,
+#promptModal .prompt-copy:hover{
+  background:#551020;
+}

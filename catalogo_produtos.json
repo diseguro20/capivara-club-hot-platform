@@ -1,0 +1,200 @@
+{
+  "plataforma": {
+    "nome": "CAPIVARA CLUB HOT",
+    "url_origem": "https://capivaraclubhot.com",
+    "descricao": "Plataforma completa para criação de modelos de Inteligência Artificial com consistência facial, nicho HOT e UGC.",
+    "preco_atual": 87.9,
+    "moeda": "BRL",
+    "garantia_dias": 7,
+    "metodo_pagamento": "PIX Instantâneo com QR Code",
+    "suporte": "Acesso imediato após confirmação"
+  },
+  "estatisticas": {
+    "prompts_testados": 200,
+    "workflows": 10,
+    "garantia": "7 dias total"
+  },
+  "carrossel_fotos": [
+    {
+      "id": 1,
+      "arquivo": "imagens/foto-1.webp",
+      "original": "fotos-carrossel/foto-1.jpeg",
+      "titulo": "Modelo IA Consistente 1"
+    },
+    {
+      "id": 2,
+      "arquivo": "imagens/foto-2.webp",
+      "original": "fotos-carrossel/foto-2.jpeg",
+      "titulo": "Modelo IA Consistente 2"
+    },
+    {
+      "id": 3,
+      "arquivo": "imagens/foto-3.webp",
+      "original": "fotos-carrossel/foto-3.png",
+      "titulo": "Modelo IA Sensual 3"
+    },
+    {
+      "id": 4,
+      "arquivo": "imagens/foto-4.webp",
+      "original": "fotos-carrossel/foto-4.png",
+      "titulo": "Modelo IA UGC 4"
+    },
+    {
+      "id": 5,
+      "arquivo": "imagens/foto-5.webp",
+      "original": "fotos-carrossel/foto-5.jpeg",
+      "titulo": "Modelo IA Estúdio 5"
+    },
+    {
+      "id": 6,
+      "arquivo": "imagens/foto-6.webp",
+      "original": "fotos-carrossel/foto-6.png",
+      "titulo": "Modelo IA Praia 6"
+    }
+  ],
+  "o_que_esta_incluido": [
+    {
+      "numero": "01",
+      "categoria": "IMAGEM",
+      "titulo": "Imagens ultra-realistas",
+      "descricao": "Prompts preparados para criar fotos com aparência natural, diferentes poses, cenários, roupas e estilos."
+    },
+    {
+      "numero": "02",
+      "categoria": "VÍDEO",
+      "titulo": "Dê vida às imagens",
+      "descricao": "Estruturas de prompt para transformar ideias estáticas em cenas com movimento e aparência realista."
+    },
+    {
+      "numero": "03",
+      "categoria": "CONSISTÊNCIA",
+      "titulo": "Rosto consistente",
+      "descricao": "Crie uma personagem reconhecível em diferentes gerações, poses, ambientes e situações."
+    },
+    {
+      "numero": "04",
+      "categoria": "ESTILOS",
+      "titulo": "Vários estilos",
+      "descricao": "Explore diferentes propostas visuais sem precisar começar seus prompts do zero."
+    },
+    {
+      "numero": "05",
+      "categoria": "CENÁRIOS",
+      "titulo": "Qualquer cenário",
+      "descricao": "Praia, cidade, quarto, academia, viagens e muito mais, com prompts organizados para facilitar a criação."
+    },
+    {
+      "numero": "06",
+      "categoria": "ACESSO",
+      "titulo": "Pronto para usar",
+      "descricao": "Você recebe o material e pode começar a testar suas ideias imediatamente."
+    }
+  ],
+  "faq": [
+    {
+      "pergunta": "Como recebo o acesso?",
+      "resposta": "O acesso é disponibilizado imediatamente após a confirmação do pagamento via PIX."
+    },
+    {
+      "pergunta": "Preciso saber programação?",
+      "resposta": "Não. O material foi pensado para ser utilizado por quem quer trabalhar diretamente com criação de conteúdo por IA."
+    },
+    {
+      "pergunta": "Posso usar os prompts para criar diferentes conteúdos?",
+      "resposta": "Sim. Os prompts servem como base para você adaptar personagens, cenários, poses, estilos e ideias."
+    },
+    {
+      "pergunta": "Existe garantia?",
+      "resposta": "Sim. A oferta apresentada possui garantia incondicional de 7 dias."
+    }
+  ],
+  "workflows_disponiveis": [
+    {
+      "id": "wf-1",
+      "titulo": "Consistência de Rosto IP-Adapter",
+      "arquivo": "workflows/workflow-consistencia-rosto.json",
+      "formato": "JSON ComfyUI",
+      "tags": [
+        "Rosto",
+        "Identidade",
+        "SDXL"
+      ]
+    },
+    {
+      "id": "wf-2",
+      "titulo": "Flux Realismo Extremo & Textura",
+      "arquivo": "workflows/workflow-flux-realismo.json",
+      "formato": "JSON ComfyUI",
+      "tags": [
+        "Flux",
+        "Ultra-HD",
+        "Pele"
+      ]
+    },
+    {
+      "id": "wf-3",
+      "titulo": "Troca de Roupas & Cenários Inpainting",
+      "arquivo": "workflows/workflow-troca-roupas-inpainting.json",
+      "formato": "JSON ComfyUI",
+      "tags": [
+        "Inpaint",
+        "Roupas",
+        "Cenários"
+      ]
+    },
+    {
+      "id": "wf-4",
+      "titulo": "Animação Vídeo I2V",
+      "arquivo": "workflows/workflow-animacao-video-i2v.json",
+      "formato": "JSON ComfyUI",
+      "tags": [
+        "Vídeo",
+        "Movimento",
+        "AnimateDiff"
+      ]
+    },
+    {
+      "id": "wf-5",
+      "titulo": "Upscale 4K Restauração Facial",
+      "arquivo": "workflows/workflow-upscale-4k.json",
+      "formato": "JSON ComfyUI",
+      "tags": [
+        "Upscaling",
+        "4K",
+        "Detalhes"
+      ]
+    }
+  ],
+  "categorias_prompts": [
+    {
+      "nome": "UGC & Redes Sociais",
+      "qtd": 45,
+      "icone": "camera"
+    },
+    {
+      "nome": "Sensual & Lingerie",
+      "qtd": 60,
+      "icone": "fire"
+    },
+    {
+      "nome": "Praia & Piscina",
+      "qtd": 35,
+      "icone": "sun"
+    },
+    {
+      "nome": "Moda & Streetwear Urbano",
+      "qtd": 30,
+      "icone": "shopping-bag"
+    },
+    {
+      "nome": "Fitness & Academia",
+      "qtd": 25,
+      "icone": "activity"
+    },
+    {
+      "nome": "Close-up & Retrato",
+      "qtd": 35,
+      "icone": "user"
+    }
+  ]
+}
