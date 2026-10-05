@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login e Cadastro — CAPIVARA CLUB HOT</title>
+  <link rel="icon" href="/icons/favicon-32.png">
+  <meta name="theme-color" content="#050304">
+  <link rel="stylesheet" href="/assets/area_membros_esteira_interna_ferramentas-1.css">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      background: radial-gradient(circle at 50% 20%, #15091a 0%, #050304 70%);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      color: #f3f4f6;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      box-sizing: border-box;
+      padding: 20px;
+    }
+    .auth-container {
+      width: 100%;
+      max-width: 440px;
+      background: rgba(18, 12, 28, 0.85);
+      border: 1px solid rgba(0, 240, 255, 0.25);
+      border-radius: 18px;
+      padding: 32px 28px;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.7), 0 0 30px rgba(0, 240, 255, 0.08);
+      backdrop-filter: blur(16px);
+      box-sizing: border-box;
+    }
+    .auth-header {
+      text-align: center;
+      margin-bottom: 24px;
+    }
+    .auth-logo {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      margin-bottom: 12px;
+      box-shadow: 0 0 15px rgba(0, 240, 255, 0.4);
+    }
+    .auth-brand {
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      color: #00f0ff;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+    .auth-title {
+      font-size: 24px;
+      font-weight: 800;
+      margin: 0 0 8px;
+      letter-spacing: -0.5px;
+      color: #ffffff;
+    }
+    .auth-sub {
+      font-size: 13px;
+      color: #94a3b8;
+      margin: 0;
+    }
+    .auth-tabs {
+      display: flex;
+      background: rgba(10, 6, 16, 0.7);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+      padding: 4px;
+      margin-bottom: 24px;
+      gap: 4px;
+    }
+    .auth-tab {
+      flex: 1;
+      padding: 10px;
+      background: none;
+      border: none;
+      border-radius: 8px;
+      color: #94a3b8;
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      text-align: center;
+    }
+    .auth-tab.active {
+      background: linear-gradient(135deg, #0284c7, #00f0ff);
+      color: #040810;
+      box-shadow: 0 2px 10px rgba(0, 240, 255, 0.3);
+    }
+    .auth-form {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .field-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .field-group label {
+      font-size: 12px;
+      font-weight: 600;
+      color: #cbd5e1;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .field-group input {
+      background: rgba(10, 6, 16, 0.9);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 10px;
+      padding: 13px 16px;
+      color: #ffffff;
+      font-size: 14px;
+      outline: none;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+      box-sizing: border-box;
+      width: 100%;
+    }
+    .field-group input:focus {
+      border-color: #00f0ff;
+      box-shadow: 0 0 12px rgba(0, 240, 255, 0.3);
+    }
+    .auth-submit-btn {
+      margin-top: 8px;
+      background: linear-gradient(135deg, #ec4899, #f43f5e);
+      border: none;
+      border-radius: 10px;
+      padding: 14px;
+      color: #ffffff;
+      font-size: 14px;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      cursor: pointer;
+      box-shadow: 0 6px 20px rgba(236, 72, 153, 0.4);
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+    .auth-submit-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(236, 72, 153, 0.6);
+    }
+    .auth-submit-btn:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      transform: none;
+    }
+    .auth-alert {
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-size: 12px;
+      font-weight: 600;
+      display: none;
+    }
+    .auth-alert.error {
+      display: block;
+      background: rgba(239, 68, 68, 0.15);
+      border: 1px solid rgba(239, 68, 68, 0.4);
+      color: #f87171;
+    }
+    .auth-alert.success {
+      display: block;
+      background: rgba(34, 197, 94, 0.15);
+      border: 1px solid rgba(34, 197, 94, 0.4);
+      color: #4ade80;
+    }
+    .auth-hint {
+      background: rgba(0, 240, 255, 0.08);
+      border: 1px dashed rgba(0, 240, 255, 0.3);
+      border-radius: 10px;
+      padding: 10px 14px;
+      font-size: 12px;
+      color: #38bdf8;
+      line-height: 1.5;
+    }
+    .auth-footer {
+      margin-top: 24px;
+      text-align: center;
+    }
+    .back-link {
+      color: #94a3b8;
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 600;
+      transition: color 0.2s ease;
+    }
+    .back-link:hover {
+      color: #00f0ff;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="auth-container">
+    <div class="auth-header">
+      <img class="auth-logo" src="/assets/embedded-4319352716121903.png" alt="Logo Capivara">
+      <div class="auth-brand">CAPIVARA CLUB HOT</div>
+      <h1 class="auth-title" id="pageHeading">Área de Membros</h1>
+      <p class="auth-sub" id="pageSub">Acesse seus tutoriais, prompts e conteúdos exclusivos.</p>
+    </div>
+
+    <!-- TABS -->
+    <div class="auth-tabs">
+      <button type="button" class="auth-tab active" id="tabLogin" onclick="switchTab('login')">Entrar</button>
+      <button type="button" class="auth-tab" id="tabRegister" onclick="switchTab('register')">Cadastrar</button>
+    </div>
+
+    <!-- ALERT BOX -->
+    <div id="authAlert" class="auth-alert"></div>
+
+    <!-- LOGIN FORM -->
+    <form id="formLogin" class="auth-form" onsubmit="handleLogin(event)">
+      <div class="field-group">
+        <label for="loginEmail">E-mail</label>
+        <input type="email" id="loginEmail" value="diseguro20@gmail.com" required placeholder="seu@email.com">
+      </div>
+      <div class="field-group">
+        <label for="loginPassword">Senha</label>
+        <input type="password" id="loginPassword" value="diego123" required placeholder="Sua senha">
+      </div>
+      <div class="auth-hint">
+        ⚡ <strong>Acesso Master:</strong><br>
+        E-mail: <code>diseguro20@gmail.com</code><br>
+        Senha: <code>diego123</code>
+      </div>
+      <button type="submit" class="auth-submit-btn" id="btnLoginSubmit">
+        <span>ENTRAR NO PAINEL</span> →
+      </button>
+    </form>
+
+    <!-- REGISTER FORM -->
+    <form id="formRegister" class="auth-form" style="display: none;" onsubmit="handleRegister(event)">
+      <div class="field-group">
+        <label for="regName">Nome Completo</label>
+        <input type="text" id="regName" required placeholder="Como quer ser chamado">
+      </div>
+      <div class="field-group">
+        <label for="regEmail">E-mail</label>
+        <input type="email" id="regEmail" required placeholder="seu@email.com">
+      </div>
+      <div class="field-group">
+        <label for="regPassword">Senha</label>
+        <input type="password" id="regPassword" minlength="6" required placeholder="No mínimo 6 caracteres">
+      </div>
+      <div class="field-group">
+        <label for="regConfirm">Confirmar Senha</label>
+        <input type="password" id="regConfirm" minlength="6" required placeholder="Repita a senha">
+      </div>
+      <button type="submit" class="auth-submit-btn" id="btnRegisterSubmit">
+        <span>CRIAR MINHA CONTA</span> →
+      </button>
+    </form>
+
+    <div class="auth-footer">
+      <a href="/" class="back-link">← Voltar para a Página Inicial</a>
+    </div>
+  </div>
+
+  <script src="/assets/firebase-auth.js"></script>
+  <script>
+    function switchTab(mode) {
+      const tabLogin = document.getElementById('tabLogin');
+      const tabRegister = document.getElementById('tabRegister');
+      const formLogin = document.getElementById('formLogin');
+      const formRegister = document.getElementById('formRegister');
+      const heading = document.getElementById('pageHeading');
+      const sub = document.getElementById('pageSub');
+      const alertBox = document.getElementById('authAlert');
+      alertBox.className = 'auth-alert';
+      alertBox.style.display = 'none';
+
+      if (mode === 'register') {
+        tabLogin.classList.remove('active');
+        tabRegister.classList.add('active');
+        formLogin.style.display = 'none';
+        formRegister.style.display = 'flex';
+        heading.textContent = 'Criar Nova Conta';
+        sub.textContent = 'Cadastre-se para liberar seu acesso ao clube.';
+      } else {
+        tabRegister.classList.remove('active');
+        tabLogin.classList.add('active');
+        formRegister.style.display = 'none';
+        formLogin.style.display = 'flex';
+        heading.textContent = 'Área de Membros';
+        sub.textContent = 'Acesse seus tutoriais, prompts e conteúdos exclusivos.';
+      }
+    }
+
+    async function handleLogin(e) {
+      e.preventDefault();
+      const email = document.getElementById('loginEmail').value;
+      const pass = document.getElementById('loginPassword').value;
+      const btn = document.getElementById('btnLoginSubmit');
+      const alertBox = document.getElementById('authAlert');
+
+      btn.disabled = true;
+      btn.innerHTML = '<span>Verificando...</span>';
+      alertBox.className = 'auth-alert';
+
+      try {
+        const res = await window.capivaraAuth.signIn(email, pass);
+        alertBox.className = 'auth-alert success';
+        alertBox.textContent = `✅ Bem-vindo, ${res.user.name}! Redirecionando...`;
+        setTimeout(() => {
+          window.location.href = '/paginas/painel.html';
+        }, 600);
+      } catch (err) {
+        alertBox.className = 'auth-alert error';
+        alertBox.textContent = err.message || 'Erro ao realizar login.';
+        btn.disabled = false;
+        btn.innerHTML = '<span>ENTRAR NO PAINEL</span> →';
+      }
+    }
+
+    async function handleRegister(e) {
+      e.preventDefault();
+      const name = document.getElementById('regName').value;
+      const email = document.getElementById('regEmail').value;
+      const pass = document.getElementById('regPassword').value;
+      const conf = document.getElementById('regConfirm').value;
+      const btn = document.getElementById('btnRegisterSubmit');
+      const alertBox = document.getElementById('authAlert');
+
+      if (pass !== conf) {
+        alertBox.className = 'auth-alert error';
+        alertBox.textContent = 'As senhas não coincidem!';
+        return;
+      }
+
+      btn.disabled = true;
+      btn.innerHTML = '<span>Criando conta...</span>';
+
+      try {
+        const res = await window.capivaraAuth.signUp(name, email, pass);
+        alertBox.className = 'auth-alert success';
+        alertBox.textContent = `🎉 Conta criada com sucesso! Redirecionando...`;
+        setTimeout(() => {
+          window.location.href = '/paginas/painel.html';
+        }, 800);
+      } catch (err) {
+        alertBox.className = 'auth-alert error';
+        alertBox.textContent = err.message || 'Erro ao criar conta.';
+        btn.disabled = false;
+        btn.innerHTML = '<span>CRIAR MINHA CONTA</span> →';
+      }
+    }
+
+    // Default to register tab for /cadastro
+    switchTab('register');
+  </script>
+</body>
+</html>

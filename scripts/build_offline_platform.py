@@ -396,10 +396,12 @@ document.addEventListener('DOMContentLoaded', () => {
 """
     html = html.replace('</head>', bootstrap_script + '\n</head>')
 
-    # Output to painel.html and membros.html (index.html is the landing page)
+    # Output to painel.html, membros.html, painel/index.html, and membros/index.html
     targets = [
         os.path.join(ROOT_DIR, 'paginas', 'painel.html'),
         os.path.join(ROOT_DIR, 'paginas', 'membros.html'),
+        os.path.join(ROOT_DIR, 'painel', 'index.html'),
+        os.path.join(ROOT_DIR, 'membros', 'index.html'),
     ]
 
     for t in targets:

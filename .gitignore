@@ -17,3 +17,5 @@ __pycache__/
 .edge_temp
 .edge_snap
 temp_cookies.sqlite
+
+.vercel
