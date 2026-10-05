@@ -41,10 +41,14 @@ def build():
     html = html.replace('workflow-locked', '')
     html = html.replace('data-workflow-locked="true"', 'data-workflow-locked="false"')
 
-    # Inject pre-filled member info and activate tutorial videos
+    # Inject pre-filled member info and activate tutorial videos with Multi-CDN streaming
+    cdn_base = "https://github.com/diseguro20/capivara-club-hot-platform/releases/download/v1.0.0-videos"
     for i in range(1, 10):
         num_str = f"{i:02d}"
-        video_tag = f'<video class="tutorial-video" controls preload="metadata" src="/videos-tutoriais/tutorial-{num_str}.mp4" style="display: block !important; width: 100%; border-radius: 8px;"></video>'
+        video_tag = f'''<video class="tutorial-video" controls preload="metadata" playsinline style="display: block !important; width: 100%; border-radius: 8px;">
+                <source src="/videos-tutoriais/tutorial-{num_str}.mp4" type="video/mp4">
+                <source src="{cdn_base}/tutorial-{num_str}.mp4" type="video/mp4">
+              </video>'''
         pattern = rf'(<span class="tutorial-num">{num_str}</span>[\s\S]*?<div class="video-box">)[\s\S]*?(<div class="video-empty">)'
         replacement = rf'\1\n              {video_tag}\n              <div class="video-empty" style="display: none !important;">'
         html = re.sub(pattern, replacement, html)
@@ -87,15 +91,32 @@ def build():
 <script src="/member-assets/member_prompts_18.js?v=20261005"></script>
 <script src="/member-scripts/area_membros_esteira_interna_ferramentas-1.js?v=20261005-prompts18-fixed"></script>
 <script>
-// Smart video fallback for cloud deployments (Vercel)
+// Smart video player initialization & Multi-CDN fallback
 document.addEventListener('DOMContentLoaded', () => {
-  document.querySelectorAll('.tutorial-video').forEach((v, idx) => {
+  const isCloud = window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1';
+  const cdnBase = 'https://github.com/diseguro20/capivara-club-hot-platform/releases/download/v1.0.0-videos';
+
+  document.querySelectorAll('.tutorial-card').forEach((card, idx) => {
+    const num = (idx + 1).toString().padStart(2, '0');
+    const v = card.querySelector('.tutorial-video');
+    const empty = card.querySelector('.video-empty');
+    if (!v) return;
+
+    if (empty) empty.style.display = 'none';
+    v.style.display = 'block';
+
+    const cdnUrl = `${cdnBase}/tutorial-${num}.mp4`;
+
+    // On cloud (Vercel), point directly to CDN to stream immediately
+    if (isCloud) {
+      v.src = cdnUrl;
+    }
+
+    // Safety error recovery
     v.addEventListener('error', () => {
-      const num = (idx + 1).toString().padStart(2, '0');
-      const remote = `https://capivaraclubhot.com/videos-tutoriais/tutorial-${num}.mp4`;
-      if (v.src !== remote) {
-        console.log(`Fallback de vídeo ativado para tutorial ${num}`);
-        v.src = remote;
+      if (v.src !== cdnUrl) {
+        console.log(`Fallback CDN ativado para Tutorial ${num}`);
+        v.src = cdnUrl;
         v.load();
       }
     });
