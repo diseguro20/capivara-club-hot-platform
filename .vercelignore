@@ -1,0 +1,16 @@
+# Ignore large video files (streamed from live CDN in cloud)
+videos-tutoriais/
+videos/
+
+# Ignore Python helper scripts and virtual env
+scripts/
+*.py
+sync_config.json
+*.bat
+
+# Ignore temporary files
+.git
+.github
+.edge_temp
+.edge_snap
+temp_cookies.sqlite
