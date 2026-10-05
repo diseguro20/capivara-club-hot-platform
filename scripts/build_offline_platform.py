@@ -37,9 +37,48 @@ def build():
     html = html.replace('<section class="app hidden" id="app">',
                         '<section class="app" id="app" style="display: block !important;">')
 
-    # Unlock all workflows
+    # Unlock and inject ALL 16 workflows
+    import urllib.parse
+    workflows_data = [
+        {"tag": "01", "title": "FACESWAP CAPIVARA DUHOT", "desc": "Workflow completo para transformar uma ideia em uma imagem pronta com troca facial ultra-realista.", "file": "faceswap-capivara-duhot.json", "cat": "Original Capivara", "badge": "193 KB"},
+        {"tag": "02", "title": "CONTROLMOTION CAPIVARA DUHOT", "desc": "Processo para transformar imagens em vídeos dinâmicos com controle de movimento e física corporal.", "file": "controlmotion-capivara-duhot.json", "cat": "Original Capivara", "badge": "215 KB"},
+        {"tag": "03", "title": "CAPIVARA DU HOT — GERAR VÍDEOS PROMPT", "desc": "Workflow para criar prompts e parâmetros de vídeo a partir de imagem de referência carregada.", "file": "CAPIVARA DU HOT - GERAR VÍDEOS PROMPT.json", "cat": "Original Capivara", "badge": "137 KB"},
+        {"tag": "04", "title": "CONTROLMOTION 2 — VÍDEO +18", "desc": "Versão avançada para criar vídeos com controle de composição, poses expressivas e dinâmicas +18.", "file": "CONTROLMOTION 2 - CAPIVARA DUHOT - VIDEO +18.json", "cat": "Original Capivara", "badge": "182 KB"},
+        {"tag": "05", "title": "TROCA DE ROUPA", "desc": "Workflow para testar diferentes looks, trocar figurinos, lingeries e roupas mantendo a anatomia.", "file": "TROCA DE ROUPA - WF GRATIS.json", "cat": "Original Capivara", "badge": "145 KB"},
+        {"tag": "06", "title": "UPSCALE IMG — CAPIVARA", "desc": "Workflow para aumentar a resolução e melhorar nitidez, contraste e microtexturas das fotos.", "file": "UPSCALE IMG - CAPIVARA (GRÁTIS).json", "cat": "Original Capivara", "badge": "7.5 KB"},
+        {"tag": "07", "title": "KREA 2 — ROSTO + PROMPT", "desc": "Workflow para criar rostos consistentes e gerar prompts estruturados a partir da referência escolhida.", "file": "KREA 2 - ROSTO + PROMPT.json", "cat": "Original Capivara", "badge": "179 KB"},
+        {"tag": "08", "title": "VÁRIOS ÂNGULOS", "desc": "Workflow para gerar múltiplos ângulos de câmera (perfil, costas, close-up) da mesma modelo.", "file": "VARIOS ANGULOS.json", "cat": "Original Capivara", "badge": "69 KB"},
+        {"tag": "09", "title": "SWAP — FLUX — CAPIVARA", "desc": "Workflow de alta fidelidade para troca de rosto utilizando o modelo de última geração FLUX.", "file": "SWAP - FLUX - CAPIVARA.json", "cat": "Original Capivara", "badge": "191 KB"},
+        {"tag": "10", "title": "MOTION + CONTROL V7", "desc": "Workflow profissional para controlar movimento de câmera, profundidade e física com alta precisão.", "file": "MOTION+CONTROL+v7.json", "cat": "Original Capivara", "badge": "245 KB"},
+        {"tag": "11", "title": "MOTION CONTROL — MUDAR APENAS MULHER", "desc": "Workflow original avançado para isolar e animar seletivamente apenas a mulher na cena mantendo fundo e parceiro estáticos.", "file": "Motion+Control+-+Mudar_Apenas_Mulher.json", "cat": "Original Capivara", "badge": "165 KB"},
+        {"tag": "12", "title": "CONSISTÊNCIA DE ROSTO IP-ADAPTER", "desc": "Pipeline ComfyUI de preservação de identidade com IP-Adapter SDXL para manter 100% dos traços faciais em qualquer pose.", "file": "workflow-consistencia-rosto.json", "cat": "ComfyUI Pipeline", "badge": "JSON"},
+        {"tag": "13", "title": "FLUX REALISMO EXTREMO & TEXTURA", "desc": "Workflow de geração ultra-realista no modelo FLUX com refinamento de poros de pele, iluminação natural e realismo cinematográfico.", "file": "workflow-flux-realismo.json", "cat": "ComfyUI Pipeline", "badge": "JSON"},
+        {"tag": "14", "title": "TROCA DE ROUPAS & CENÁRIOS INPAINTING", "desc": "Workflow ComfyUI de inpainting com segmentação automática para substituição ágil de vestimentas, lingeries e ambientações.", "file": "workflow-troca-roupas-inpainting.json", "cat": "ComfyUI Pipeline", "badge": "JSON"},
+        {"tag": "15", "title": "ANIMAÇÃO VÍDEO I2V ANIMATEDIFF", "desc": "Workflow de animação Image-to-Video com AnimateDiff e interpolação de quadros para movimentação fluida de modelos.", "file": "workflow-animacao-video-i2v.json", "cat": "ComfyUI Pipeline", "badge": "JSON"},
+        {"tag": "16", "title": "UPSCALE 4K RESTAURAÇÃO FACIAL", "desc": "Pipeline de super-resolução 4K com CodeFormer/GFPGAN e UltraSharp para máxima nitidez e polimento de ensaios.", "file": "workflow-upscale-4k.json", "cat": "ComfyUI Pipeline", "badge": "JSON"}
+    ]
+
+    wf_cards_html = '<div class="cards workflow-downloads">\n'
+    for wf in workflows_data:
+        quoted_file = urllib.parse.quote(wf['file'])
+        wf_cards_html += f'''          <article class="card workflow-card" data-workflow-category="{wf['cat']}">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+              <span class="tag">{wf['tag']}</span>
+              <span style="font-size: 11px; padding: 2px 8px; border-radius: 4px; background: rgba(2, 132, 199, 0.15); color: #38bdf8; border: 1px solid rgba(2, 132, 199, 0.3); font-weight: 600;">{wf['badge']}</span>
+            </div>
+            <h3>{wf['title']}</h3>
+            <p>{wf['desc']}</p>
+            <a class="copy workflow-download" href="/workflows/{quoted_file}" download="{wf['file']}" data-workflow="{wf['title']}">Baixar workflow →</a>
+          </article>\n'''
+    wf_cards_html += '        </div>'
+
+    wf_pattern = r'<div class="cards workflow-downloads">[\s\S]*?</div>\s*(?=<div class="notice workflow-notice">)'
+    html = re.sub(wf_pattern, wf_cards_html + '\n        ', html, count=1)
+
     html = html.replace('workflow-locked', '')
     html = html.replace('data-workflow-locked="true"', 'data-workflow-locked="false"')
+    html = html.replace('Fluxos de trabalho para você seguir do planejamento até a publicação do conteúdo.',
+                        'Fluxos de trabalho para você seguir do planejamento até a publicação do conteúdo. Todos os 16 workflows originais e avançados desbloqueados.')
 
     # Inject pre-filled member info and activate tutorial videos with Multi-CDN streaming
     cdn_base = "https://github.com/diseguro20/capivara-club-hot-platform/releases/download/v1.0.0-videos"
