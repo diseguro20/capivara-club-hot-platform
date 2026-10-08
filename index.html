@@ -79,19 +79,37 @@
     color: #00f0ff;
   }
   .nav-login-btn {
-    background: linear-gradient(135deg, #0284c7, #00f0ff);
-    color: #040810 !important;
     text-decoration: none;
     padding: 8px 18px;
     border-radius: 8px;
     font-size: 13px;
     font-weight: 800;
-    box-shadow: 0 4px 14px rgba(0, 240, 255, 0.35);
     transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
   }
-  .nav-login-btn:hover {
+  .nav-login-btn.locked {
+    background: rgba(255, 255, 255, 0.05);
+    color: #94a3b8 !important;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: none;
+    cursor: pointer;
+  }
+  .nav-login-btn.locked:hover {
+    background: rgba(236, 72, 153, 0.15);
+    border-color: #ec4899;
+    color: #ffffff !important;
+    box-shadow: 0 0 15px rgba(236, 72, 153, 0.3);
+  }
+  .nav-login-btn.unlocked {
+    background: linear-gradient(135deg, #10b981, #00f0ff);
+    color: #040810 !important;
+    box-shadow: 0 4px 16px rgba(0, 240, 255, 0.45);
+  }
+  .nav-login-btn.unlocked:hover {
     transform: translateY(-1px);
-    box-shadow: 0 6px 20px rgba(0, 240, 255, 0.55);
+    box-shadow: 0 6px 22px rgba(0, 240, 255, 0.65);
   }
   @media (max-width: 600px) {
     .header-brand span { font-size: 12px; }
@@ -111,8 +129,11 @@
         <span>CAPIVARA CLUB HOT</span>
       </a>
       <div class="header-actions">
-        <a href="#accessModal" class="nav-buy-link access-trigger">Garantir Acesso</a>
-        <a href="/login.html" class="nav-login-btn">Área de Membros →</a>
+        <a href="#accessModal" class="nav-buy-link access-trigger" id="headerBuyLink">⚡ Garantir Acesso</a>
+        <a href="#accessModal" class="nav-login-btn locked access-trigger" id="headerMembersBtn" title="Liberado somente após confirmação do pagamento">
+          <span id="headerMembersIcon">🔒</span>
+          <span id="headerMembersText">Área de Membros</span>
+        </a>
       </div>
     </div>
   </header>

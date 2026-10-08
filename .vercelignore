@@ -13,4 +13,7 @@ sync_config.json
 .github
 .edge_temp
 .edge_snap
+.temp*
+.temp_edge_*
 temp_cookies.sqlite
+node_modules
