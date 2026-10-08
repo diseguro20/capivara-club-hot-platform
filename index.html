@@ -111,7 +111,7 @@
         <span>CAPIVARA CLUB HOT</span>
       </a>
       <div class="header-actions">
-        <a href="#oferta" class="nav-buy-link">Garantir Acesso</a>
+        <a href="#accessModal" class="nav-buy-link access-trigger">Garantir Acesso</a>
         <a href="/login.html" class="nav-login-btn">Área de Membros →</a>
       </div>
     </div>
@@ -134,7 +134,7 @@
         feita do zero, com rosto consistente em qualquer geração.
       </p>
 
-      <a class="cta cta-big scroll-trigger" href="#oferta">
+      <a class="cta cta-big access-trigger" href="#accessModal">
         QUERO ACESSAR AGORA
       </a>
 
@@ -464,19 +464,19 @@
     <div class="access-dialog" role="dialog" aria-modal="true" aria-labelledby="accessTitle">
       <div class="access-head">
         <div>
-          <span class="access-eyebrow">Acesso exclusivo</span>
-          <h2 id="accessTitle">Receba seu acesso</h2>
-          <p>Preencha seus dados para solicitar o acesso. Uma senha temporária será gerada para o envio por e-mail.</p>
+          <span class="access-eyebrow" style="color: #00f0ff; font-weight: 700; text-transform: uppercase;">Acesso Completo • R$ 87,90</span>
+          <h2 id="accessTitle" style="margin-top: 4px;">Garantir Seu Acesso Imediato</h2>
+          <p>Preencha seus dados para gerar a chave PIX segura via Omega Pay. O acesso à Área de Membros é liberado no mesmo instante em que o pagamento for concluído.</p>
         </div>
         <button class="access-close" id="accessClose" type="button" aria-label="Fechar">×</button>
       </div>
       <form class="access-form" id="accessForm">
         <div class="access-fields" id="accessFields">
-          <label>Nome completo<input id="accessName" name="name" type="text" required autocomplete="name" placeholder="Seu nome"></label>
-          <label>Apelido<input id="accessNickname" name="nickname" type="text" required autocomplete="nickname" placeholder="Como podemos te chamar"><span class="nickname-status" id="nicknameStatus"></span></label>
-          <label>Número<input id="accessPhone" name="phone" type="tel" required autocomplete="tel" placeholder="(00) 00000-0000"></label>
-          <label>E-mail<input id="accessEmail" name="email" type="email" required autocomplete="email" placeholder="voce@email.com"></label>
-          <label for="accessCoupon">Cupom de desconto (opcional)<input id="accessCoupon" name="coupon" type="text" maxlength="40" autocomplete="off" autocapitalize="characters" spellcheck="false" aria-describedby="accessCouponHelp" placeholder="Digite seu cupom" style="text-transform:uppercase"><span id="accessCouponHelp">Se tiver um cupom, informe aqui. Você também pode continuar sem cupom. O desconto será aplicado ao gerar o PIX.</span></label>
+          <label>Nome completo<input id="accessName" name="name" type="text" required autocomplete="name" placeholder="Seu nome completo"></label>
+          <label>CPF (obrigatório para emissão do PIX)<input id="accessCpf" name="document" type="text" required placeholder="000.000.000-00" maxlength="14" autocomplete="off"></label>
+          <label>WhatsApp / Celular<input id="accessPhone" name="phone" type="tel" required autocomplete="tel" placeholder="(00) 00000-0000"></label>
+          <label>E-mail (para onde será enviado seu acesso)<input id="accessEmail" name="email" type="email" required autocomplete="email" placeholder="seu-email@dominio.com"></label>
+          <label for="accessCoupon">Cupom de desconto (opcional)<input id="accessCoupon" name="coupon" type="text" maxlength="40" autocomplete="off" autocapitalize="characters" spellcheck="false" aria-describedby="accessCouponHelp" placeholder="Digite seu cupom" style="text-transform:uppercase"><span id="accessCouponHelp">Se tiver um cupom, informe aqui. O desconto será aplicado ao gerar o PIX.</span></label>
           <div class="terms-box" id="accessTermsBox">
             <button type="button" class="terms-toggle" id="accessTermsToggle">
               <strong>Termos de acesso</strong>
@@ -485,25 +485,34 @@
             <div class="terms-content">
               <ol class="terms-list">
                 <li><strong>Termos de acesso</strong><p>É proibido compartilhar, vender, emprestar ou disponibilizar sua conta para terceiros. O acesso é individual e destinado exclusivamente ao titular da conta.</p></li>
-                <li><strong>Uso indevido</strong><p>É proibido utilizar o SaaS para atividades ilegais, fraudulentas, abusivas ou que possam prejudicar o funcionamento da plataforma ou outros usuários.</p></li>
-                <li><strong>Conta individual</strong><p>Cada conta é pessoal e intransferível. O compartilhamento de credenciais poderá resultar no bloqueio ou encerramento da conta, sem direito a reembolso.</p></li>
-                <li><strong>Credenciais de acesso</strong><p>Mantenha sua senha e demais credenciais em segurança. O titular é responsável por todos os acessos e atividades realizadas em sua conta.</p></li>
-                <li><strong>Tentativas de fraude</strong><p>Tentativas de burlar limitações, sistemas de segurança, pagamentos, planos ou mecanismos de controle da plataforma poderão resultar no bloqueio imediato da conta.</p></li>
-                <li><strong>Suspensão de acesso</strong><p>O descumprimento destes termos poderá resultar na suspensão ou encerramento do acesso, especialmente em casos de compartilhamento, fraude ou uso indevido.</p></li>
+                <li><strong>Uso indevido</strong><p>É proibido utilizar a plataforma para atividades ilegais, fraudulentas, abusivas ou que possam prejudicar outros usuários.</p></li>
+                <li><strong>Conta individual</strong><p>Cada conta é pessoal e intransferível. O compartilhamento de credenciais poderá resultar no bloqueio imediato sem reembolso.</p></li>
+                <li><strong>Garantia de 7 dias</strong><p>Você conta com garantia incondicional de 7 dias para testar todos os workflows, tutoriais e recursos.</p></li>
               </ol>
             </div>
           </div>
           <div class="access-actions">
-            <label class="terms-check" id="accessTermsCheckLabel"><input id="accessTerms" name="terms" value="on" type="checkbox" required disabled><span>Li e aceito os termos de acesso e uso do conteúdo.</span></label>
-            <button class="access-submit" id="accessSubmitBtn" type="submit" disabled>SOLICITAR ACESSO</button>
+            <label class="terms-check" id="accessTermsCheckLabel"><input id="accessTerms" name="terms" value="on" type="checkbox" required checked><span>Li e aceito os termos de acesso e uso do conteúdo.</span></label>
+            <button class="access-submit" id="accessSubmitBtn" type="submit">GERAR PIX — R$ 87,90</button>
           </div>
         </div>
         <div class="access-status" id="accessStatus" role="status"></div>
         <div class="pix-result" id="pixResult">
-          <h3>Pagamento PIX</h3>
+          <div style="display:flex; justify-content:space-between; align-items:center; background:rgba(0,240,255,0.08); padding:8px 12px; border-radius:8px; border:1px solid rgba(0,240,255,0.2);">
+            <strong style="color:#00f0ff; font-size:14px;">VALOR: R$ 87,90</strong>
+            <span style="color:#36ce88; font-size:12px; font-weight:700; display:flex; align-items:center; gap:6px;">
+              <span style="width:8px; height:8px; background:#36ce88; border-radius:50%; display:inline-block; animation: pulseDot 1.5s infinite;"></span>
+              Aguardando pagamento...
+            </span>
+          </div>
+          <h3 style="margin-top:10px;">Escaneie o QR Code no seu aplicativo do banco:</h3>
           <img class="pix-qr" id="pixQr" alt="QR Code para pagamento PIX">
+          <p style="font-size:12px; color:#94a3b8; text-align:center; margin:4px 0;">Ou copie o código copia e cola abaixo:</p>
           <textarea class="pix-code" id="pixCode" readonly aria-label="Código PIX copia e cola"></textarea>
-          <button class="pix-copy" id="pixCopy" type="button">COPIAR PIX</button>
+          <button class="pix-copy" id="pixCopy" type="button">COPIAR CÓDIGO PIX</button>
+          <div style="font-size:12px; line-height:1.5; color:#cbd5e1; background:rgba(255,255,255,0.04); padding:10px; border-radius:8px; border-left:3px solid #00f0ff;">
+            ⚡ <strong>Liberação Instantânea:</strong> Assim que você pagar no app do seu banco, esta tela identificará o pagamento em segundos e liberará seu acesso imediatamente!
+          </div>
         </div>
       </form>
     </div>

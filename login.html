@@ -305,11 +305,21 @@
 
       try {
         const res = await window.capivaraAuth.signIn(email, pass);
-        alertBox.className = 'auth-alert success';
-        alertBox.textContent = `✅ Bem-vindo, ${res.user.name}! Redirecionando...`;
-        setTimeout(() => {
-          window.location.href = '/paginas/painel.html';
-        }, 600);
+        const isPaid = res.user.isAdmin || res.user.paid;
+
+        if (isPaid) {
+          alertBox.className = 'auth-alert success';
+          alertBox.textContent = `✅ Bem-vindo, ${res.user.name}! Redirecionando para o painel...`;
+          setTimeout(() => {
+            window.location.href = '/paginas/painel.html';
+          }, 600);
+        } else {
+          alertBox.className = 'auth-alert warning';
+          alertBox.textContent = `⚠️ Pagamento pendente para esta conta. Redirecionando para concluir sua inscrição...`;
+          setTimeout(() => {
+            window.location.href = '/?checkout=true';
+          }, 1200);
+        }
       } catch (err) {
         alertBox.className = 'auth-alert error';
         alertBox.textContent = err.message || 'Erro ao realizar login.';
@@ -339,10 +349,10 @@
       try {
         const res = await window.capivaraAuth.signUp(name, email, pass);
         alertBox.className = 'auth-alert success';
-        alertBox.textContent = `🎉 Conta criada com sucesso! Redirecionando...`;
+        alertBox.textContent = `🎉 Conta criada com sucesso! Redirecionando para gerar o PIX de liberação...`;
         setTimeout(() => {
-          window.location.href = '/paginas/painel.html';
-        }, 800);
+          window.location.href = '/?checkout=true';
+        }, 1200);
       } catch (err) {
         alertBox.className = 'auth-alert error';
         alertBox.textContent = err.message || 'Erro ao criar conta.';

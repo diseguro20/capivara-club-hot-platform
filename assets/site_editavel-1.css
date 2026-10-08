@@ -257,9 +257,9 @@
     .pix-result { display:none; gap:14px; padding:18px; border:1px solid rgba(54,206,136,.3); border-radius:14px; background:rgba(54,206,136,.05); }
     .pix-result.show { display:grid; }
     .pix-result h3 { color:#79e5ac; font-size:15px; letter-spacing:.03em; text-transform:uppercase; }
-    .pix-qr { width:220px; height:220px; margin:auto; background:#fff; border-radius:10px; object-fit:contain; padding:10px; }
-    .pix-code { width:100%; min-height:78px; resize:vertical; padding:12px; border:1px solid rgba(255,255,255,.12); border-radius:10px; background:#0f0a0c; color:#ddd; font:11px/1.5 "Space Mono",monospace; }
-    .pix-copy { border:1px solid rgba(54,206,136,.4); border-radius:10px; padding:12px; background:rgba(54,206,136,.12); color:#c9ffe0; font-weight:700; letter-spacing:.04em; cursor:pointer; transition:background .15s ease; }
+    .pix-qr { width:175px; height:175px; margin:auto; background:#fff; border-radius:10px; object-fit:contain; padding:8px; }
+    .pix-code { width:100%; min-height:60px; max-height:60px; resize:none; padding:10px; border:1px solid rgba(255,255,255,.15); border-radius:10px; background:#0f0a0c; color:#ddd; font:11px/1.4 "Space Mono",monospace; }
+    .pix-copy { border:1px solid rgba(54,206,136,.4); border-radius:10px; padding:12px; background:rgba(54,206,136,.12); color:#c9ffe0; font-weight:700; letter-spacing:.04em; cursor:pointer; transition:background .15s ease; width:100%; }
     .pix-copy:hover { background:rgba(54,206,136,.2); }
 
     .micro {

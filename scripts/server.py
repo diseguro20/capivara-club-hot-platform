@@ -13,6 +13,7 @@ if sys_path not in os.sys.path:
     os.sys.path.insert(0, sys_path)
 
 from sync_engine import CapivaraSyncEngine, update_status, get_current_metrics, start_background_sync, STATUS_PATH, load_config
+from omega_gateway import create_pix_charge, check_pix_status, is_user_paid, mark_user_as_paid
 
 class CapivaraHandler(http.server.SimpleHTTPRequestHandler):
     def __init__(self, *args, **kwargs):
@@ -29,9 +30,18 @@ class CapivaraHandler(http.server.SimpleHTTPRequestHandler):
         self.send_response(204)
         self.end_headers()
 
+    def send_json(self, data, status_code=200):
+        body = json.dumps(data).encode('utf-8')
+        self.send_response(status_code)
+        self.send_header('Content-Type', 'application/json')
+        self.send_header('Content-Length', str(len(body)))
+        self.end_headers()
+        self.wfile.write(body)
+
     def do_GET(self):
         parsed = urllib.parse.urlparse(self.path)
         path = parsed.path
+        query = urllib.parse.parse_qs(parsed.query)
 
         # Root and clean routes
         if path == '/login':
@@ -52,22 +62,48 @@ class CapivaraHandler(http.server.SimpleHTTPRequestHandler):
             self.end_headers()
             return
 
-        # API: Session (always authenticated and unlocked)
+        # Checkout & Order Status (Omega Pay)
+        if path in ('/api/order-status', '/api/checkout/status'):
+            tx_id = query.get('idTransaction', query.get('txId', query.get('id', [None])))[0]
+            email = query.get('email', [None])[0]
+            res = check_pix_status(tx_id, email)
+            self.send_json(res)
+            return
+
+        # Check access permission
+        if path == '/api/check-access':
+            email = query.get('email', [''])[0].strip().lower()
+            is_adm = email == 'diseguro20@gmail.com'
+            has_access = is_adm or is_user_paid(email)
+            self.send_json({
+                "ok": True,
+                "email": email,
+                "paid": has_access,
+                "isAdmin": is_adm
+            })
+            return
+
+        # Check nickname availability
+        if path == '/api/check-nickname':
+            nick = query.get('nickname', [''])[0].strip()
+            self.send_json({"ok": True, "nickname": nick, "available": True})
+            return
+
+        # API: Session
         if path == '/api/session':
+            email = query.get('email', ['diseguro20@gmail.com'])[0].strip().lower()
+            is_adm = email == 'diseguro20@gmail.com'
+            has_paid = is_adm or is_user_paid(email)
             data = {
                 "authenticated": True,
-                "name": "Diego",
-                "email": "diseguro20@gmail.com",
-                "isAdmin": False,
+                "name": "Diego" if is_adm else email.split('@')[0],
+                "email": email,
+                "isAdmin": is_adm,
+                "paid": has_paid,
                 "workflowUnlockAt": "2020-01-01T00:00:00Z",
                 "tutorialUnlockAt": "2020-01-01T00:00:00Z"
             }
-            body = json.dumps(data).encode('utf-8')
-            self.send_response(200)
-            self.send_header('Content-Type', 'application/json')
-            self.send_header('Content-Length', str(len(body)))
-            self.end_headers()
-            self.wfile.write(body)
+            self.send_json(data)
             return
 
         # API: Gallery Prompts (194 original prompts)
@@ -98,12 +134,7 @@ class CapivaraHandler(http.server.SimpleHTTPRequestHandler):
 
         # API: Referrals
         if path == '/api/referrals':
-            body = json.dumps({"referrals": []}).encode('utf-8')
-            self.send_response(200)
-            self.send_header('Content-Type', 'application/json')
-            self.send_header('Content-Length', str(len(body)))
-            self.end_headers()
-            self.wfile.write(body)
+            self.send_json({"referrals": []})
             return
 
         # API: Sync Status
@@ -111,17 +142,16 @@ class CapivaraHandler(http.server.SimpleHTTPRequestHandler):
             if os.path.exists(STATUS_PATH):
                 with open(STATUS_PATH, 'rb') as f:
                     body = f.read()
+                self.send_response(200)
+                self.send_header('Content-Type', 'application/json')
+                self.send_header('Content-Length', str(len(body)))
+                self.end_headers()
+                self.wfile.write(body)
             else:
-                body = json.dumps(update_status()).encode('utf-8')
-            self.send_response(200)
-            self.send_header('Content-Type', 'application/json')
-            self.send_header('Content-Length', str(len(body)))
-            self.end_headers()
-            self.wfile.write(body)
+                self.send_json(update_status())
             return
 
         # Video files with byte-range streaming support
-        # Normalize tutorial video paths so both tutorial-0X.mp4 and tutorial-X.mp4 map to the downloaded files
         if '/videos-tutoriais/' in path:
             m = re.search(r'tutorial-0?([1-9])\.mp4', path)
             if m:
@@ -135,7 +165,7 @@ class CapivaraHandler(http.server.SimpleHTTPRequestHandler):
                     return
 
         # Fallback to standard file serving with byte ranges
-        clean_path = unquote(parsed.path.lstrip('/'))
+        clean_path = urllib.parse.unquote(parsed.path.lstrip('/'))
         full_path = os.path.join(ROOT_DIR, clean_path)
         if os.path.isfile(full_path) and full_path.endswith(('.mp4', '.webm')):
             self.stream_video(full_path)
@@ -147,22 +177,70 @@ class CapivaraHandler(http.server.SimpleHTTPRequestHandler):
         parsed = urllib.parse.urlparse(self.path)
         path = parsed.path
 
-        if path in ('/api/login', '/api/change-password'):
-            data = {
-                "ok": True,
-                "name": "Diego",
-                "email": "diseguro20@gmail.com",
-                "isAdmin": False,
-                "workflowUnlockAt": "2020-01-01T00:00:00Z",
-                "tutorialUnlockAt": "2020-01-01T00:00:00Z"
-            }
-            body = json.dumps(data).encode('utf-8')
-            self.send_response(200)
-            self.send_header('Content-Type', 'application/json')
-            self.send_header('Content-Length', str(len(body)))
-            self.end_headers()
-            self.wfile.write(body)
+        content_length = int(self.headers.get('Content-Length', 0))
+        post_body = self.rfile.read(content_length).decode('utf-8') if content_length > 0 else '{}'
+        try:
+            body_data = json.loads(post_body)
+        except Exception:
+            body_data = {}
+
+        # Omega Pay PIX creation
+        if path in ('/api/access-request', '/api/checkout/pix'):
+            name = body_data.get('name', '')
+            email = body_data.get('email', '')
+            phone = body_data.get('phone', '')
+            doc = body_data.get('document') or body_data.get('cpf', '')
+            coupon = body_data.get('coupon', '')
+            try:
+                result = create_pix_charge(name, email, phone, doc, coupon)
+                self.send_json(result)
+            except Exception as e:
+                print(f"[Omega PIX Error] {e}")
+                self.send_json({"ok": False, "error": f"Erro ao gerar PIX: {str(e)}"}, 500)
             return
+
+        # Omega Pay Webhook
+        if path == '/api/checkout/webhook':
+            status = (body_data.get('status') or (body_data.get('data', {}).get('status') if isinstance(body_data.get('data'), dict) else '') or body_data.get('event', '')).upper()
+            email = None
+            if isinstance(body_data.get('client'), dict):
+                email = body_data['client'].get('email')
+            elif isinstance(body_data.get('data'), dict):
+                if isinstance(body_data['data'].get('client'), dict):
+                    email = body_data['data']['client'].get('email')
+                else:
+                    email = body_data['data'].get('email')
+            email = email or body_data.get('email')
+
+            if status in ('COMPLETED', 'PAID', 'CONFIRMED', 'TRANSACTION_PAID', 'APPROVED') and email:
+                mark_user_as_paid(email, body_data)
+                print(f"[Omega Webhook] Pagamento confirmado e acesso liberado para {email}!")
+
+            self.send_json({"received": True, "status": "ok"})
+            return
+
+        # Login endpoint
+        if path in ('/api/login', '/api/change-password'):
+            email = body_data.get('email', '').strip().lower()
+            password = body_data.get('password', '').strip()
+            is_adm = email == 'diseguro20@gmail.com'
+            has_paid = is_adm or is_user_paid(email)
+
+            if is_adm or has_paid or (email and len(password) >= 4):
+                data = {
+                    "ok": True,
+                    "name": "Diego" if is_adm else email.split('@')[0],
+                    "email": email,
+                    "isAdmin": is_adm,
+                    "paid": has_paid,
+                    "workflowUnlockAt": "2020-01-01T00:00:00Z",
+                    "tutorialUnlockAt": "2020-01-01T00:00:00Z"
+                }
+                self.send_json(data)
+                return
+            else:
+                self.send_json({"ok": False, "error": "Credenciais inválidas ou pagamento pendente."}, 401)
+                return
 
         if path == '/api/sync/trigger':
             def run_async():
@@ -172,15 +250,10 @@ class CapivaraHandler(http.server.SimpleHTTPRequestHandler):
                 except Exception as err:
                     print(f"[Sync] Erro na execução assíncrona: {err}")
             threading.Thread(target=run_async, daemon=True).start()
-            body = json.dumps({
+            self.send_json({
                 "ok": True,
                 "message": "Sincronização em tempo real iniciada com sucesso!"
-            }).encode('utf-8')
-            self.send_response(200)
-            self.send_header('Content-Type', 'application/json')
-            self.send_header('Content-Length', str(len(body)))
-            self.end_headers()
-            self.wfile.write(body)
+            })
             return
 
         self.send_response(404)
@@ -233,9 +306,6 @@ class CapivaraHandler(http.server.SimpleHTTPRequestHandler):
         except (ConnectionResetError, BrokenPipeError):
             pass
 
-def unquote(s):
-    return urllib.parse.unquote(s)
-
 if __name__ == '__main__':
     cfg = load_config()
     if cfg.get('auto_sync_enabled', True):
@@ -243,5 +313,5 @@ if __name__ == '__main__':
     socketserver.ThreadingTCPServer.allow_reuse_address = True
     with socketserver.ThreadingTCPServer(('0.0.0.0', PORT), CapivaraHandler) as httpd:
         print(f"Capivara local multi-threaded server running on http://localhost:{PORT}", flush=True)
-        print("Real-time background sync engine is ACTIVE!", flush=True)
+        print("Omega Pay Gateway & Real-time background sync engine are ACTIVE!", flush=True)
         httpd.serve_forever()

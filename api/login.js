@@ -1,3 +1,5 @@
+const { isUserPaid } = require('./_omega_config');
+
 module.exports = (req, res) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
@@ -24,20 +26,22 @@ module.exports = (req, res) => {
   const email = (body.email || '').trim().toLowerCase();
   const password = (body.password || '').trim();
 
-  // Master access requested by user: diseguro20@gmail.com / diego123
+  // Master access: diseguro20@gmail.com
   if (email === 'diseguro20@gmail.com' && (password === 'diego123' || password === 'diego2001')) {
     return res.status(200).json({
       ok: true,
       name: "Diego",
       email: "diseguro20@gmail.com",
       isAdmin: true,
+      paid: true,
       token: "session-master-diego-jwt",
       workflowUnlockAt: "2020-01-01T00:00:00Z",
       tutorialUnlockAt: "2020-01-01T00:00:00Z"
     });
   }
 
-  // Any other valid login with email and password
+  const paid = isUserPaid(email);
+
   if (email && password && password.length >= 4) {
     const displayName = email.split('@')[0].toUpperCase();
     return res.status(200).json({
@@ -45,6 +49,7 @@ module.exports = (req, res) => {
       name: displayName,
       email: email,
       isAdmin: false,
+      paid: paid,
       token: `session-${Date.now()}-jwt`,
       workflowUnlockAt: "2020-01-01T00:00:00Z",
       tutorialUnlockAt: "2020-01-01T00:00:00Z"

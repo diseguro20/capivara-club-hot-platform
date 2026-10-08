@@ -60,11 +60,13 @@ class CapivaraFirebaseAuth {
       localStorage.setItem('memberEmail', user.email);
       localStorage.setItem('memberName', user.name || 'Membro');
       localStorage.setItem('memberIsAdmin', user.isAdmin ? '1' : '0');
+      localStorage.setItem('memberPaid', (user.isAdmin || user.paid) ? '1' : '0');
     } else {
       localStorage.removeItem('capivara_user');
       localStorage.removeItem('memberEmail');
       localStorage.removeItem('memberName');
       localStorage.removeItem('memberIsAdmin');
+      localStorage.removeItem('memberPaid');
     }
     this.listeners.forEach(cb => cb(this.currentUser));
   }
@@ -84,7 +86,8 @@ class CapivaraFirebaseAuth {
         uid: 'master-diego-2026',
         name: 'Diego',
         email: 'diseguro20@gmail.com',
-        isAdmin: true
+        isAdmin: true,
+        paid: true
       };
       this.setUser(user);
       return { ok: true, user };
@@ -103,7 +106,8 @@ class CapivaraFirebaseAuth {
           uid: data.uid || `user-${Date.now()}`,
           name: data.name || email.split('@')[0],
           email: data.email || email,
-          isAdmin: !!data.isAdmin
+          isAdmin: !!data.isAdmin,
+          paid: !!data.paid || !!data.isAdmin
         };
         this.setUser(user);
         return { ok: true, user };
