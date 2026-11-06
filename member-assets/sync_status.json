@@ -1,8 +1,8 @@
 {
-  "last_sync": "2026-10-08 00:09:45",
+  "last_sync": "2026-11-06 00:45:13",
   "is_syncing": false,
-  "last_result": "success",
-  "message": "Sincronização concluída. Nenhum novo conteúdo adicionado na plataforma original (clone 100% atualizado).",
+  "last_result": "error",
+  "message": "Erro na sincronização: HTTP Error 401: Unauthorized",
   "metrics": {
     "tutorial_videos": 9,
     "workflows": 16,

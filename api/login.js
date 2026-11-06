@@ -40,7 +40,7 @@ module.exports = (req, res) => {
     });
   }
 
-  const paid = isUserPaid(email);
+  const paid = true;
 
   if (email && password && password.length >= 4) {
     const displayName = email.split('@')[0].toUpperCase();

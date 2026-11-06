@@ -90,31 +90,15 @@ const slides = document.querySelectorAll('.slide');
       const buyLink = document.getElementById('headerBuyLink');
       if (!membersBtn) return;
 
-      let isPaid = false;
-      try {
-        const u = JSON.parse(localStorage.getItem('capivara_user') || 'null');
-        if (u && (u.paid || u.isAdmin || u.email === 'diseguro20@gmail.com')) isPaid = true;
-      } catch(e) {}
-      if (localStorage.getItem('memberPaid') === '1' || localStorage.getItem('memberEmail') === 'diseguro20@gmail.com') {
-        isPaid = true;
-      }
-
-      if (isPaid) {
-        membersBtn.classList.remove('locked');
-        membersBtn.classList.add('unlocked');
-        membersBtn.href = '/painel';
-        membersBtn.title = 'Acesso Liberado! Clique para entrar';
-        if (membersIcon) membersIcon.textContent = '✨';
-        if (membersText) membersText.textContent = 'Área de Membros →';
-        if (buyLink) buyLink.style.display = 'none';
-      } else {
-        membersBtn.classList.remove('unlocked');
-        membersBtn.classList.add('locked');
-        membersBtn.href = '#accessModal';
-        membersBtn.title = 'Liberado somente após confirmação do pagamento via PIX';
-        if (membersIcon) membersIcon.textContent = '🔒';
-        if (membersText) membersText.textContent = 'Área de Membros';
-        if (buyLink) buyLink.style.display = 'inline-block';
+      membersBtn.classList.remove('locked');
+      membersBtn.classList.add('unlocked');
+      membersBtn.href = '/painel';
+      membersBtn.title = 'Acesso 100% Gratuito Liberado! Clique para entrar';
+      if (membersIcon) membersIcon.textContent = '✨';
+      if (membersText) membersText.textContent = 'Área de Membros →';
+      if (buyLink) {
+        buyLink.href = '/painel';
+        buyLink.textContent = '✨ 100% Gratuito';
       }
     }
 
@@ -123,31 +107,14 @@ const slides = document.querySelectorAll('.slide');
     const membersBtnEl = document.getElementById('headerMembersBtn');
     if (membersBtnEl) {
       membersBtnEl.addEventListener('click', (e) => {
-        let isPaid = false;
-        try {
-          const u = JSON.parse(localStorage.getItem('capivara_user') || 'null');
-          if (u && (u.paid || u.isAdmin || u.email === 'diseguro20@gmail.com')) isPaid = true;
-        } catch(e) {}
-        if (localStorage.getItem('memberPaid') === '1' || localStorage.getItem('memberEmail') === 'diseguro20@gmail.com') {
-          isPaid = true;
-        }
-
-        if (!isPaid) {
-          e.preventDefault();
-          const notice = document.getElementById('accessStatus');
-          if (notice) {
-            notice.innerHTML = '<span style="color:#00f0ff;font-weight:bold;">🔒 A Área de Membros só é liberada após o pagamento. Complete seus dados para gerar o PIX:</span>';
-            notice.classList.add('show');
-          }
-          openAccessModal();
-        }
+        window.location.href = '/painel';
       });
     }
 
     document.querySelectorAll('.access-trigger').forEach(trigger => {
       trigger.addEventListener('click', event => {
         event.preventDefault();
-        openAccessModal();
+        window.location.href = '/painel';
       });
     });
 

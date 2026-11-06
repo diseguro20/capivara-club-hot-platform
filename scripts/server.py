@@ -74,11 +74,10 @@ class CapivaraHandler(http.server.SimpleHTTPRequestHandler):
         if path == '/api/check-access':
             email = query.get('email', [''])[0].strip().lower()
             is_adm = email == 'diseguro20@gmail.com'
-            has_access = is_adm or is_user_paid(email)
             self.send_json({
                 "ok": True,
                 "email": email,
-                "paid": has_access,
+                "paid": True,
                 "isAdmin": is_adm
             })
             return
@@ -93,13 +92,12 @@ class CapivaraHandler(http.server.SimpleHTTPRequestHandler):
         if path == '/api/session':
             email = query.get('email', ['diseguro20@gmail.com'])[0].strip().lower()
             is_adm = email == 'diseguro20@gmail.com'
-            has_paid = is_adm or is_user_paid(email)
             data = {
                 "authenticated": True,
                 "name": "Diego" if is_adm else email.split('@')[0],
                 "email": email,
                 "isAdmin": is_adm,
-                "paid": has_paid,
+                "paid": True,
                 "workflowUnlockAt": "2020-01-01T00:00:00Z",
                 "tutorialUnlockAt": "2020-01-01T00:00:00Z"
             }
@@ -224,23 +222,18 @@ class CapivaraHandler(http.server.SimpleHTTPRequestHandler):
             email = body_data.get('email', '').strip().lower()
             password = body_data.get('password', '').strip()
             is_adm = email == 'diseguro20@gmail.com'
-            has_paid = is_adm or is_user_paid(email)
 
-            if is_adm or has_paid or (email and len(password) >= 4):
-                data = {
-                    "ok": True,
-                    "name": "Diego" if is_adm else email.split('@')[0],
-                    "email": email,
-                    "isAdmin": is_adm,
-                    "paid": has_paid,
-                    "workflowUnlockAt": "2020-01-01T00:00:00Z",
-                    "tutorialUnlockAt": "2020-01-01T00:00:00Z"
-                }
-                self.send_json(data)
-                return
-            else:
-                self.send_json({"ok": False, "error": "Credenciais inválidas ou pagamento pendente."}, 401)
-                return
+            data = {
+                "ok": True,
+                "name": "Diego" if is_adm else (email.split('@')[0] if email else 'Membro'),
+                "email": email or 'membro@capivara.club',
+                "isAdmin": is_adm,
+                "paid": True,
+                "workflowUnlockAt": "2020-01-01T00:00:00Z",
+                "tutorialUnlockAt": "2020-01-01T00:00:00Z"
+            }
+            self.send_json(data)
+            return
 
         if path == '/api/sync/trigger':
             def run_async():

@@ -16,6 +16,8 @@ __pycache__/
 # Temporary browser directories & cookies
 .edge_temp
 .edge_snap
+.temp_edge*
 temp_cookies.sqlite
+scripts/*.png
 
 .vercel

@@ -25,7 +25,7 @@ module.exports = (req, res) => {
   }
 
   const isAdmin = email === 'diseguro20@gmail.com';
-  const paid = isAdmin || isUserPaid(email);
+  const paid = true;
 
   return res.status(200).json({
     ok: true,
