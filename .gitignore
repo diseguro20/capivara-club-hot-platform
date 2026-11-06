@@ -21,3 +21,4 @@ temp_cookies.sqlite
 scripts/*.png
 
 .vercel
+.env*
