@@ -4,7 +4,9 @@
     { "source": "/login", "destination": "/login.html" },
     { "source": "/cadastro", "destination": "/login.html" },
     { "source": "/painel", "destination": "/paginas/painel.html" },
-    { "source": "/membros", "destination": "/paginas/painel.html" }
+    { "source": "/membros", "destination": "/paginas/painel.html" },
+    { "source": "/api/checkout/pix", "destination": "/api/access-request" },
+    { "source": "/api/checkout/status", "destination": "/api/order-status" }
   ],
   "headers": [
     {
